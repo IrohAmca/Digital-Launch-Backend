@@ -1,7 +1,7 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "",
+  "description": "Digital Lansman Backend",
   "main": "app.mjs",
   "dependencies": {
     "accepts": "^1.3.8",
@@ -72,7 +72,7 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "boot": "node app.mjs"
   },
   "keywords": [],
   "author": "",
