@@ -32,6 +32,6 @@ app.get('/dl-listele', (req, res) => {
     res.render('site/dl-listele')
 });
 
-app.use((req, res,next) => {
+app.use((req, res) => {
     res.render('site/404')
 });
