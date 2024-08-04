@@ -91,3 +91,9 @@ body {
 .form-container button:hover {
     background-color: #45a049;
 }
+.card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    cursor: pointer;
+}
