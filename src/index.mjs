@@ -3,6 +3,7 @@ import express from 'express'
 import { engine } from 'express-handlebars';
 import main from './routes/main.mjs'
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const host = '0.0.0.0'
 const port = 3000
@@ -10,6 +11,7 @@ const port = 3000
 var app = express()
 
 app.use(express.static('static'))
+app.use(cors());
 app.use('/', main)
 
 app.use(bodyParser.json());
