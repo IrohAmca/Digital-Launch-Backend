@@ -1,4 +1,4 @@
 
 /node_modules
 /src/config
-/src/services/.env
+.env
