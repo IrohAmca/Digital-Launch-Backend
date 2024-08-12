@@ -1,5 +1,5 @@
 import express from 'express'
-import path from 'path'
+
 import { engine } from 'express-handlebars';
 import main from './routes/main.mjs'
 import bodyParser from 'body-parser';
