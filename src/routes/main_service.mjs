@@ -19,7 +19,7 @@ router.get('/dl-listele', async (req, res) => {
     try {
         const posts = await readAllData();
         console.log(posts);
-        res.render('site/dl-listele', { posts: posts });
+        res.send(posts)
     } catch (err) {
         console.log("Error in readAllData:", err);
         res.status(500).send('Internal Server Error');
