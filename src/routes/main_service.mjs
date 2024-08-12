@@ -18,7 +18,6 @@ router.get('/dl-olustur', (req, res) => {
 router.get('/dl-listele', async (req, res) => {
     try {
         const posts = await readAllData();
-        console.log(posts);
         res.send(posts)
     } catch (err) {
         console.log("Error in readAllData:", err);
@@ -38,7 +37,6 @@ router.get('/dl-onizle', async (req, res) => {
 
 router.post('/submit-lansman', async (req, res) => {
     try {
-        console.log(req.body.Genel_Bilgiler);
         const post = new Post(req.body);
         await saveData(post);
         res.redirect('/');
