@@ -27,7 +27,7 @@ router.get('/dl-listele', async (req, res) => {
 
 router.get('/dl-onizle', async (req, res) => {
     try {
-        const post = await readData(req.query.name);
+        const post = await readData(req.body.name);
         res.send(post);
     } catch (err) {
         console.log("Error in readData:", err);
