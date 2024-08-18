@@ -72,7 +72,7 @@ router.post('/submit-sections-info', async (req, res) => {
 
 router.post('/submit-design-info', async (req, res) => {
     try {
-        await updateSection("Tasarim_Ayarları", req.body.Tasarim_Ayarları, req.body.id);
+        await updateSection("Tasarım_Ayarları", req.body.Tasarım_Ayarları, req.body.id);
     } catch (err) {
         console.log("Error in saveData:", err);
         res.status(500).send('Internal Server Error');

@@ -74,7 +74,6 @@ async function readData(Lansman_Adi) {
 async function saveGeneralInfo(generalInfo) {
     await connectToDatabase();
     const post = new main_schema_1.Post({ Genel_Bilgiler: generalInfo.Genel_Bilgiler });
-    console.log(post);
     const savedPost = await post.save();
     return savedPost._id;
 }
