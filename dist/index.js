@@ -11,7 +11,7 @@ const cors_1 = __importDefault(require("cors"));
 const host = '0.0.0.0';
 const port = 3000;
 const app = (0, express_1.default)();
-app.use(express_1.default.static('./dist/static'));
+app.use(express_1.default.static('./static'));
 app.use((0, cors_1.default)());
 app.use('/', main_service_1.default);
 app.use(body_parser_1.default.json());
@@ -26,7 +26,7 @@ app.engine('handlebars', (0, express_handlebars_1.engine)({
     }
 }));
 app.set('view engine', 'handlebars');
-app.set('views', './dist/views');
+app.set('views', './views');
 app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });
