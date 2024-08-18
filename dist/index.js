@@ -19,7 +19,12 @@ app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((req, res) => {
     res.render('site/404');
 });
-app.engine('handlebars', (0, express_handlebars_1.engine)());
+app.engine('handlebars', (0, express_handlebars_1.engine)({
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }
+}));
 app.set('view engine', 'handlebars');
 app.set('views', './dist/views');
 app.listen(port, host, () => {

@@ -20,7 +20,13 @@ app.use((req, res) => {
     res.render('site/404');
 });
 
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }
+}));
+
 app.set('view engine', 'handlebars');
 app.set('views', './dist/views');
 
