@@ -28,212 +28,212 @@ const mongoose_1 = __importStar(require("mongoose"));
 const PostSchema = new mongoose_1.Schema({
     General_Info: {
         Turkish: {
-            Launch_Name: { type: String, default: '' },
-            Launch_URL: { type: String, default: '' },
+            Launch_Name: { type: String },
+            Launch_URL: { type: String },
             Launch_Start_Date: { type: Date, default: null },
             Launch_End_Date: { type: Date, default: null },
-            Order_Number: { type: String, default: '' },
+            Order_Number: { type: String },
         },
         English: {
-            Launch_Name: { type: String, default: '' },
-            Launch_URL: { type: String, default: '' },
+            Launch_Name: { type: String },
+            Launch_URL: { type: String },
             Launch_Start_Date: { type: Date, default: null },
             Launch_End_Date: { type: Date, default: null },
-            Order_Number: { type: String, default: '' },
+            Order_Number: { type: String },
         }
     },
     Sections: {
         Trailer_Section: {
             Turkish: {
-                Logo: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Subtitle: { type: String, default: '' },
-                Paragraph: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
-                Video_Link: { type: String, default: '' },
-                Background_Image: { type: String, default: '' },
+                Logo: { type: String },
+                Title: { type: String },
+                Subtitle: { type: String },
+                Paragraph: { type: String },
+                Button_Text: { type: String },
+                Video_Link: { type: String },
+                Background_Image: { type: String },
             },
             English: {
-                Logo: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Subtitle: { type: String, default: '' },
-                Paragraph: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
-                Video_Link: { type: String, default: '' },
-                Background_Image: { type: String, default: '' },
+                Logo: { type: String },
+                Title: { type: String },
+                Subtitle: { type: String },
+                Paragraph: { type: String },
+                Button_Text: { type: String },
+                Video_Link: { type: String },
+                Background_Image: { type: String },
             }
         },
         Broadcast_Section: {
             Turkish: {
-                Broadcast_Status: { type: String, default: '' },
-                Broadcast_Link: { type: String, default: '' },
+                Broadcast_Status: { type: String },
+                Broadcast_Link: { type: String },
             },
             English: {
-                Broadcast_Status: { type: String, default: '' },
-                Broadcast_Link: { type: String, default: '' },
+                Broadcast_Status: { type: String },
+                Broadcast_Link: { type: String },
             }
         },
         Introduction_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Paragraph: { type: String, default: '' },
-                Video_Link: { type: String, default: '' },
-                Image: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
+                Paragraph: { type: String },
+                Video_Link: { type: String },
+                Image: { type: String },
+                Button_Text: { type: String },
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Paragraph: { type: String, default: '' },
-                Video_Link: { type: String, default: '' },
-                Image: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
+                Paragraph: { type: String },
+                Video_Link: { type: String },
+                Image: { type: String },
+                Button_Text: { type: String },
             }
         },
         Logos_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Logos: [{
-                        Logo: { type: String, default: '' },
-                        Link: { type: String, default: '' },
+                        Logo: { type: String },
+                        Link: { type: String },
                     }],
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Logos: [{
-                        Logo: { type: String, default: '' },
-                        Link: { type: String, default: '' },
+                        Logo: { type: String },
+                        Link: { type: String },
                     }],
             }
         },
         Sponsors_Section: {
             Turkish: {
-                Image: { type: String, default: '' },
-                Link: { type: String, default: '' },
+                Image: { type: String },
+                Link: { type: String },
             },
             English: {
-                Image: { type: String, default: '' },
-                Link: { type: String, default: '' },
+                Image: { type: String },
+                Link: { type: String },
             }
         },
         Features_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Features: [{
-                        Feature_Title: { type: String, default: '' },
-                        Feature_Image: { type: String, default: '' },
-                        Feature_Paragraph: { type: String, default: '' },
+                        Feature_Title: { type: String },
+                        Feature_Image: { type: String },
+                        Feature_Paragraph: { type: String },
                     }],
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Features: [{
-                        Feature_Title: { type: String, default: '' },
-                        Feature_Image: { type: String, default: '' },
-                        Feature_Paragraph: { type: String, default: '' },
+                        Feature_Title: { type: String },
+                        Feature_Image: { type: String },
+                        Feature_Paragraph: { type: String },
                     }],
             }
         },
         Certificates_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Certificates: [{
-                        Link: { type: String, default: '' },
+                        Link: { type: String },
                     }],
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Certificates: [{
-                        Link: { type: String, default: '' },
+                        Link: { type: String },
                     }],
             }
         },
         Catalog_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Catalog: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
+                Catalog: { type: String },
+                Button_Text: { type: String },
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Catalog: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
+                Catalog: { type: String },
+                Button_Text: { type: String },
             }
         },
         Images_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Images: [{
-                        Image_Link: { type: String, default: '' },
-                        Image_Caption: { type: String, default: '' },
-                        Image_Title: { type: String, default: '' },
+                        Image_Link: { type: String },
+                        Image_Caption: { type: String },
+                        Image_Title: { type: String },
                     }],
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
                 Images: [{
-                        Image_Link: { type: String, default: '' },
-                        Image_Caption: { type: String, default: '' },
-                        Image_Title: { type: String, default: '' },
+                        Image_Link: { type: String },
+                        Image_Caption: { type: String },
+                        Image_Title: { type: String },
                     }],
             }
         },
         Contact_Section: {
             Turkish: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Paragraph: { type: String, default: '' },
-                Address: { type: String, default: '' },
-                Phone: { type: String, default: '' },
-                Email: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
+                Paragraph: { type: String },
+                Address: { type: String },
+                Phone: { type: String },
+                Email: { type: String },
                 Social_Media: [{
-                        Social_Media_Platform: { type: String, default: '' },
-                        Social_Media_Link: { type: String, default: '' },
+                        Social_Media_Platform: { type: String },
+                        Social_Media_Link: { type: String },
                     }],
             },
             English: {
-                Main_Title: { type: String, default: '' },
-                Title: { type: String, default: '' },
-                Paragraph: { type: String, default: '' },
-                Address: { type: String, default: '' },
-                Phone: { type: String, default: '' },
-                Email: { type: String, default: '' },
+                Main_Title: { type: String },
+                Title: { type: String },
+                Paragraph: { type: String },
+                Address: { type: String },
+                Phone: { type: String },
+                Email: { type: String },
                 Social_Media: [{
-                        Social_Media_Platform: { type: String, default: '' },
-                        Social_Media_Link: { type: String, default: '' },
+                        Social_Media_Platform: { type: String },
+                        Social_Media_Link: { type: String },
                     }],
             }
         },
         CTA_Section: {
             Turkish: {
-                Title: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
+                Title: { type: String },
+                Button_Text: { type: String },
             },
             English: {
-                Title: { type: String, default: '' },
-                Button_Text: { type: String, default: '' },
+                Title: { type: String },
+                Button_Text: { type: String },
             }
         },
     },
     Design_Settings: {
-        Primary_Color: { type: String, default: '' },
-        Background_Color: { type: String, default: '' },
-        Title_Text_Color: { type: String, default: '' },
-        Main_Title_Text_Color: { type: String, default: '' },
-        Paragraph_Text_Color: { type: String, default: '' },
-        Button_Color: { type: String, default: '' },
-        Features_Background_Color: { type: String, default: '' },
+        Primary_Color: { type: String },
+        Background_Color: { type: String },
+        Title_Text_Color: { type: String },
+        Main_Title_Text_Color: { type: String },
+        Paragraph_Text_Color: { type: String },
+        Button_Color: { type: String },
+        Features_Background_Color: { type: String },
     },
     Sorting_Settings: {
         Trailer_Section: {
@@ -283,20 +283,20 @@ const PostSchema = new mongoose_1.Schema({
     },
     SEO_Settings: {
         Turkish: {
-            Title: { type: String, default: '' },
-            Keywords: { type: String, default: '' },
-            Description: { type: String, default: '' },
-            Social_Media_Sharing_Image: { type: String, default: '' },
-            Index_Status: { type: Boolean, default: true },
-            Follow_Status: { type: Boolean, default: true },
+            Title: { type: String },
+            Keywords: { type: String },
+            Description: { type: String },
+            Social_Media_Sharing_Image: { type: String },
+            Index_Status: { type: Boolean },
+            Follow_Status: { type: Boolean },
         },
         English: {
-            Title: { type: String, default: '' },
-            Keywords: { type: String, default: '' },
-            Description: { type: String, default: '' },
-            Social_Media_Sharing_Image: { type: String, default: '' },
-            Index_Status: { type: Boolean, default: true },
-            Follow_Status: { type: Boolean, default: true },
+            Title: { type: String },
+            Keywords: { type: String },
+            Description: { type: String },
+            Social_Media_Sharing_Image: { type: String },
+            Index_Status: { type: Boolean },
+            Follow_Status: { type: Boolean },
         }
     }
 });
