@@ -9,7 +9,6 @@ const port = 3000;
 
 const app = express();
 
-app.use(express.static('./dist/static'));
 app.use(cors());
 app.use('/', insertRouters);
 
@@ -27,8 +26,6 @@ app.engine('handlebars', engine({
     }
 }));
 
-app.set('view engine', 'handlebars');
-app.set('views', './dist/views');
 
 app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
