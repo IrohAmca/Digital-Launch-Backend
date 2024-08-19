@@ -23,18 +23,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Design = void 0;
+exports.Trailer = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const DesignSchema = new mongoose_1.Schema({
-    Design_Settings: {
-        Primary_Color: { type: String, required: true },
-        Background_Color: { type: String, required: true },
-        Title_Text_Color: { type: String, required: true },
-        Main_Title_Text_Color: { type: String, required: true },
-        Paragraph_Text_Color: { type: String, required: true },
-        Button_Color: { type: String, required: true },
-        Features_Background_Color: { type: String, required: true },
+const TrailerSchema = new mongoose_1.Schema({
+    Trailer_Section: {
+        Turkish: {
+            Logo: { type: String, required: true },
+            Title: { type: String, required: true },
+            Subtitle: { type: String, required: true },
+            Paragraph: { type: String, required: true },
+            Button_Text: { type: String, required: true },
+            Video_Link: { type: String, required: true },
+            Background_Image: { type: String, required: true },
+        },
+        English: {
+            Logo: { type: String, required: true },
+            Title: { type: String, required: true },
+            Subtitle: { type: String, required: true },
+            Paragraph: { type: String, required: true },
+            Button_Text: { type: String, required: true },
+            Video_Link: { type: String, required: true },
+            Background_Image: { type: String, required: true },
+        }
     }
 });
-const Design = mongoose_1.default.model('Design', DesignSchema, "test");
-exports.Design = Design;
+const Trailer = mongoose_1.default.model('Trailer', TrailerSchema, "test");
+exports.Trailer = Trailer;

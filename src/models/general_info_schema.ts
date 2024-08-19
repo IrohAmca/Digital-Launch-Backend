@@ -1,39 +1,39 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 interface IGeneral extends Document {
-    Genel_Bilgiler: {
-        Turkce: {
-            Lansman_Adi: string,
-            Lansman_URL: string,
-            Lansman_Başlangıc_Tarihi: Date,
-            Lansman_Bitis_Tarihi: Date,
-            Sıra_Numarası: string,
+    GeneralInfo: {
+        Turkish: {
+            Launch_Name: string,
+            Launch_URL: string,
+            Launch_Start_Date: Date,
+            Launch_End_Date: Date,
+            Order_Number: string,
         },
-        Ingilizce: {
-            Lansman_Adi: string,
-            Lansman_URL: string,
-            Lansman_Başlangıc_Tarihi: Date,
-            Lansman_Bitis_Tarihi: Date,
-            Sıra_Numarası: string,
+        English: {
+            Launch_Name: string,
+            Launch_URL: string,
+            Launch_Start_Date: Date,
+            Launch_End_Date: Date,
+            Order_Number: string,
         }
     }
 }
 
 const GeneralInfo: Schema = new Schema({
-    Genel_Bilgiler: {
-        Turkce: {
-            Lansman_Adi: { type: String, required: true },
-            Lansman_URL: { type: String, required: true },
-            Lansman_Başlangıc_Tarihi: { type: Date, required: true },
-            Lansman_Bitis_Tarihi: { type: Date, required: true },
-            Sıra_Numarası: { type: String, required: true },
+    GeneralInfo: {
+        Turkish: {
+            Launch_Name: { type: String, required: true },
+            Launch_URL: { type: String, required: true },
+            Launch_Start_Date: { type: Date, required: true },
+            Launch_End_Date: { type: Date, required: true },
+            Order_Number: { type: String, required: true },
         },
-        Ingilizce: {
-            Lansman_Adi: { type: String, required: true },
-            Lansman_URL: { type: String, required: true },
-            Lansman_Başlangıc_Tarihi: { type: Date, required: true },
-            Lansman_Bitis_Tarihi: { type: Date, required: true },
-            Sıra_Numarası: { type: String, required: true },
+        English: {
+            Launch_Name: { type: String, required: true },
+            Launch_URL: { type: String, required: true },
+            Launch_Start_Date: { type: Date, required: true },
+            Launch_End_Date: { type: Date, required: true },
+            Order_Number: { type: String, required: true },
         }
     }
 });

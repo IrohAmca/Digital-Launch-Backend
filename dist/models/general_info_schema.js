@@ -26,20 +26,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.General = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const GeneralInfo = new mongoose_1.Schema({
-    Genel_Bilgiler: {
-        Turkce: {
-            Lansman_Adi: { type: String, required: true },
-            Lansman_URL: { type: String, required: true },
-            Lansman_Başlangıc_Tarihi: { type: Date, required: true },
-            Lansman_Bitis_Tarihi: { type: Date, required: true },
-            Sıra_Numarası: { type: String, required: true },
+    GeneralInfo: {
+        Turkish: {
+            Launch_Name: { type: String, required: true },
+            Launch_URL: { type: String, required: true },
+            Launch_Start_Date: { type: Date, required: true },
+            Launch_End_Date: { type: Date, required: true },
+            Order_Number: { type: String, required: true },
         },
-        Ingilizce: {
-            Lansman_Adi: { type: String, required: true },
-            Lansman_URL: { type: String, required: true },
-            Lansman_Başlangıc_Tarihi: { type: Date, required: true },
-            Lansman_Bitis_Tarihi: { type: Date, required: true },
-            Sıra_Numarası: { type: String, required: true },
+        English: {
+            Launch_Name: { type: String, required: true },
+            Launch_URL: { type: String, required: true },
+            Launch_Start_Date: { type: Date, required: true },
+            Launch_End_Date: { type: Date, required: true },
+            Order_Number: { type: String, required: true },
         }
     }
 });

@@ -1,7 +1,7 @@
 
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { saveData, readAllData, readData, updateSection, saveDesign } from '../services/db_utils';
+import { readAllData, readData, updateSection } from '../services/db_utils';
 import { Post } from '../models/main_schema';
 import { submitGeneral } from '../utils/reader';
 
@@ -9,7 +9,7 @@ const router = Router();
 
 router.use(bodyParser.json());
 
-router.get('/', (req, res) => {
+/* router.get('/', (req, res) => {
     res.render('site/admin');
 });
 
@@ -46,7 +46,7 @@ router.post('/submit-lansman', async (req, res) => {
         console.log("Error in saveData:", err);
         res.status(500).send('Internal Server Error');
     }
-});
+}); */
 
 router.post('/submit-general-info', async (req, res) => {
     try {

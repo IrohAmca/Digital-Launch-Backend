@@ -23,27 +23,35 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SEO = void 0;
+exports.Contact = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const SEOSchema = new mongoose_1.Schema({
-    SEO_Settings: {
+const ContactSchema = new mongoose_1.Schema({
+    Contact_Section: {
         Turkish: {
+            Main_Title: { type: String, required: true },
             Title: { type: String, required: true },
-            Keywords: { type: String, required: true },
-            Description: { type: String, required: true },
-            Social_Media_Sharing_Image: { type: String, required: true },
-            Index_Status: { type: Boolean, required: true },
-            Follow_Status: { type: Boolean, required: true },
+            Paragraph: { type: String, required: true },
+            Address: { type: String, required: true },
+            Phone: { type: String, required: true },
+            Email: { type: String, required: true },
+            Social_Media: [{
+                    Social_Media_Platform: { type: String, required: true },
+                    Social_Media_Link: { type: String, required: true },
+                }],
         },
         English: {
+            Main_Title: { type: String, required: true },
             Title: { type: String, required: true },
-            Keywords: { type: String, required: true },
-            Description: { type: String, required: true },
-            Social_Media_Sharing_Image: { type: String, required: true },
-            Index_Status: { type: Boolean, required: true },
-            Follow_Status: { type: Boolean, required: true },
+            Paragraph: { type: String, required: true },
+            Address: { type: String, required: true },
+            Phone: { type: String, required: true },
+            Email: { type: String, required: true },
+            Social_Media: [{
+                    Social_Media_Platform: { type: String, required: true },
+                    Social_Media_Link: { type: String, required: true },
+                }],
         }
     }
 });
-const SEO = mongoose_1.default.model('SEO', SEOSchema, "test");
-exports.SEO = SEO;
+const Contact = mongoose_1.default.model('Contact', ContactSchema, "test");
+exports.Contact = Contact;

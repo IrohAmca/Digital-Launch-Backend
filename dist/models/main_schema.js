@@ -26,232 +26,277 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Post = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const PostSchema = new mongoose_1.Schema({
-    Genel_Bilgiler: {
-        Turkce: {
-            Lansman_Adi: { type: String, default: '' },
-            Lansman_URL: { type: String, default: '' },
-            Lansman_Başlangıc_Tarihi: { type: Date, default: null },
-            Lansman_Bitis_Tarihi: { type: Date, default: null },
-            Sıra_Numarası: { type: String, default: '' },
+    General_Info: {
+        Turkish: {
+            Launch_Name: { type: String, default: '' },
+            Launch_URL: { type: String, default: '' },
+            Launch_Start_Date: { type: Date, default: null },
+            Launch_End_Date: { type: Date, default: null },
+            Order_Number: { type: String, default: '' },
         },
-        Ingilizce: {
-            Lansman_Adi: { type: String, default: '' },
-            Lansman_URL: { type: String, default: '' },
-            Lansman_Başlangıc_Tarihi: { type: Date, default: null },
-            Lansman_Bitis_Tarihi: { type: Date, default: null },
-            Sıra_Numarası: { type: String, default: '' },
+        English: {
+            Launch_Name: { type: String, default: '' },
+            Launch_URL: { type: String, default: '' },
+            Launch_Start_Date: { type: Date, default: null },
+            Launch_End_Date: { type: Date, default: null },
+            Order_Number: { type: String, default: '' },
         }
     },
-    Bolumler: {
-        Fragman_Bolumu: {
-            Turkce: {
+    Sections: {
+        Trailer_Section: {
+            Turkish: {
                 Logo: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Alt_Baslık: { type: String, default: '' },
-                Paragraf: { type: String, default: '' },
-                Button_Metini: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Subtitle: { type: String, default: '' },
+                Paragraph: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
                 Video_Link: { type: String, default: '' },
-                Arkaplan_Gorseli: { type: String, default: '' },
+                Background_Image: { type: String, default: '' },
             },
-            Ingilizce: {
+            English: {
                 Logo: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Alt_Baslık: { type: String, default: '' },
-                Paragraf: { type: String, default: '' },
-                Button_Metini: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Subtitle: { type: String, default: '' },
+                Paragraph: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
                 Video_Link: { type: String, default: '' },
-                Arkaplan_Gorseli: { type: String, default: '' },
+                Background_Image: { type: String, default: '' },
             }
         },
-        Yayın_Bolumu: {
-            Turkce: {
-                Yayın_Status: { type: String, default: '' },
-                Yayın_Link: { type: String, default: '' },
+        Broadcast_Section: {
+            Turkish: {
+                Broadcast_Status: { type: String, default: '' },
+                Broadcast_Link: { type: String, default: '' },
             },
-            Ingilizce: {
-                Yayın_Status: { type: String, default: '' },
-                Yayın_Link: { type: String, default: '' },
+            English: {
+                Broadcast_Status: { type: String, default: '' },
+                Broadcast_Link: { type: String, default: '' },
             }
         },
-        Tanıtım_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Paragraf: { type: String, default: '' },
+        Introduction_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Paragraph: { type: String, default: '' },
                 Video_Link: { type: String, default: '' },
-                Gorsel: { type: String, default: '' },
-                Button_Metni: { type: String, default: '' },
+                Image: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Paragraf: { type: String, default: '' },
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Paragraph: { type: String, default: '' },
                 Video_Link: { type: String, default: '' },
-                Gorsel: { type: String, default: '' },
-                Button_Metni: { type: String, default: '' },
+                Image: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
             }
         },
-        Logolar_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Logolar: [{
+        Logos_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Logos: [{
                         Logo: { type: String, default: '' },
                         Link: { type: String, default: '' },
                     }],
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Logolar: [{
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Logos: [{
                         Logo: { type: String, default: '' },
                         Link: { type: String, default: '' },
                     }],
             }
         },
-        Sponsorlar_Bolumu: {
-            Turkce: {
-                Gorsel: { type: String, default: '' },
+        Sponsors_Section: {
+            Turkish: {
+                Image: { type: String, default: '' },
                 Link: { type: String, default: '' },
             },
-            Ingilizce: {
-                Gorsel: { type: String, default: '' },
+            English: {
+                Image: { type: String, default: '' },
                 Link: { type: String, default: '' },
             }
         },
-        Ozellikler_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Ozellikler: [{
-                        Ozellik_Baslik: { type: String, default: '' },
-                        Ozellik_Gorsel: { type: String, default: '' },
-                        Ozellik_Paragraf: { type: String, default: '' },
+        Features_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Features: [{
+                        Feature_Title: { type: String, default: '' },
+                        Feature_Image: { type: String, default: '' },
+                        Feature_Paragraph: { type: String, default: '' },
                     }],
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Ozellikler: [{
-                        Ozellik_Baslik: { type: String, default: '' },
-                        Ozellik_Gorsel: { type: String, default: '' },
-                        Ozellik_Paragraf: { type: String, default: '' },
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Features: [{
+                        Feature_Title: { type: String, default: '' },
+                        Feature_Image: { type: String, default: '' },
+                        Feature_Paragraph: { type: String, default: '' },
                     }],
             }
         },
-        Sertifikalar_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Sertifikalar: [{
+        Certificates_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Certificates: [{
                         Link: { type: String, default: '' },
                     }],
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Sertifikalar: [{
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Certificates: [{
                         Link: { type: String, default: '' },
                     }],
             }
         },
-        Katalog_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Katalog: { type: String, default: '' },
-                Button_Metni: { type: String, default: '' },
+        Catalog_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Catalog: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Katalog: { type: String, default: '' },
-                Button_Metni: { type: String, default: '' },
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Catalog: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
             }
         },
-        Gorseller_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Gorseller: [{
-                        Gorsel_Link: { type: String, default: '' },
-                        Gorsel_Ust_Acıklama: { type: String, default: '' },
-                        Gorsel_Ust_Baslık: { type: String, default: '' },
+        Images_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Images: [{
+                        Image_Link: { type: String, default: '' },
+                        Image_Caption: { type: String, default: '' },
+                        Image_Title: { type: String, default: '' },
                     }],
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Gorseller: [{
-                        Gorsel_Link: { type: String, default: '' },
-                        Gorsel_Ust_Acıklama: { type: String, default: '' },
-                        Gorsel_Ust_Baslık: { type: String, default: '' },
-                    }],
-            }
-        },
-        Iletisim_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Paragraf: { type: String, default: '' },
-                Adres: { type: String, default: '' },
-                Telefon: { type: String, default: '' },
-                E_Posta: { type: String, default: '' },
-                Sosyal_Medya: [{
-                        Sosyal_Medya_Platfrom: { type: String, default: '' },
-                        Sosyal_Medya_Link: { type: String, default: '' },
-                    }],
-            },
-            Ingilizce: {
-                Ust_Baslık: { type: String, default: '' },
-                Baslık: { type: String, default: '' },
-                Paragraf: { type: String, default: '' },
-                Adres: { type: String, default: '' },
-                Telefon: { type: String, default: '' },
-                E_Posta: { type: String, default: '' },
-                Sosyal_Medya: [{
-                        Sosyal_Medya_Platfrom: { type: String, default: '' },
-                        Sosyal_Medya_Link: { type: String, default: '' },
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Images: [{
+                        Image_Link: { type: String, default: '' },
+                        Image_Caption: { type: String, default: '' },
+                        Image_Title: { type: String, default: '' },
                     }],
             }
         },
-        CTA_Bolumu: {
-            Turkce: {
-                Baslık: { type: String, default: '' },
-                Button_Metni: { type: String, default: '' },
+        Contact_Section: {
+            Turkish: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Paragraph: { type: String, default: '' },
+                Address: { type: String, default: '' },
+                Phone: { type: String, default: '' },
+                Email: { type: String, default: '' },
+                Social_Media: [{
+                        Social_Media_Platform: { type: String, default: '' },
+                        Social_Media_Link: { type: String, default: '' },
+                    }],
             },
-            Ingilizce: {
-                Baslık: { type: String, default: '' },
-                Button_Metni: { type: String, default: '' },
+            English: {
+                Main_Title: { type: String, default: '' },
+                Title: { type: String, default: '' },
+                Paragraph: { type: String, default: '' },
+                Address: { type: String, default: '' },
+                Phone: { type: String, default: '' },
+                Email: { type: String, default: '' },
+                Social_Media: [{
+                        Social_Media_Platform: { type: String, default: '' },
+                        Social_Media_Link: { type: String, default: '' },
+                    }],
+            }
+        },
+        CTA_Section: {
+            Turkish: {
+                Title: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
+            },
+            English: {
+                Title: { type: String, default: '' },
+                Button_Text: { type: String, default: '' },
             }
         },
     },
-    Tasarım_Ayarları: {
-        Ana_Renk: { type: String, default: '' },
-        Arkaplan_Renk: { type: String, default: '' },
-        Baslık_Metin_Renk: { type: String, default: '' },
-        Ust_Baslık_Metin_Renk: { type: String, default: '' },
-        Paragraf_Metin_Renk: { type: String, default: '' },
-        Button_Renk: { type: String, default: '' },
-        Ozellikler_Arka_Plan_Renk: { type: String, default: '' },
+    Design_Settings: {
+        Primary_Color: { type: String, default: '' },
+        Background_Color: { type: String, default: '' },
+        Title_Text_Color: { type: String, default: '' },
+        Main_Title_Text_Color: { type: String, default: '' },
+        Paragraph_Text_Color: { type: String, default: '' },
+        Button_Color: { type: String, default: '' },
+        Features_Background_Color: { type: String, default: '' },
     },
-    Sıralama_Ayarları: {},
-    SEO_Ayarları: {
-        Turkce: {
-            Baslık: { type: String, default: '' },
-            Anahtar_Kelimeler: { type: String, default: '' },
-            Açıklama: { type: String, default: '' },
-            Sosyal_Medya_Paylasım_Gorseli: { type: String, default: '' },
-            Index_Durumu: { type: Boolean, default: true },
-            Takip_Etme: { type: Boolean, default: true },
+    Sorting_Settings: {
+        Trailer_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
         },
-        Ingilizce: {
-            Baslık: { type: String, default: '' },
-            Anahtar_Kelimeler: { type: String, default: '' },
-            Açıklama: { type: String, default: '' },
-            Sosyal_Medya_Paylasım_Gorseli: { type: String, default: '' },
-            Index_Durumu: { type: Boolean, default: true },
-            Takip_Etme: { type: Boolean, default: true },
+        Livestream_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Introduction_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Logos_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Sponsor_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Features_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Certificates_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Catalog_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Images_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        Contact_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        },
+        CTA_Section: {
+            "index": { type: Number },
+            "status": { type: Boolean }
+        }
+    },
+    SEO_Settings: {
+        Turkish: {
+            Title: { type: String, default: '' },
+            Keywords: { type: String, default: '' },
+            Description: { type: String, default: '' },
+            Social_Media_Sharing_Image: { type: String, default: '' },
+            Index_Status: { type: Boolean, default: true },
+            Follow_Status: { type: Boolean, default: true },
+        },
+        English: {
+            Title: { type: String, default: '' },
+            Keywords: { type: String, default: '' },
+            Description: { type: String, default: '' },
+            Social_Media_Sharing_Image: { type: String, default: '' },
+            Index_Status: { type: Boolean, default: true },
+            Follow_Status: { type: Boolean, default: true },
         }
     }
 });

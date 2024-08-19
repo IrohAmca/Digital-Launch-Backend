@@ -25,11 +25,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Placemant = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const PlacemantSchema = new mongoose_1.Schema({
-    Sıralama_Ayarları: {
+const PlacementSchema = new mongoose_1.Schema({
+    Sorting_Settings: {
         type: Object,
         required: true
     }
 });
-const Placemant = mongoose_1.default.model('Placemant', PlacemantSchema, "test");
+const Placemant = mongoose_1.default.model('Placemant', PlacementSchema, "test");
 exports.Placemant = Placemant;

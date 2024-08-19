@@ -1,43 +1,43 @@
 import mongoose,{Schema,Document} from "mongoose";
 
 interface ISEO extends Document{
-    SEO_Ayarları:{
-        Turkce: {
-            Baslık: string,
-            Anahtar_Kelimeler: string,
-            Açıklama: string,
-            Sosyal_Medya_Paylasım_Gorseli: string,
-            Index_Durumu: boolean,
-            Takip_Etme: boolean,
+    SEO_Settings:{
+        Turkish: {
+            Title: string,
+            Keywords: string,
+            Description: string,
+            Social_Media_Sharing_Image: string,
+            Index_Status: boolean,
+            Follow_Status: boolean,
         },
-        Ingilizce: {
-            Baslık: string,
-            Anahtar_Kelimeler: string,
-            Açıklama: string,
-            Sosyal_Medya_Paylasım_Gorseli: string,
-            Index_Durumu: boolean,
-            Takip_Etme: boolean,
+        English: {
+            Title: string,
+            Keywords: string,
+            Description: string,
+            Social_Media_Sharing_Image: string,
+            Index_Status: boolean,
+            Follow_Status: boolean,
         }
     }
 }
 
 const SEOSchema:Schema = new Schema({
-    SEO_Ayarları:{
-        Turkce: {
-            Baslık: {type:String,required:true},
-            Anahtar_Kelimeler: {type:String,required:true},
-            Açıklama: {type:String,required:true},
-            Sosyal_Medya_Paylasım_Gorseli: {type:String,required:true},
-            Index_Durumu: {type:Boolean,required:true},
-            Takip_Etme: {type:Boolean,required:true},
+    SEO_Settings:{
+        Turkish: {
+            Title: {type:String,required:true},
+            Keywords: {type:String,required:true},
+            Description: {type:String,required:true},
+            Social_Media_Sharing_Image: {type:String,required:true},
+            Index_Status: {type:Boolean,required:true},
+            Follow_Status: {type:Boolean,required:true},
         },
-        Ingilizce: {
-            Baslık: {type:String,required:true},
-            Anahtar_Kelimeler: {type:String,required:true},
-            Açıklama: {type:String,required:true},
-            Sosyal_Medya_Paylasım_Gorseli: {type:String,required:true},
-            Index_Durumu: {type:Boolean,required:true},
-            Takip_Etme: {type:Boolean,required:true},
+        English: {
+            Title: {type:String,required:true},
+            Keywords: {type:String,required:true},
+            Description: {type:String,required:true},
+            Social_Media_Sharing_Image: {type:String,required:true},
+            Index_Status: {type:Boolean,required:true},
+            Follow_Status: {type:Boolean,required:true},
         }
     }
 });

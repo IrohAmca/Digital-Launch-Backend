@@ -9,44 +9,6 @@ const db_utils_1 = require("../services/db_utils");
 const reader_1 = require("../utils/reader");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
-/* router.get('/', (req, res) => {
-    res.render('site/admin');
-});
-
-router.get('/dl-olustur', (req, res) => {
-    res.render('site/dl-olustur');
-});
-
-router.get('/dl-listele', async (req, res) => {
-    try {
-        const posts = await readAllData();
-        res.render('site/dl-listele', { posts: posts });
-    } catch (err) {
-        console.log("Error in readAllData:", err);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-router.get('/dl-onizle', async (req, res) => {
-    try {
-        const post = await readData(req.body.name);
-        res.render('site/dl-onizle', { post: post });
-    } catch (err) {
-        console.log("Error in readData:", err);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-router.post('/submit-lansman', async (req, res) => {
-    try {
-        const post = new Post(req.body);
-        await saveData(post);
-        res.redirect('/');
-    } catch (err) {
-        console.log("Error in saveData:", err);
-        res.status(500).send('Internal Server Error');
-    }
-}); */
 router.post('/submit-general-info', async (req, res) => {
     try {
         const objID = await (0, reader_1.submitGeneral)(req.body);
@@ -59,7 +21,7 @@ router.post('/submit-general-info', async (req, res) => {
 });
 router.post('/submit-sections-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("Bolumler", req.body.Bolumler, req.body.id);
+        await (0, db_utils_1.updateSection)("Sections", req.body.Sections, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);
@@ -71,7 +33,7 @@ router.post('/submit-sections-info', async (req, res) => {
 });
 router.post('/submit-design-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("Tasarim_Ayarları", req.body.Tasarim_Ayarları, req.body.id);
+        await (0, db_utils_1.updateSection)("Design_Settings", req.body.Design_Settings, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);
@@ -81,9 +43,9 @@ router.post('/submit-design-info', async (req, res) => {
         res.send("Success");
     }
 });
-router.post('/submit-placemant-info', async (req, res) => {
+router.post('/submit-shorting-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("Sıralama_Ayarları", req.body.Sıralama_Ayarları, req.body.id);
+        await (0, db_utils_1.updateSection)("Sorting_Settings", req.body.Sorting_Settings, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);
@@ -95,7 +57,7 @@ router.post('/submit-placemant-info', async (req, res) => {
 });
 router.post('/submit-seo-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("SEO_Ayarları", req.body.SEO_Ayarları, req.body.id);
+        await (0, db_utils_1.updateSection)("SEO_Settings", req.body.SEO_Settings, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);

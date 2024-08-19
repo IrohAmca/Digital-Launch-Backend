@@ -5,7 +5,7 @@ import path from 'path';
 import { IGeneral } from '../models/general_info_schema';
 import { ISection } from '../models/sections_schema';
 import { Design } from '../models/design_schema';
-import { IPlacemant, Placemant } from '../models/placemant_schema';
+import { IShorting, Shorting } from '../models/shorting_schema';
 
 const envPath = path.resolve(__dirname, '../../.env');
 
@@ -25,19 +25,6 @@ async function connectToDatabase() {
     }
 }
 
-async function saveData(postData: IPost) {
-    try {
-        await connectToDatabase();
-        const post = new Post(postData);
-        await post.save();
-        console.log("Post saved");
-    } catch (err) {
-        console.error("Error saving post:", err);
-        throw err;
-    } finally {
-        mongoose.connection.close();
-    }
-}
 
 async function readAllData(): Promise<IPost[]> {
     try {
@@ -67,51 +54,9 @@ async function readData(Lansman_Adi: string): Promise<IPost | null> {
 
 async function saveGeneralInfo(generalInfo: IGeneral) {
     await connectToDatabase();
-    const post = new Post({ Genel_Bilgiler: generalInfo.Genel_Bilgiler });
+    const post = new Post({ General_Info: generalInfo.GeneralInfo });
     const savedPost = await post.save();
     return savedPost._id;
-}
-
-async function saveSections(sectionData: string, postId: any) {
-    try {
-        await connectToDatabase();
-        await Post.findByIdAndUpdate(
-            postId,
-            { $set: { "Bolumler": sectionData } },
-            { new: true }
-        );
-    } catch (err) {
-        console.error("Error saving sections:", err);
-        throw err;
-    }
-}
-
-async function saveDesign(designData: string, postId: any) {
-    try {
-        await connectToDatabase();
-        await Post.findByIdAndUpdate(
-            postId,
-            { $set: { "Tasarım_Ayarları": designData } },
-            { new: true }
-        );
-    } catch (err) {
-        console.error("Error saving design:", err);
-        throw err;
-    }
-}
-
-async function savePlacemant(placemantData: IPlacemant, postId: any) {
-    try {
-        await connectToDatabase();
-        await Post.findByIdAndUpdate(
-            postId,
-            { $set: { "Sıralama_Ayarları": placemantData } },
-            { new: true }
-        );
-    } catch (err) {
-        console.error("Error saving placemant:", err);
-        throw err;
-    }
 }
 
 async function updateSection(sectionName: string, sectionData: string, postId: any) {
@@ -128,4 +73,18 @@ async function updateSection(sectionName: string, sectionData: string, postId: a
     }
 }
 
-export { saveData, readAllData, readData, saveGeneralInfo, updateSection, saveDesign };
+async function updateSectionPart(partname: string, sectionData: string, postId: any) {
+    try {
+        await connectToDatabase();
+        await Post.findByIdAndUpdate(
+            postId,
+            { $set: { "Sections.$[section].Parts.$[partname].Data": sectionData } },
+            { new: true, arrayFilters: [{ "section.PartName": partname }] }
+        );
+    } catch (err) {
+        console.error("Error updating section part:", err);
+        throw err;
+    }
+}
+
+export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo };

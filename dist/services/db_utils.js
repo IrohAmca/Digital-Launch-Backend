@@ -3,12 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveData = saveData;
 exports.readAllData = readAllData;
 exports.readData = readData;
-exports.saveGeneralInfo = saveGeneralInfo;
 exports.updateSection = updateSection;
-exports.saveDesign = saveDesign;
+exports.updateSectionPart = updateSectionPart;
+exports.saveGeneralInfo = saveGeneralInfo;
 const mongoose_1 = __importDefault(require("mongoose"));
 const main_schema_1 = require("../models/main_schema");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -26,21 +25,6 @@ async function connectToDatabase() {
             console.error("MongoDB connection error:", err);
             throw err;
         }
-    }
-}
-async function saveData(postData) {
-    try {
-        await connectToDatabase();
-        const post = new main_schema_1.Post(postData);
-        await post.save();
-        console.log("Post saved");
-    }
-    catch (err) {
-        console.error("Error saving post:", err);
-        throw err;
-    }
-    finally {
-        mongoose_1.default.connection.close();
     }
 }
 async function readAllData() {
@@ -73,39 +57,9 @@ async function readData(Lansman_Adi) {
 }
 async function saveGeneralInfo(generalInfo) {
     await connectToDatabase();
-    const post = new main_schema_1.Post({ Genel_Bilgiler: generalInfo.Genel_Bilgiler });
+    const post = new main_schema_1.Post({ General_Info: generalInfo.GeneralInfo });
     const savedPost = await post.save();
     return savedPost._id;
-}
-async function saveSections(sectionData, postId) {
-    try {
-        await connectToDatabase();
-        await main_schema_1.Post.findByIdAndUpdate(postId, { $set: { "Bolumler": sectionData } }, { new: true });
-    }
-    catch (err) {
-        console.error("Error saving sections:", err);
-        throw err;
-    }
-}
-async function saveDesign(designData, postId) {
-    try {
-        await connectToDatabase();
-        await main_schema_1.Post.findByIdAndUpdate(postId, { $set: { "Tasarım_Ayarları": designData } }, { new: true });
-    }
-    catch (err) {
-        console.error("Error saving design:", err);
-        throw err;
-    }
-}
-async function savePlacemant(placemantData, postId) {
-    try {
-        await connectToDatabase();
-        await main_schema_1.Post.findByIdAndUpdate(postId, { $set: { "Sıralama_Ayarları": placemantData } }, { new: true });
-    }
-    catch (err) {
-        console.error("Error saving placemant:", err);
-        throw err;
-    }
 }
 async function updateSection(sectionName, sectionData, postId) {
     try {
@@ -114,6 +68,16 @@ async function updateSection(sectionName, sectionData, postId) {
     }
     catch (err) {
         console.error("Error updating section:", err);
+        throw err;
+    }
+}
+async function updateSectionPart(partname, sectionData, postId) {
+    try {
+        await connectToDatabase();
+        await main_schema_1.Post.findByIdAndUpdate(postId, { $set: { "Sections.$[section].Parts.$[partname].Data": sectionData } }, { new: true, arrayFilters: [{ "section.PartName": partname }] });
+    }
+    catch (err) {
+        console.error("Error updating section part:", err);
         throw err;
     }
 }

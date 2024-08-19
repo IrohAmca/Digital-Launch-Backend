@@ -23,18 +23,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Design = void 0;
+exports.Livestream = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const DesignSchema = new mongoose_1.Schema({
-    Design_Settings: {
-        Primary_Color: { type: String, required: true },
-        Background_Color: { type: String, required: true },
-        Title_Text_Color: { type: String, required: true },
-        Main_Title_Text_Color: { type: String, required: true },
-        Paragraph_Text_Color: { type: String, required: true },
-        Button_Color: { type: String, required: true },
-        Features_Background_Color: { type: String, required: true },
+const LivestreamSchema = new mongoose_1.Schema({
+    Livestream_Section: {
+        Turkish: {
+            Livestream_Status: { type: String, required: true },
+            Livestream_Link: { type: String, required: true },
+        },
+        English: {
+            Livestream_Status: { type: String, required: true },
+            Livestream_Link: { type: String, required: true },
+        }
     }
 });
-const Design = mongoose_1.default.model('Design', DesignSchema, "test");
-exports.Design = Design;
+const Livestream = mongoose_1.default.model('Livestream', LivestreamSchema, "test");
+exports.Livestream = Livestream;

@@ -26,103 +26,189 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Section = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const SectionSchema = new mongoose_1.Schema({
-    Bolumler: {
-        Fragman_Bolumu: {
-            Turkce: {
+    Sections: {
+        Trailer_Section: {
+            Turkish: {
                 Logo: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Alt_Baslık: { type: String, required: true },
-                Paragraf: { type: String, required: true },
-                Button_Metini: { type: String, required: true },
+                Title: { type: String, required: true },
+                Subtitle: { type: String, required: true },
+                Paragraph: { type: String, required: true },
+                Button_Text: { type: String, required: true },
                 Video_Link: { type: String, required: true },
-                Arkaplan_Gorseli: { type: String, required: true },
+                Background_Image: { type: String, required: true },
             },
-            Ingilizce: {
+            English: {
                 Logo: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Alt_Baslık: { type: String, required: true },
-                Paragraf: { type: String, required: true },
-                Button_Metini: { type: String, required: true },
+                Title: { type: String, required: true },
+                Subtitle: { type: String, required: true },
+                Paragraph: { type: String, required: true },
+                Button_Text: { type: String, required: true },
                 Video_Link: { type: String, required: true },
-                Arkaplan_Gorseli: { type: String, required: true },
+                Background_Image: { type: String, required: true },
             }
         },
-        Yayın_Bolumu: {
-            Turkce: {
-                Yayın_Status: { type: String, required: true },
-                Yayın_Link: { type: String, required: true },
+        Livestream_Section: {
+            Turkish: {
+                Livestream_Status: { type: String, required: true },
+                Livestream_Link: { type: String, required: true },
             },
-            Ingilizce: {
-                Yayın_Status: { type: String, required: true },
-                Yayın_Link: { type: String, required: true },
+            English: {
+                Livestream_Status: { type: String, required: true },
+                Livestream_Link: { type: String, required: true },
             }
         },
-        Tanıtım_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Paragraf: { type: String, required: true },
+        Introduction_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Paragraph: { type: String, required: true },
                 Video_Link: { type: String, required: true },
-                Gorsel: { type: String, required: true },
-                Button_Metni: { type: String, required: true },
+                Image: { type: String, required: true },
+                Button_Text: { type: String, required: true },
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Paragraf: { type: String, required: true },
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Paragraph: { type: String, required: true },
                 Video_Link: { type: String, required: true },
-                Gorsel: { type: String, required: true },
-                Button_Metni: { type: String, required: true },
+                Image: { type: String, required: true },
+                Button_Text: { type: String, required: true },
             }
         },
-        Logolar_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Logolar: [{
+        Logos_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Logos: [{
                         Logo: { type: String, required: true },
                         Link: { type: String, required: true },
                     }],
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Logolar: [{
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Logos: [{
                         Logo: { type: String, required: true },
                         Link: { type: String, required: true },
                     }],
             }
         },
-        Sponsorlar_Bolumu: {
-            Turkce: {
-                Gorsel: { type: String, required: true },
+        Sponsors_Section: {
+            Turkish: {
+                Image: { type: String, required: true },
                 Link: { type: String, required: true },
             },
-            Ingilizce: {
-                Gorsel: { type: String, required: true },
+            English: {
+                Image: { type: String, required: true },
                 Link: { type: String, required: true },
             }
         },
-        Ozellikler_Bolumu: {
-            Turkce: {
-                Ust_Baslık: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Ozellikler: [{
-                        Ozellik_Baslik: { type: String, required: true },
-                        Ozellik_Gorsel: { type: String, required: true },
-                        Ozellik_Paragraf: { type: String, required: true },
+        Features_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Features: [{
+                        Feature_Title: { type: String, required: true },
+                        Feature_Image: { type: String, required: true },
+                        Feature_Paragraph: { type: String, required: true },
                     }],
             },
-            Ingilizce: {
-                Ust_Baslık: { type: String, required: true },
-                Baslık: { type: String, required: true },
-                Ozellikler: [{
-                        Ozellik_Baslik: { type: String, required: true },
-                        Ozellik_Gorsel: { type: String, required: true },
-                        Ozellik_Paragraf: { type: String, required: true },
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Features: [{
+                        Feature_Title: { type: String, required: true },
+                        Feature_Image: { type: String, required: true },
+                        Feature_Paragraph: { type: String, required: true },
                     }],
             }
-        }
+        },
+        Certificates_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Certificates: [{
+                        Link: { type: String, required: true },
+                    }],
+            },
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Certificates: [{
+                        Link: { type: String, required: true },
+                    }],
+            }
+        },
+        Catalog_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Catalog: { type: String, required: true },
+                Button_Text: { type: String, required: true },
+            },
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Catalog: { type: String, required: true },
+                Button_Text: { type: String, required: true },
+            }
+        },
+        Images_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Images: [{
+                        Image_Link: { type: String, required: true },
+                        Image_Caption: { type: String, required: true },
+                        Image_Title: { type: String, required: true },
+                    }],
+            },
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Images: [{
+                        Image_Link: { type: String, required: true },
+                        Image_Caption: { type: String, required: true },
+                        Image_Title: { type: String, required: true },
+                    }],
+            }
+        },
+        Contact_Section: {
+            Turkish: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Paragraph: { type: String, required: true },
+                Address: { type: String, required: true },
+                Phone: { type: String, required: true },
+                Email: { type: String, required: true },
+                Social_Media: [{
+                        Social_Media_Platform: { type: String, required: true },
+                        Social_Media_Link: { type: String, required: true },
+                    }],
+            },
+            English: {
+                Main_Title: { type: String, required: true },
+                Title: { type: String, required: true },
+                Paragraph: { type: String, required: true },
+                Address: { type: String, required: true },
+                Phone: { type: String, required: true },
+                Email: { type: String, required: true },
+                Social_Media: [{
+                        Social_Media_Platform: { type: String, required: true },
+                        Social_Media_Link: { type: String, required: true },
+                    }],
+            }
+        },
+        CTA_Section: {
+            Turkish: {
+                Title: { type: String, required: true },
+                Button_Text: { type: String, required: true },
+            },
+            English: {
+                Title: { type: String, required: true },
+                Button_Text: { type: String, required: true },
+            }
+        },
     }
 });
 const Section = mongoose_1.default.model('Section', SectionSchema, "test");

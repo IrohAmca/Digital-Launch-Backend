@@ -23,18 +23,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Design = void 0;
+exports.Image = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const DesignSchema = new mongoose_1.Schema({
-    Design_Settings: {
-        Primary_Color: { type: String, required: true },
-        Background_Color: { type: String, required: true },
-        Title_Text_Color: { type: String, required: true },
-        Main_Title_Text_Color: { type: String, required: true },
-        Paragraph_Text_Color: { type: String, required: true },
-        Button_Color: { type: String, required: true },
-        Features_Background_Color: { type: String, required: true },
+const ImageSchema = new mongoose_1.Schema({
+    Images_Section: {
+        Turkish: {
+            Main_Title: { type: String, required: true },
+            Title: { type: String, required: true },
+            Images: [{
+                    Image_Link: { type: String, required: true },
+                    Image_Caption: { type: String, required: true },
+                    Image_Title: { type: String, required: true },
+                }],
+        },
+        English: {
+            Main_Title: { type: String, required: true },
+            Title: { type: String, required: true },
+            Images: [{
+                    Image_Link: { type: String, required: true },
+                    Image_Caption: { type: String, required: true },
+                    Image_Title: { type: String, required: true },
+                }],
+        }
     }
 });
-const Design = mongoose_1.default.model('Design', DesignSchema, "test");
-exports.Design = Design;
+const Image = mongoose_1.default.model('Image', ImageSchema, "test");
+exports.Image = Image;
