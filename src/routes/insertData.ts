@@ -7,10 +7,18 @@ const router = Router();
 
 router.use(bodyParser.json());
 
-router.post('/submit-general-info', async (req, res) => {
+router.post('/update-and-create-general', async (req, res) => {
     try {
-        const objID = await submitGeneral(req.body);
-        res.send(objID);
+        if (!req.body) {
+            return res.status(400).send('Bad Request: Body is required');
+        }
+        if (req.body.id) {
+            await updateSection("General_Info", req.body.GeneralInfo, req.body.id);
+            res.status(200).send("Updated General Info");
+        }else{
+            const objID = await submitGeneral(req.body);
+            res.status(200).send(objID);
+        }
     } catch (err) {
         console.log("Error in saveData:", err);
         res.status(500).send('Internal Server Error');
