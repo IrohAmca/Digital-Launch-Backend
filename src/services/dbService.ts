@@ -113,4 +113,14 @@ async function updateSectionPart(partname: string, sectionData: string, postId: 
     }
 }
 
-export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo, readListLansman };
+async function deleteLansman(id: string) {
+    try {
+        await connectToDatabase();
+        await Post.findByIdAndDelete(id);
+    } catch (err) {
+        console.error("Error deleting post:", err);
+        throw err;
+    }
+}
+
+export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo, readListLansman, deleteLansman };

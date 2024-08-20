@@ -9,6 +9,7 @@ exports.updateSection = updateSection;
 exports.updateSectionPart = updateSectionPart;
 exports.saveGeneralInfo = saveGeneralInfo;
 exports.readListLansman = readListLansman;
+exports.deleteLansman = deleteLansman;
 const mongoose_1 = __importDefault(require("mongoose"));
 const main_schema_1 = require("../models/main_schema");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -102,6 +103,16 @@ async function updateSectionPart(partname, sectionData, postId) {
     }
     catch (err) {
         console.error("Error updating section part:", err);
+        throw err;
+    }
+}
+async function deleteLansman(id) {
+    try {
+        await connectToDatabase();
+        await main_schema_1.Post.findByIdAndDelete(id);
+    }
+    catch (err) {
+        console.error("Error deleting post:", err);
         throw err;
     }
 }
