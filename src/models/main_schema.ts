@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from 'mongoose';
-
 interface IPost extends Document {
     General_Info: {
         Turkish: {
@@ -40,11 +39,11 @@ interface IPost extends Document {
         },
         Livestream_Section: {
             Turkish: {
-                Livestream_Status: string,
+                Livestream_Status: boolean,
                 Livestream_Link: string,
             },
             English: {
-                Livestream_Status: string,
+                Livestream_Status: boolean,
                 Livestream_Link: string,
             }
         },
@@ -273,6 +272,9 @@ interface IPost extends Document {
             Index_Status: boolean,
             Follow_Status: boolean,
         }
+    },
+    Preview: {
+        Status: boolean
     }
 }
 
@@ -314,14 +316,14 @@ const PostSchema: Schema = new Schema({
                 Background_Image: { type: String},
             }
         },
-        Broadcast_Section: {
+        Livestream_Section: {
             Turkish: {
-                Broadcast_Status: { type: String},
-                Broadcast_Link: { type: String},
+                Livestream_Status: { type: Boolean},
+                Livestream_Link: { type: String},
             },
             English: {
-                Broadcast_Status: { type: String},
-                Broadcast_Link: { type: String},
+                Livestream_Status: { type: Boolean},
+                Livestream_Link: { type: String},
             }
         },
         Introduction_Section: {
@@ -549,6 +551,9 @@ const PostSchema: Schema = new Schema({
             Index_Status: { type: Boolean},
             Follow_Status: { type: Boolean},
         }
+    },
+    Preview: {
+        Status : { type: Boolean}
     }
 });
 

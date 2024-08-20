@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.submitGeneral = submitGeneral;
-const db_utils_1 = require("../services/db_utils");
+const dbService_1 = require("../services/dbService");
 async function submitGeneral(data) {
     try {
-        const objID = await (0, db_utils_1.saveGeneralInfo)(data);
+        const objID = await (0, dbService_1.saveGeneralInfo)(data);
         return objID;
     }
     catch (err) {

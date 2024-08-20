@@ -1,6 +1,7 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import insertRouters from './routes/insertData';
+import getRoters from './routes/getData';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.static('./dist/static'));
 app.use(cors());
 app.use('/', insertRouters);
+app.use('/', getRoters);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

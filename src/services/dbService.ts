@@ -3,15 +3,28 @@ import { IPost, Post } from '../models/main_schema';
 import dotenv from 'dotenv';
 import path from 'path';
 import { IGeneral } from '../models/general_info_schema';
-import { ISection } from '../models/sections_schema';
-import { Design } from '../models/design_schema';
-import { IShorting, Shorting } from '../models/shorting_schema';
 
 const envPath = path.resolve(__dirname, '../../.env');
 
 dotenv.config({ path: envPath });
 
 const uri = process.env.MONGO_URI || '';
+
+interface ILaunchInfo {
+    Launch_Name: string;
+    Launch_Start_Date: string;
+    Launch_End_Date: string;
+    Livestream_Status: boolean;
+}
+
+function transformResponse(data: any[]): ILaunchInfo[] {
+    return data.map(item => ({
+        Launch_Name: item.General_Info.Turkish.Launch_Name,
+        Launch_Start_Date: item.General_Info.Turkish.Launch_Start_Date,
+        Launch_End_Date: item.General_Info.Turkish.Launch_End_Date,
+        Livestream_Status: item.Sections.Livestream_Section.Turkish.Livestream_Status
+    }));
+}
 
 async function connectToDatabase() {
     if (mongoose.connection.readyState === 0) {
@@ -51,7 +64,18 @@ async function readData(Lansman_Adi: string): Promise<IPost | null> {
         mongoose.connection.close();
     }
 }
-
+async function readListLansman(): Promise<ILaunchInfo[]> {
+    try {
+        await connectToDatabase();
+        const posts = await Post.find({}, 'General_Info.Turkish.Launch_Name General_Info.Turkish.Launch_Start_Date General_Info.Turkish.Launch_End_Date Sections.Livestream_Section.Turkish.Livestream_Status');
+        return transformResponse(posts);
+    } catch (err) {
+        console.error("Error reading posts:", err);
+        throw err;
+    } finally {
+        mongoose.connection.close();
+    }
+}
 async function saveGeneralInfo(generalInfo: IGeneral) {
     await connectToDatabase();
     const post = new Post({ General_Info: generalInfo.GeneralInfo });
@@ -87,4 +111,4 @@ async function updateSectionPart(partname: string, sectionData: string, postId: 
     }
 }
 
-export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo };
+export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo, readListLansman };

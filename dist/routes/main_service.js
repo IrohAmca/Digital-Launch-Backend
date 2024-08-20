@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
-const db_utils_1 = require("../services/db_utils");
+const dbService_1 = require("../services/dbService");
 const reader_1 = require("../utils/reader");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
@@ -59,7 +59,7 @@ router.post('/submit-general-info', async (req, res) => {
 });
 router.post('/submit-sections-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("Bolumler", req.body.Bolumler, req.body.id);
+        await (0, dbService_1.updateSection)("Bolumler", req.body.Bolumler, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);
@@ -71,7 +71,7 @@ router.post('/submit-sections-info', async (req, res) => {
 });
 router.post('/submit-design-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("Tasarim_Ayarları", req.body.Tasarim_Ayarları, req.body.id);
+        await (0, dbService_1.updateSection)("Tasarim_Ayarları", req.body.Tasarim_Ayarları, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);
@@ -83,7 +83,7 @@ router.post('/submit-design-info', async (req, res) => {
 });
 router.post('/submit-placemant-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("Sıralama_Ayarları", req.body.Sıralama_Ayarları, req.body.id);
+        await (0, dbService_1.updateSection)("Sıralama_Ayarları", req.body.Sıralama_Ayarları, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);
@@ -95,7 +95,7 @@ router.post('/submit-placemant-info', async (req, res) => {
 });
 router.post('/submit-seo-info', async (req, res) => {
     try {
-        await (0, db_utils_1.updateSection)("SEO_Ayarları", req.body.SEO_Ayarları, req.body.id);
+        await (0, dbService_1.updateSection)("SEO_Ayarları", req.body.SEO_Ayarları, req.body.id);
     }
     catch (err) {
         console.log("Error in saveData:", err);

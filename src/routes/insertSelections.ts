@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { updateSectionPart } from '../services/db_utils';
+import { updateSectionPart } from '../services/dbService';
 
 const router = Router();
 

@@ -1,7 +1,7 @@
 
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { readAllData, readData, updateSection } from '../services/db_utils';
+import { readAllData, readData, updateSection } from '../services/dbService';
 import { Post } from '../models/main_schema';
 import { submitGeneral } from '../utils/reader';
 

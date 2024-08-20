@@ -8,6 +8,7 @@ exports.readData = readData;
 exports.updateSection = updateSection;
 exports.updateSectionPart = updateSectionPart;
 exports.saveGeneralInfo = saveGeneralInfo;
+exports.readListLansman = readListLansman;
 const mongoose_1 = __importDefault(require("mongoose"));
 const main_schema_1 = require("../models/main_schema");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -15,6 +16,14 @@ const path_1 = __importDefault(require("path"));
 const envPath = path_1.default.resolve(__dirname, '../../.env');
 dotenv_1.default.config({ path: envPath });
 const uri = process.env.MONGO_URI || '';
+function transformResponse(data) {
+    return data.map(item => ({
+        Launch_Name: item.General_Info.Turkish.Launch_Name,
+        Launch_Start_Date: item.General_Info.Turkish.Launch_Start_Date,
+        Launch_End_Date: item.General_Info.Turkish.Launch_End_Date,
+        Livestream_Status: item.Sections.Livestream_Section.Turkish.Livestream_Status
+    }));
+}
 async function connectToDatabase() {
     if (mongoose_1.default.connection.readyState === 0) {
         try {
@@ -49,6 +58,20 @@ async function readData(Lansman_Adi) {
     }
     catch (err) {
         console.error("Error reading post:", err);
+        throw err;
+    }
+    finally {
+        mongoose_1.default.connection.close();
+    }
+}
+async function readListLansman() {
+    try {
+        await connectToDatabase();
+        const posts = await main_schema_1.Post.find({}, 'General_Info.Turkish.Launch_Name General_Info.Turkish.Launch_Start_Date General_Info.Turkish.Launch_End_Date Sections.Livestream_Section.Turkish.Livestream_Status');
+        return transformResponse(posts);
+    }
+    catch (err) {
+        console.error("Error reading posts:", err);
         throw err;
     }
     finally {

@@ -63,14 +63,14 @@ const PostSchema = new mongoose_1.Schema({
                 Background_Image: { type: String },
             }
         },
-        Broadcast_Section: {
+        Livestream_Section: {
             Turkish: {
-                Broadcast_Status: { type: String },
-                Broadcast_Link: { type: String },
+                Livestream_Status: { type: Boolean },
+                Livestream_Link: { type: String },
             },
             English: {
-                Broadcast_Status: { type: String },
-                Broadcast_Link: { type: String },
+                Livestream_Status: { type: Boolean },
+                Livestream_Link: { type: String },
             }
         },
         Introduction_Section: {
@@ -298,6 +298,9 @@ const PostSchema = new mongoose_1.Schema({
             Index_Status: { type: Boolean },
             Follow_Status: { type: Boolean },
         }
+    },
+    Preview: {
+        Status: { type: Boolean }
     }
 });
 const Post = mongoose_1.default.model('Post', PostSchema, "test");
