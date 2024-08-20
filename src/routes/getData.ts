@@ -18,10 +18,11 @@ router.get('/list-lansman', async (req, res) => {
 
 router.get('/get-lansman', async (req, res) => {
     try {
-        if (!req.body.id) {
+        const id = req.query.id as string;
+        if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        const data = await readLansman(req.body.id);
+        const data = await readLansman(id);
         res.status(200).send(data);
     } catch (err) {
         console.log("Error in getData:", err);
