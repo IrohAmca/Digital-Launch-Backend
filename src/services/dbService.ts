@@ -40,6 +40,21 @@ async function connectToDatabase() {
     }
 }
 
+async function readLansman(id: string): Promise<IPost> {
+    try {
+        await connectToDatabase();
+        const post = await Post.findById(id);
+        if (!post) {
+            throw new Error("Post not found");
+        }
+        return post;
+    } catch (err) {
+        console.error("Error reading post:", err);
+        throw err;
+    } finally {
+        mongoose.connection.close();
+    }
+}
 
 async function readAllData(): Promise<IPost[]> {
     try {
@@ -123,4 +138,4 @@ async function deleteLansman(id: string) {
     }
 }
 
-export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo, readListLansman, deleteLansman };
+export { readAllData, readData, updateSection, updateSectionPart, saveGeneralInfo, readListLansman, deleteLansman,readLansman };

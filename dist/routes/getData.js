@@ -18,4 +18,14 @@ router.get('/list-lansman', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+router.get('/get-lansman', async (req, res) => {
+    try {
+        const data = await (0, dbService_1.readLansman)(req.body.id);
+        res.send(data);
+    }
+    catch (err) {
+        console.log("Error in getData:", err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 exports.default = router;

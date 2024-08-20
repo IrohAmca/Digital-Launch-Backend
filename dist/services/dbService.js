@@ -10,6 +10,7 @@ exports.updateSectionPart = updateSectionPart;
 exports.saveGeneralInfo = saveGeneralInfo;
 exports.readListLansman = readListLansman;
 exports.deleteLansman = deleteLansman;
+exports.readLansman = readLansman;
 const mongoose_1 = __importDefault(require("mongoose"));
 const main_schema_1 = require("../models/main_schema");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -36,6 +37,23 @@ async function connectToDatabase() {
             console.error("MongoDB connection error:", err);
             throw err;
         }
+    }
+}
+async function readLansman(id) {
+    try {
+        await connectToDatabase();
+        const post = await main_schema_1.Post.findById(id);
+        if (!post) {
+            throw new Error("Post not found");
+        }
+        return post;
+    }
+    catch (err) {
+        console.error("Error reading post:", err);
+        throw err;
+    }
+    finally {
+        mongoose_1.default.connection.close();
     }
 }
 async function readAllData() {
