@@ -23,7 +23,7 @@ router.get('/get-lansman', async (req, res) => {
         if (!req.body.id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        const data = await (0, readData_1.readLansman)(req.body);
+        const data = await (0, readData_1.readLansman)(req.body.id);
         res.status(200).send(data);
     }
     catch (err) {
