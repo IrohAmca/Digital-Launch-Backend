@@ -6,14 +6,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const insertData_1 = __importDefault(require("./routes/insertData"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const getData_1 = __importDefault(require("./routes/getData"));
 const cors_1 = __importDefault(require("cors"));
 const host = '0.0.0.0';
 const port = 3000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use('/', insertData_1.default);
+app.use('/', getData_1.default);
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
+app.use((req, res) => {
+    res.render('site/404');
+});
 app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });
