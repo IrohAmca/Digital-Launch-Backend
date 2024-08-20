@@ -21,7 +21,8 @@ function transformResponse(data) {
         Launch_Name: item.General_Info.Turkish.Launch_Name,
         Launch_Start_Date: item.General_Info.Turkish.Launch_Start_Date,
         Launch_End_Date: item.General_Info.Turkish.Launch_End_Date,
-        Livestream_Status: item.Sections.Livestream_Section.Turkish.Livestream_Status
+        Livestream_Status: item.Sections.Livestream_Section.Turkish.Livestream_Status,
+        id: item._id
     }));
 }
 async function connectToDatabase() {

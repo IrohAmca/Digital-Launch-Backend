@@ -15,6 +15,7 @@ interface ILaunchInfo {
     Launch_Start_Date: string;
     Launch_End_Date: string;
     Livestream_Status: boolean;
+    id: string;
 }
 
 function transformResponse(data: any[]): ILaunchInfo[] {
@@ -22,7 +23,8 @@ function transformResponse(data: any[]): ILaunchInfo[] {
         Launch_Name: item.General_Info.Turkish.Launch_Name,
         Launch_Start_Date: item.General_Info.Turkish.Launch_Start_Date,
         Launch_End_Date: item.General_Info.Turkish.Launch_End_Date,
-        Livestream_Status: item.Sections.Livestream_Section.Turkish.Livestream_Status
+        Livestream_Status: item.Sections.Livestream_Section.Turkish.Livestream_Status,
+        id: item._id
     }));
 }
 
