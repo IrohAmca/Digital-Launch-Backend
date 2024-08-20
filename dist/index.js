@@ -16,9 +16,6 @@ app.use('/', insertData_1.default);
 app.use('/', getData_1.default);
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
-app.use((req, res) => {
-    res.render('site/404');
-});
 app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });

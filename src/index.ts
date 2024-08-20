@@ -16,10 +16,6 @@ app.use('/', getRouters);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((req, res) => {
-    res.render('site/404');
-});
-
 app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });
