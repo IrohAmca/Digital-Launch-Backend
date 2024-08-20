@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { deleteLansman } from '../services/dbService';
+import { deleteLansman } from '../services/deleteData';
 
 const router = Router();
 

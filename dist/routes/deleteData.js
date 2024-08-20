@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
-const dbService_1 = require("../services/dbService");
+const deleteData_1 = require("../services/deleteData");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 router.delete('/delete-lansman', async (req, res) => {
@@ -14,7 +14,7 @@ router.delete('/delete-lansman', async (req, res) => {
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        await (0, dbService_1.deleteLansman)(id);
+        await (0, deleteData_1.deleteLansman)(id);
     }
     catch (err) {
         console.log("Error in deleteData:", err);

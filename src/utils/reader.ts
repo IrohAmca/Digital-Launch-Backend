@@ -1,4 +1,4 @@
-import { saveGeneralInfo } from '../services/dbService';
+import { saveGeneralInfo } from '../services/inserstData';
 
 async function submitGeneral(data: any) {
     try {
