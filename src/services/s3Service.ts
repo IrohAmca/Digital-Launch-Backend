@@ -22,9 +22,7 @@ async function listObjects() {
             if (data.Contents.length === 0) {
                 console.log(`No files found in bucket: ${params.Bucket}`);
             } else {
-                data.Contents.forEach((item) => {
-                    console.log(item.Key);
-                });
+                return data.Contents;
             }
         }
     } catch (err) {

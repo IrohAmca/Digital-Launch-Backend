@@ -5,17 +5,15 @@ import fs from 'fs';
 const router = Router();
 
 router.get('/s3-listAll', async (req, res) => {
-    await listObjects()
-    res.send('Mission completed');
+    const result = await listObjects()
+    res.send(result);
 });
 
 router.post('/s3-upload', async (req, res) => {
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
     }
-
     const file = req.files.file; 
-
     await uploadFile(file);
     res.send('Mission completed');
 });

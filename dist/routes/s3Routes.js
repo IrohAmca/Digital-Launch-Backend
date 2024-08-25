@@ -8,8 +8,8 @@ const s3Service_1 = require("../services/s3Service");
 const fs_1 = __importDefault(require("fs"));
 const router = (0, express_1.Router)();
 router.get('/s3-listAll', async (req, res) => {
-    await (0, s3Service_1.listObjects)();
-    res.send('Mission completed');
+    const result = await (0, s3Service_1.listObjects)();
+    res.send(result);
 });
 router.post('/s3-upload', async (req, res) => {
     if (!req.files || Object.keys(req.files).length === 0) {

@@ -31,9 +31,7 @@ async function listObjects() {
                 console.log(`No files found in bucket: ${params.Bucket}`);
             }
             else {
-                data.Contents.forEach((item) => {
-                    console.log(item.Key);
-                });
+                return data.Contents;
             }
         }
     }
