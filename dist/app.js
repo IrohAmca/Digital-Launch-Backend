@@ -9,13 +9,42 @@ const getData_1 = __importDefault(require("./routes/getData"));
 const deleteData_1 = __importDefault(require("./routes/deleteData"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
-const host = '127.0.0.1';
-const port = 3000;
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
+const s3Routes_1 = __importDefault(require("./routes/s3Routes"));
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const path_1 = __importDefault(require("path"));
+const envPath = path_1.default.resolve(__dirname, '../.env');
+dotenv_1.default.config({ path: envPath });
+const host = process.env.HOST || '';
+const port = process.env.PORT || 5000;
 const app = (0, express_1.default)();
+const routerPath = path_1.default.resolve(__dirname, 'routes/*.js');
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Digital Lansman API',
+            version: '1.0.0',
+            description: 'A simple API for Digital Lansman',
+        },
+        servers: [
+            {
+                url: 'http://127.0.0.1:3000',
+            },
+        ],
+    },
+    apis: [routerPath],
+};
+const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
 app.use((0, cors_1.default)());
-app.use('/', insertData_1.default);
-app.use('/', getData_1.default);
-app.use('/', deleteData_1.default);
+app.use((0, express_fileupload_1.default)());
+app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
+app.use('/api', insertData_1.default);
+app.use('/api', getData_1.default);
+app.use('/api', deleteData_1.default);
+app.use('/api', s3Routes_1.default);
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.listen(port, host, () => {

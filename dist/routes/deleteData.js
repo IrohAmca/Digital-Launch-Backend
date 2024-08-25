@@ -8,6 +8,31 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const deleteData_1 = require("../services/deleteData");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
+/**
+ * @swagger
+ * /delete-lansman:
+ *   delete:
+ *     summary: Delete a lansman
+ *     description: Deletes a lansman by ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               id:
+ *                 type: string
+ *                 description: The ID of the lansman to delete
+ *                 example: "12345"
+ *     responses:
+ *       200:
+ *         description: Successfully deleted
+ *       400:
+ *         description: Bad Request
+ *       500:
+ *         description: Internal Server Error
+ */
 router.delete('/delete-lansman', async (req, res) => {
     try {
         const id = req.body.id;

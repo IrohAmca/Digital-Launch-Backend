@@ -3,3 +3,4 @@
 /src/config
 .env
 env.d.ts
+/s3
