@@ -1,6 +1,6 @@
 import express from 'express';
 import insertRouters from './routes/insertData';
-import getRouters from './routes/getData';
+import getRouters from './routes/getLaunch';
 import deleteRouters from './routes/deleteData';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -10,11 +10,13 @@ import s3Routers from './routes/s3Routes';
 import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
 import path from 'path';
+import insertComponent from './routes/insertComponent';
+import updateComponent from './routes/updateComponent';
 
 const envPath = path.resolve(__dirname, '../.env');
 dotenv.config({ path: envPath });
 
-const host = process.env.HOST || '';
+const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -31,7 +33,7 @@ const options = {
         },
         servers: [
             {
-                url: 'http://127.0.0.1:3000',
+                url: 'http://0.0.0.0:5000',
             },
         ],
     },
@@ -47,6 +49,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', insertRouters);
 app.use('/api', getRouters);
 app.use('/api', deleteRouters);
+app.use('/api', insertComponent);
+app.use('/api',updateComponent);
 app.use('/api', s3Routers);
 
 app.use(bodyParser.json());

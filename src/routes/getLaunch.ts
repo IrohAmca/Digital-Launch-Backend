@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { readListLansman, readLansman } from '../services/readData';
+import { readListLansman, readLaunch } from '../services/readData';
 
 const router = Router();
 
@@ -19,7 +19,7 @@ router.use(bodyParser.json());
  *         description: Internal Server Error
  */
 
-router.get('/list-lansman', async (req, res) => {
+router.get('/list-launch', async (req, res) => {
     try {
         const data = await readListLansman();
         res.status(200).send(data);
@@ -51,17 +51,20 @@ router.get('/list-lansman', async (req, res) => {
  *       500:
  *         description: Internal Server Error
  */
-router.get('/get-lansman', async (req, res) => {
+router.get('/get-launch', async (req, res) => {
     try {
-        const id = req.query.id as string;
+        const id = req.body.id as string;
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        const data = await readLansman(id);
+        const data = await readLaunch(id);
         res.status(200).send(data);
     } catch (err) {
         console.log("Error in getData:", err);
         res.status(500).send('Internal Server Error');
+    }
+    finally {
+        console.log(`Sended Launch data with id: ${req.body.id}`);
     }
 })
 

@@ -23,285 +23,144 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Post = void 0;
+exports.Main = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const PostSchema = new mongoose_1.Schema({
-    General_Info: {
-        Turkish: {
-            Launch_Name: { type: String },
-            Launch_URL: { type: String },
-            Launch_Start_Date: { type: Date, default: null },
-            Launch_End_Date: { type: Date, default: null },
-            Order_Number: { type: String },
+const MainSchema = new mongoose_1.Schema({
+    LaunchFormData: {
+        launchName: String,
+        language: String,
+        groupNumber: String,
+        companyName: String,
+        companyLogo: String,
+        startDate: String,
+        endDate: String,
+        orderNumber: String,
+        isActive: Boolean,
+        showOnHomepage: Boolean
+    },
+    Components: {
+        AccordionRightCard: {
+            MediaURL: String,
+            Sections: [
+                {
+                    Id: Number,
+                    Title: String,
+                    Subtitle: String
+                }
+            ]
         },
-        English: {
-            Launch_Name: { type: String },
-            Launch_URL: { type: String },
-            Launch_Start_Date: { type: Date, default: null },
-            Launch_End_Date: { type: Date, default: null },
-            Order_Number: { type: String },
+        CTACard: {
+            Title: String,
+            ButtonText: String,
+            ButtonUrl: String
+        },
+        FullScreenCardSlider: {
+            FullScreenCards: [
+                {
+                    MediaURL: String,
+                    Title: String,
+                    ButtonText: String,
+                    ButtonUrl: String,
+                    LogoMediaURL: String
+                }
+            ]
+        },
+        FullText: {
+            Text: String
+        },
+        HeaderState: {
+            TitleHeader: String,
+            LogoMediaURL: String
+        },
+        InfoCardSlider: {
+            InfoCards: [
+                {
+                    Icon: String,
+                    Title: String,
+                    Subtitle: String
+                }
+            ]
+        },
+        LargeCard: {
+            MediaURL: String,
+            Url: String
+        },
+        LargeFlipCard: {
+            FrontMedia: String,
+            BackMedia: String
+        },
+        LargePopUpCard: {
+            MediaURL: String,
+        },
+        LargeScalableCard: {
+            MediaURL: String
+        },
+        LargeTopTitleHeroCard: {
+            Title: String,
+            SubTitle: String,
+            Button: String,
+            ButtonURL: String
+        },
+        LeftTextCard: {
+            Text: String,
+            Media: String
+        },
+        MiniCardSliderComponents: {
+            MiniCards: [
+                {
+                    ButtonText: String,
+                    Text: String,
+                    LogoMediaURL: String
+                }
+            ]
+        },
+        ReelsCardSliderComponents: {
+            ReelsCards: [
+                {
+                    MediaURL: String,
+                    Title: String,
+                    Subtitle: String
+                }
+            ]
+        },
+        RightTextCard: {
+            Text: String,
+            MediaURL: String
+        },
+        Title: {
+            Title: String
+        },
+        TopTextCard: {
+            Text: String,
+            MediaURL: String
+        },
+        TwinCard: {
+            RightMediaURL: String,
+            LeftMediaURL: String
+        },
+        TwinFlipCard: {
+            RightFrontMediaURL: String,
+            RightBackMediaURL: String,
+            LeftFrontMediaURL: String,
+            LeftBackMediaURL: String
+        },
+        TwinTopTitleHeroCard: {
+            RightCard: {
+                MediaURL: String,
+                Title: String,
+                Subtitle: String,
+                ButtonText: String,
+                ButtonUrl: String
+            },
+            LeftCard: {
+                MediaURL: String,
+                Title: String,
+                Subtitle: String,
+                ButtonText: String,
+                ButtonUrl: String
+            }
         }
-    },
-    Sections: {
-        Trailer_Section: {
-            Turkish: {
-                Logo: { type: String },
-                Title: { type: String },
-                Subtitle: { type: String },
-                Paragraph: { type: String },
-                Button_Text: { type: String },
-                Video_Link: { type: String },
-                Background_Image: { type: String },
-            },
-            English: {
-                Logo: { type: String },
-                Title: { type: String },
-                Subtitle: { type: String },
-                Paragraph: { type: String },
-                Button_Text: { type: String },
-                Video_Link: { type: String },
-                Background_Image: { type: String },
-            }
-        },
-        Livestream_Section: {
-            Turkish: {
-                Livestream_Status: { type: Boolean },
-                Livestream_Link: { type: String },
-            },
-            English: {
-                Livestream_Status: { type: Boolean },
-                Livestream_Link: { type: String },
-            }
-        },
-        Introduction_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Paragraph: { type: String },
-                Video_Link: { type: String },
-                Image: { type: String },
-                Button_Text: { type: String },
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Paragraph: { type: String },
-                Video_Link: { type: String },
-                Image: { type: String },
-                Button_Text: { type: String },
-            }
-        },
-        Logos_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Logos: [{
-                        Logo: { type: String },
-                        Link: { type: String },
-                    }],
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Logos: [{
-                        Logo: { type: String },
-                        Link: { type: String },
-                    }],
-            }
-        },
-        Sponsors_Section: {
-            Turkish: {
-                Image: { type: String },
-                Link: { type: String },
-            },
-            English: {
-                Image: { type: String },
-                Link: { type: String },
-            }
-        },
-        Features_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Features: [{
-                        Feature_Title: { type: String },
-                        Feature_Image: { type: String },
-                        Feature_Paragraph: { type: String },
-                    }],
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Features: [{
-                        Feature_Title: { type: String },
-                        Feature_Image: { type: String },
-                        Feature_Paragraph: { type: String },
-                    }],
-            }
-        },
-        Certificates_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Certificates: [{
-                        Link: { type: String },
-                    }],
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Certificates: [{
-                        Link: { type: String },
-                    }],
-            }
-        },
-        Catalog_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Catalog: { type: String },
-                Button_Text: { type: String },
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Catalog: { type: String },
-                Button_Text: { type: String },
-            }
-        },
-        Images_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Images: [{
-                        Image_Link: { type: String },
-                        Image_Caption: { type: String },
-                        Image_Title: { type: String },
-                    }],
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Images: [{
-                        Image_Link: { type: String },
-                        Image_Caption: { type: String },
-                        Image_Title: { type: String },
-                    }],
-            }
-        },
-        Contact_Section: {
-            Turkish: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Paragraph: { type: String },
-                Address: { type: String },
-                Phone: { type: String },
-                Email: { type: String },
-                Social_Media: [{
-                        Social_Media_Platform: { type: String },
-                        Social_Media_Link: { type: String },
-                    }],
-            },
-            English: {
-                Main_Title: { type: String },
-                Title: { type: String },
-                Paragraph: { type: String },
-                Address: { type: String },
-                Phone: { type: String },
-                Email: { type: String },
-                Social_Media: [{
-                        Social_Media_Platform: { type: String },
-                        Social_Media_Link: { type: String },
-                    }],
-            }
-        },
-        CTA_Section: {
-            Turkish: {
-                Title: { type: String },
-                Button_Text: { type: String },
-            },
-            English: {
-                Title: { type: String },
-                Button_Text: { type: String },
-            }
-        },
-    },
-    Design_Settings: {
-        Primary_Color: { type: String },
-        Background_Color: { type: String },
-        Title_Text_Color: { type: String },
-        Main_Title_Text_Color: { type: String },
-        Paragraph_Text_Color: { type: String },
-        Button_Color: { type: String },
-        Features_Background_Color: { type: String },
-    },
-    Sorting_Settings: {
-        Trailer_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Livestream_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Introduction_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Logos_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Sponsor_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Features_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Certificates_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Catalog_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Images_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        Contact_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        },
-        CTA_Section: {
-            "index": { type: Number },
-            "status": { type: Boolean }
-        }
-    },
-    SEO_Settings: {
-        Turkish: {
-            Title: { type: String },
-            Keywords: { type: String },
-            Description: { type: String },
-            Social_Media_Sharing_Image: { type: String },
-            Index_Status: { type: Boolean },
-            Follow_Status: { type: Boolean },
-        },
-        English: {
-            Title: { type: String },
-            Keywords: { type: String },
-            Description: { type: String },
-            Social_Media_Sharing_Image: { type: String },
-            Index_Status: { type: Boolean },
-            Follow_Status: { type: Boolean },
-        }
-    },
-    Preview: {
-        Status: { type: Boolean }
     }
 });
-const Post = mongoose_1.default.model('Post', PostSchema, "test");
-exports.Post = Post;
+const Main = mongoose_1.default.model('Main', MainSchema, "test");
+exports.Main = Main;

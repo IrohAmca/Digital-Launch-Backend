@@ -20,7 +20,7 @@ router.use(body_parser_1.default.json());
  *       500:
  *         description: Internal Server Error
  */
-router.get('/list-lansman', async (req, res) => {
+router.get('/list-launch', async (req, res) => {
     try {
         const data = await (0, readData_1.readListLansman)();
         res.status(200).send(data);
@@ -52,18 +52,21 @@ router.get('/list-lansman', async (req, res) => {
  *       500:
  *         description: Internal Server Error
  */
-router.get('/get-lansman', async (req, res) => {
+router.get('/get-launch', async (req, res) => {
     try {
-        const id = req.query.id;
+        const id = req.body.id;
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        const data = await (0, readData_1.readLansman)(id);
+        const data = await (0, readData_1.readLaunch)(id);
         res.status(200).send(data);
     }
     catch (err) {
         console.log("Error in getData:", err);
         res.status(500).send('Internal Server Error');
+    }
+    finally {
+        console.log(`Sended Launch data with id: ${req.body.id}`);
     }
 });
 exports.default = router;

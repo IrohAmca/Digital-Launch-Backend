@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { deleteLansman } from '../services/deleteData';
+import { deleteLansman,deleteAllLansman } from '../services/deleteData';
 
 const router = Router();
 
@@ -32,7 +32,7 @@ router.use(bodyParser.json());
  *         description: Internal Server Error
  */
 
-router.delete('/delete-lansman', async (req, res) => {
+router.delete('/delete-launch', async (req, res) => {
     try {
         const id = req.body.id;
         if (!id) {
@@ -44,6 +44,17 @@ router.delete('/delete-lansman', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }finally{
         res.status(200).send("Deleted Lansman with ID: " + req.body.id);
+    }
+});
+
+router.delete('/delete-all-launch', async (req, res) => {
+    try {
+        await deleteAllLansman();
+    } catch (err) {
+        console.log("Error in deleteData:", err);
+        res.status(500).send('Internal Server Error');
+    }finally{
+        res.status(200).send("Deleted all Lansman");
     }
 });
 

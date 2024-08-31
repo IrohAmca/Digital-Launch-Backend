@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteLansman = deleteLansman;
+exports.deleteAllLansman = deleteAllLansman;
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
@@ -26,10 +27,26 @@ async function connectToDatabase() {
 async function deleteLansman(id) {
     try {
         await connectToDatabase();
-        await main_schema_1.Post.findByIdAndDelete(id);
+        await main_schema_1.Main.findByIdAndDelete(id);
     }
     catch (err) {
         console.error("Error deleting post:", err);
         throw err;
+    }
+    finally {
+        mongoose_1.default.connection.close();
+    }
+}
+async function deleteAllLansman() {
+    try {
+        await connectToDatabase();
+        await main_schema_1.Main.deleteMany({});
+    }
+    catch (err) {
+        console.error("Error deleting all posts:", err);
+        throw err;
+    }
+    finally {
+        mongoose_1.default.connection.close();
     }
 }

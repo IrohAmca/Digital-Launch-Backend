@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
-import { Post } from '../models/main_schema';
+import { Main } from '../models/main_schema';
 
 const envPath = path.resolve(__dirname, '../../.env');
 dotenv.config({ path: envPath });
@@ -22,11 +22,26 @@ async function connectToDatabase() {
 async function deleteLansman(id: string) {
     try {
         await connectToDatabase();
-        await Post.findByIdAndDelete(id);
+        await Main.findByIdAndDelete(id);
     } catch (err) {
         console.error("Error deleting post:", err);
         throw err;
     }
+    finally{
+        mongoose.connection.close();
+    }
 }
 
-export { deleteLansman };
+async function deleteAllLansman() {
+    try {
+        await connectToDatabase();
+        await Main.deleteMany({});
+    } catch (err) {
+        console.error("Error deleting all posts:", err);
+        throw err;
+    }
+    finally{
+        mongoose.connection.close();
+    }
+}
+export { deleteLansman, deleteAllLansman };
