@@ -61,10 +61,17 @@ async function updateSection(sectionName: string, sectionData: string, postId: a
 }
 
 async function updateSectionPart(partname: string, sectionData: any, postId: any) {
+    
     try {
+        if (!mongoose.Types.ObjectId.isValid(postId)) {
+            throw new Error('Invalid ObjectId');
+        }
         await connectToDatabase();
         const update = { $set: { [`Components.${partname}`]: sectionData } };
-        await Main.findByIdAndUpdate(postId, update, { new: true });
+        const result = await Main.findByIdAndUpdate(postId, update, { new: true });
+        if (!result) {
+            throw new Error('Post not found');
+        }
     } catch (err) {
         console.error("Error updating section part:", err);
         throw err;

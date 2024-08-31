@@ -21,7 +21,6 @@ const envPath = path_1.default.resolve(__dirname, '../.env');
 dotenv_1.default.config({ path: envPath });
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 5000;
-const app = (0, express_1.default)();
 const routerPath = path_1.default.resolve(__dirname, 'routes/*.js');
 const options = {
     definition: {
@@ -40,6 +39,7 @@ const options = {
     apis: [routerPath],
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
+const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use((0, express_fileupload_1.default)());
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));

@@ -19,8 +19,6 @@ dotenv.config({ path: envPath });
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 5000;
 
-const app = express();
-
 const routerPath = path.resolve(__dirname, 'routes/*.js');
 
 const options = {
@@ -42,6 +40,7 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
+const app = express();
 
 app.use(cors());
 app.use(fileUpload());

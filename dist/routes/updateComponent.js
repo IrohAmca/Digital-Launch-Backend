@@ -13,15 +13,14 @@ router.post('/update-component', async (req, res) => {
         if (!req.body) {
             return res.status(400).send('Bad Request: Body is required');
         }
-        console.log("Components." + req.body.name);
         await (0, inserstData_1.updateSectionPart)(req.body.name, req.body.data, req.body.id);
     }
     catch (err) {
         console.log("Error in insertData:", err);
-        res.status(500).send('Internal Server Error');
+        return res.status(500).send(err.message || 'Internal Server Error');
     }
     finally {
-        res.status(200).send("Inserted Component");
+        res.status(200).send("Updated Component");
     }
 });
 exports.default = router;
