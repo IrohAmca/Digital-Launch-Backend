@@ -54,7 +54,7 @@ router.get('/list-launch', async (req, res) => {
  */
 router.get('/get-launch', async (req, res) => {
     try {
-        const id = req.body.id;
+        const id = req.query.id;
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }

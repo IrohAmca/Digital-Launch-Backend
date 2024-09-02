@@ -53,7 +53,7 @@ router.get('/list-launch', async (req, res) => {
  */
 router.get('/get-launch', async (req, res) => {
     try {
-        const id = req.query.id as string;
+        const id = req.query.id as string
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
@@ -66,7 +66,5 @@ router.get('/get-launch', async (req, res) => {
         console.log(`Sended Launch data with id: ${req.body.id}`);
     }
 });
-
-
 
 export default router;
