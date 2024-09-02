@@ -35,7 +35,7 @@ router.use(body_parser_1.default.json());
  */
 router.delete('/delete-launch', async (req, res) => {
     try {
-        const id = req.body.id;
+        const id = req.query.id;
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
