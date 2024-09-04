@@ -4,19 +4,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const express_multipart_1 = __importDefault(require("express-multipart"));
+const multer_1 = __importDefault(require("multer"));
 const s3Service_1 = require("../../services/s3Service");
 const router = express_1.default.Router();
-const mp = (0, express_multipart_1.default)({
-    preserveExtensions: true,
-    destination: "./uploads",
-});
-router.post('/s3-upload', mp.file("file"), async (req, res) => {
+const storage = multer_1.default.memoryStorage();
+const upload = (0, multer_1.default)({ storage: storage });
+router.post('/s3-upload', upload.single('file'), async (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).send('Bad Request: File is required');
         }
-        const result = await (0, s3Service_1.uploadFile)(req.file, req.body.name, req.file.extension);
+        const fileBuffer = req.file.buffer;
+        const fileName = req.body.name;
+        const fileExtension = req.file.originalname.split('.').pop();
+        const result = await (0, s3Service_1.uploadFile)(fileBuffer, fileName, fileExtension);
         if (typeof (result) === 'boolean' && result) {
             res.status(200).send("Inserted Media");
         }

@@ -1,8 +1,17 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# dependencies
 /node_modules
+
+# Private files
 /src/config
 .env
 env.d.ts
+
+## S3 Files
+
+# Test File
 /s3
 
+# S3 Uploads
 /uploads/*

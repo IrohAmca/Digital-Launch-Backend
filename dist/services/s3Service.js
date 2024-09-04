@@ -12,7 +12,6 @@ exports.deleteAll = deleteAll;
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 const aws_sdk_1 = __importDefault(require("aws-sdk"));
-const fs_1 = __importDefault(require("fs"));
 const insertMedia_1 = require("./insertMedia");
 const envPath = path_1.default.resolve(__dirname, '../../.env');
 dotenv_1.default.config({ path: envPath });
@@ -41,12 +40,11 @@ async function listObjects() {
         console.error('Error', err);
     }
 }
-async function uploadFile(file, name, fileType) {
-    const fileStream = fs_1.default.createReadStream(file.path);
+async function uploadFile(fileBuffer, name, fileType) {
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME || '',
-        Key: file.name,
-        Body: fileStream,
+        Key: `${name}.${fileType}`,
+        Body: fileBuffer,
     };
     try {
         const data = await s3.upload(params).promise();
@@ -56,7 +54,7 @@ async function uploadFile(file, name, fileType) {
             MediaURL: data.Location,
             MediaType: fileType.toUpperCase()
         };
-        const result = await (0, insertMedia_1.insertMedia)(gallery, file.path);
+        const result = await (0, insertMedia_1.insertMedia)(gallery);
         if (typeof (result) === 'boolean' && result) {
             return result;
         }

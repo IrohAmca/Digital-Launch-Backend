@@ -32,12 +32,11 @@ async function listObjects() {
     }
 }
 
-async function uploadFile(file: any, name: string,fileType: string) {
-    const fileStream = fs.createReadStream(file.path);
+async function uploadFile(fileBuffer: any, name: string,fileType: string) {
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME || '',
-        Key: file.name,
-        Body: fileStream, 
+        Key: `${name}.${fileType}`,
+        Body: fileBuffer,
     };
     try {
         const data = await s3.upload(params).promise();
@@ -48,7 +47,7 @@ async function uploadFile(file: any, name: string,fileType: string) {
             MediaURL: data.Location as string,
             MediaType: fileType.toUpperCase() as string
         };
-        const result = await insertMedia(gallery,file.path);
+        const result = await insertMedia(gallery);
         if (typeof(result) === 'boolean' && result) {
             return result;
         }else{

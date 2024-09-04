@@ -1,8 +1,7 @@
 import { Gallery } from "../models/gallery_schema";
 import { connectToDatabase } from "./insertData";
-import {removeFile} from "../utils/remove_file";
 
-async function insertMedia(gallery: any, path: string) {
+async function insertMedia(gallery: any) {
     try {
         await connectToDatabase();
 
@@ -19,15 +18,11 @@ async function insertMedia(gallery: any, path: string) {
         existingGallery.Gallery.Media.push(gallery);
 
         const result = await existingGallery.save();
-        
+
         if (!result) {
             throw new Error('Failed to update gallery');
-        }
-    const isRemoved = await removeFile(path); 
-        if (isRemoved) {
-                console.log(`${gallery.MediaName} Media updated to Gallery successfully`);
-        }else{
-            throw new Error(`Failed to remove file: ${gallery.MediaName}`);
+        } else {
+            console.log(`${gallery.MediaName} Media updated to Gallery successfully`);
         }
         return true;
     } catch (error) {
