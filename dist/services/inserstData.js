@@ -48,11 +48,18 @@ async function saveGeneralInfo(generalInfo) {
 }
 async function updateSection(sectionName, sectionData, postId) {
     try {
+        if (!mongoose_1.default.Types.ObjectId.isValid(postId)) {
+            throw new Error('Invalid ObjectId');
+        }
         await connectToDatabase();
-        await main_schema_1.Main.findByIdAndUpdate(postId, { $set: { [sectionName]: sectionData } }, { new: true });
+        const update = { $set: { [`${sectionName}`]: sectionData } };
+        const result = await main_schema_1.Main.findByIdAndUpdate(postId, update, { new: true });
+        if (!result) {
+            throw new Error('Post not found');
+        }
     }
     catch (err) {
-        console.error("Error updating section:", err);
+        console.error("Error updating section part:", err);
         throw err;
     }
     finally {

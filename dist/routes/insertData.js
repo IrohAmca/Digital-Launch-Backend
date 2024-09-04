@@ -73,4 +73,22 @@ router.post('/update-and-create-general', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+router.post('/insert-placement', async (req, res) => {
+    try {
+        if (!req.body) {
+            return res.status(400).send('Bad Request: Body is required');
+        }
+        if (req.body.id) {
+            await (0, inserstData_1.updateSection)("Placements.Placement", req.body.Placement, req.body.id);
+            res.status(200).send("Updated Placement");
+        }
+        else {
+            return res.status(400).send('Bad Request: ID is required');
+        }
+    }
+    catch (err) {
+        console.log("Error in saveData:", err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 exports.default = router;

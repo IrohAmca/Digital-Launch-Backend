@@ -135,6 +135,15 @@ interface IMain extends Document {
                 ButtonUrl: string
             }
         }
+    },
+    Placements: {
+        Placement: [
+            {
+                index: string,
+                name: string,
+                switchActive: boolean,
+            }
+        ]
     }
 }
 
@@ -273,6 +282,15 @@ const MainSchema: Schema = new Schema({
                 ButtonUrl: String
             }
         }
+    },
+    Placements: {
+        Placement: [
+            {
+                index: String,
+                name: String,
+                switchActive: Boolean,
+            }
+        ]
     }
 });
 

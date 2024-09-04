@@ -160,6 +160,15 @@ const MainSchema = new mongoose_1.Schema({
                 ButtonUrl: String
             }
         }
+    },
+    Placements: {
+        Placement: [
+            {
+                index: String,
+                name: String,
+                switchActive: Boolean,
+            }
+        ]
     }
 });
 const Main = mongoose_1.default.model('Main', MainSchema, "test");
