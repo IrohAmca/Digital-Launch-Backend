@@ -82,4 +82,4 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
         mongoose.connection.close();
     }
 }
-export { updateSection, updateSectionPart, saveGeneralInfo, submitGeneral };
+export { updateSection, updateSectionPart, saveGeneralInfo, submitGeneral,connectToDatabase };

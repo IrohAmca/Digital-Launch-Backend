@@ -4,3 +4,5 @@
 .env
 env.d.ts
 /s3
+
+/uploads/*

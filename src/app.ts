@@ -6,8 +6,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
-import s3Routers from './routes/s3Routes';
-import fileUpload from 'express-fileupload';
+import s3get from './routes/s3/s3get';
+import s3delete from './routes/s3/s3delete';
+import s3post from './routes/s3/s3post';
+import galleryGet from './routes/gallery/galleryGet';
 import dotenv from 'dotenv';
 import path from 'path';
 import insertComponent from './routes/insertComponent';
@@ -43,14 +45,18 @@ const swaggerSpec = swaggerJSDoc(options);
 const app = express();
 
 app.use(cors());
-app.use(fileUpload());
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use('/api', insertRouters);
 app.use('/api', getRouters);
 app.use('/api', deleteRouters);
 app.use('/api', insertComponent);
 app.use('/api',updateComponent);
-app.use('/api', s3Routers);
+app.use('/api', s3get);
+app.use('/api', s3delete);
+app.use('/api', s3post);
+app.use('/api', galleryGet);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

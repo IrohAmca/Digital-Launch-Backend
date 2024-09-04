@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import AWS from 'aws-sdk';
+import fs from 'fs';
+import { insertMedia } from './insertMedia';
 
 const envPath = path.resolve(__dirname, '../../.env');
 
@@ -30,15 +32,29 @@ async function listObjects() {
     }
 }
 
-async function uploadFile(file: any) {
+async function uploadFile(file: any, name: string,fileType: string) {
+    const fileStream = fs.createReadStream(file.path);
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME || '',
         Key: file.name,
-        Body: file.data,
+        Body: fileStream, 
     };
     try {
-        await s3.upload(params).promise();
+        const data = await s3.upload(params).promise();
         console.log(`File uploaded successfully. Key: ${params.Key}`);
+
+        const gallery = {
+            MediaName: name as string,
+            MediaURL: data.Location as string,
+            MediaType: fileType.toUpperCase() as string
+        };
+        const result = await insertMedia(gallery,file.path);
+        if (typeof(result) === 'boolean' && result) {
+            return result;
+        }else{
+            return result;
+        }
+
     } catch (err) {
         console.error('Error', err);
     }
