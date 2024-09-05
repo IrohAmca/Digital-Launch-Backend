@@ -66,7 +66,7 @@ router.get('/get-launch', async (req, res) => {
         res.status(500).send(err.message || 'Internal Server Error');
     }
     finally {
-        console.log(`Sended Launch data with id: ${req.body.id}`);
+        console.log(`Sended Launch data with id: ${req.query.id}`);
     }
 });
 exports.default = router;

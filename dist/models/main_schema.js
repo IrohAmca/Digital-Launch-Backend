@@ -39,129 +39,151 @@ const MainSchema = new mongoose_1.Schema({
         showOnHomepage: Boolean
     },
     Components: {
-        AccordionRightCard: {
-            MediaURL: String,
-            Sections: [
-                {
-                    Id: Number,
-                    Title: String,
-                    Subtitle: String
-                }
-            ]
-        },
-        CTACard: {
-            Title: String,
-            ButtonText: String,
-            ButtonUrl: String
-        },
-        FullScreenCardSlider: {
-            FullScreenCards: [
-                {
-                    MediaURL: String,
-                    Title: String,
-                    ButtonText: String,
-                    ButtonUrl: String,
-                    LogoMediaURL: String
-                }
-            ]
-        },
-        FullText: {
-            Text: String
-        },
-        HeaderState: {
-            TitleHeader: String,
-            LogoMediaURL: String
-        },
-        InfoCardSlider: {
-            InfoCards: [
-                {
-                    Icon: String,
-                    Title: String,
-                    Subtitle: String
-                }
-            ]
-        },
-        LargeCard: {
-            MediaURL: String,
-            Url: String
-        },
-        LargeFlipCard: {
-            FrontMedia: String,
-            BackMedia: String
-        },
-        LargePopUpCard: {
-            MediaURL: String,
-        },
-        LargeScalableCard: {
-            MediaURL: String
-        },
-        LargeTopTitleHeroCard: {
-            Title: String,
-            SubTitle: String,
-            Button: String,
-            ButtonURL: String
-        },
-        LeftTextCard: {
-            Text: String,
-            Media: String
-        },
-        MiniCardSliderComponents: {
-            MiniCards: [
-                {
-                    ButtonText: String,
-                    Text: String,
-                    LogoMediaURL: String
-                }
-            ]
-        },
-        ReelsCardSliderComponents: {
-            ReelsCards: [
-                {
-                    MediaURL: String,
-                    Title: String,
-                    Subtitle: String
-                }
-            ]
-        },
-        RightTextCard: {
-            Text: String,
-            MediaURL: String
-        },
-        Title: {
-            Title: String
-        },
-        TopTextCard: {
-            Text: String,
-            MediaURL: String
-        },
-        TwinCard: {
-            RightMediaURL: String,
-            LeftMediaURL: String
-        },
-        TwinFlipCard: {
-            RightFrontMediaURL: String,
-            RightBackMediaURL: String,
-            LeftFrontMediaURL: String,
-            LeftBackMediaURL: String
-        },
-        TwinTopTitleHeroCard: {
-            RightCard: {
+        AccordionRightCard: [
+            {
                 MediaURL: String,
+                Sections: [
+                    {
+                        Id: Number,
+                        Title: String,
+                        Subtitle: String
+                    }
+                ]
+            }
+        ],
+        CTACard: [
+            {
                 Title: String,
-                Subtitle: String,
-                ButtonText: String,
-                ButtonUrl: String
-            },
-            LeftCard: {
-                MediaURL: String,
-                Title: String,
-                Subtitle: String,
                 ButtonText: String,
                 ButtonUrl: String
             }
-        }
-    },
-    Placements: {
+        ],
+        FullScreenCards: [
+            {
+                MediaURL: String,
+                Title: String,
+                ButtonText: String,
+                ButtonUrl: String,
+                LogoMediaURL: String
+            }
+        ],
+        FullText: [
+            {
+                Text: String
+            }
+        ],
+        HeaderState: [
+            {
+                TitleHeader: String,
+                LogoMediaURL: String
+            }
+        ],
+        InfoCards: [
+            {
+                Icon: String,
+                Title: String,
+                Subtitle: String
+            }
+        ],
+        LargeCard: [
+            {
+                MediaURL: String,
+                Url: String
+            }
+        ],
+        LargeFlipCard: [
+            {
+                FrontMedia: String,
+                BackMedia: String
+            }
+        ],
+        LargePopUpCard: [
+            {
+                MediaURL: String
+            }
+        ],
+        LargeScalableCard: [
+            {
+                MediaURL: String
+            }
+        ],
+        LargeTopTitleHeroCard: [
+            {
+                Title: String,
+                SubTitle: String,
+                Button: String,
+                ButtonURL: String
+            }
+        ],
+        LeftTextCard: [
+            {
+                Text: String,
+                Media: String
+            }
+        ],
+        MiniCards: [
+            {
+                ButtonText: String,
+                Text: String,
+                LogoMediaURL: String
+            }
+        ],
+        ReelsCards: [
+            {
+                MediaURL: String,
+                Title: String,
+                Subtitle: String
+            }
+        ],
+        RightTextCard: [
+            {
+                Text: String,
+                MediaURL: String
+            }
+        ],
+        Title: [
+            {
+                Title: String
+            }
+        ],
+        TopTextCard: [
+            {
+                Text: String,
+                MediaURL: String
+            }
+        ],
+        TwinCard: [
+            {
+                RightMediaURL: String,
+                LeftMediaURL: String
+            }
+        ],
+        TwinFlipCard: [
+            {
+                RightFrontMediaURL: String,
+                RightBackMediaURL: String,
+                LeftFrontMediaURL: String,
+                LeftBackMediaURL: String
+            }
+        ],
+        TwinTopTitleHeroCard: [
+            {
+                RightCard: {
+                    MediaURL: String,
+                    Title: String,
+                    Subtitle: String,
+                    ButtonText: String,
+                    ButtonUrl: String
+                },
+                LeftCard: {
+                    MediaURL: String,
+                    Title: String,
+                    Subtitle: String,
+                    ButtonText: String,
+                    ButtonUrl: String
+                }
+            }
+        ],
         Placement: [
             {
                 index: String,

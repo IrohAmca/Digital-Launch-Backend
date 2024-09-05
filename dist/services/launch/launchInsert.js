@@ -70,7 +70,7 @@ async function updateSectionPart(partname, sectionData, postId) {
             throw new Error('Invalid ObjectId');
         }
         await (0, dbClient_1.connectToDatabase)();
-        const update = { $set: { [`Components.${partname}`]: sectionData } };
+        const update = { $push: { [`Components.${partname}`]: sectionData } };
         const result = await main_schema_1.Main.findByIdAndUpdate(postId, update, { new: true });
         if (!result) {
             throw new Error('Post not found');

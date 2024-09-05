@@ -63,7 +63,7 @@ router.get('/get-launch', async (req, res) => {
         console.log("Error in getData:", err);
         res.status(500).send((err as Error).message || 'Internal Server Error');
     } finally {
-        console.log(`Sended Launch data with id: ${req.body.id}`);
+        console.log(`Sended Launch data with id: ${req.query.id}`);
     }
 });
 

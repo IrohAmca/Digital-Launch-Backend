@@ -53,22 +53,22 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
 }
 
 async function updateSectionPart(partname: string, sectionData: any, postId: any) {
-
     try {
         if (!mongoose.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');
         }
         await connectToDatabase();
-        const update = { $set: { [`Components.${partname}`]: sectionData } };
+
+        const update = { $push: { [`Components.${partname}`]: sectionData } };
         const result = await Main.findByIdAndUpdate(postId, update, { new: true });
+
         if (!result) {
             throw new Error('Post not found');
         }
     } catch (err) {
         console.error("Error updating section part:", err);
         throw err;
-    }
-    finally {
+    } finally {
         const isClosed = await closeConnection();
         if (typeof isClosed === 'boolean' && isClosed) {
             // console.log("Connection closed");
