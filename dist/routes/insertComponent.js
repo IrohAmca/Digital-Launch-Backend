@@ -16,7 +16,7 @@ router.post('/insert-component', async (req, res) => {
         if (!req.body.id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        await (0, launchInsert_1.updateSectionPart)(req.body.name, req.body.data, req.body.id);
+        await (0, launchInsert_1.setSectionPart)(req.body.name, req.body.data, req.body.id);
     }
     catch (err) {
         console.log("Error in insertData:", err);

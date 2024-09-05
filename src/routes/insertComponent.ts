@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import {updateSectionPart} from '../services/launch/launchInsert';
+import {setSectionPart} from '../services/launch/launchInsert';
 
 const router = Router();
 
@@ -14,7 +14,7 @@ router.post('/insert-component', async (req, res) => {
         if (!req.body.id){
             return res.status(400).send('Bad Request: ID is required');
         }
-        await updateSectionPart(req.body.name, req.body.data, req.body.id);
+        await setSectionPart(req.body.name, req.body.data, req.body.id);
     } catch (err) {
         console.log("Error in insertData:", err);
         res.status(500).send('Internal Server Error');

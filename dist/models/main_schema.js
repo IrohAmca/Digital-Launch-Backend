@@ -184,14 +184,14 @@ const MainSchema = new mongoose_1.Schema({
                 }
             }
         ],
-        Placement: [
-            {
-                index: String,
-                name: String,
-                switchActive: Boolean,
-            }
-        ]
-    }
+    },
+    Placements: [
+        {
+            index: String,
+            name: String,
+            switchActive: Boolean,
+        }
+    ]
 });
 const Main = mongoose_1.default.model('Main', MainSchema, "test");
 exports.Main = Main;

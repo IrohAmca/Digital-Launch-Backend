@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
-const launchInsert_1 = require("../services/launch/launchInsert");
+const launchUpdate_1 = require("../services/launch/launchUpdate");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 router.post('/update-component', async (req, res) => {
@@ -13,7 +13,7 @@ router.post('/update-component', async (req, res) => {
         if (!req.body) {
             return res.status(400).send('Bad Request: Body is required');
         }
-        await (0, launchInsert_1.updateSectionPart)(req.body.name, req.body.data, req.body.id);
+        await (0, launchUpdate_1.updateSectionPart)(req.body.name, req.body.data, req.body.id, req.body.section_id);
     }
     catch (err) {
         console.log("Error in insertData:", err);

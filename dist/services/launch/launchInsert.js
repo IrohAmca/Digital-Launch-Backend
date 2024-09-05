@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.connectToDatabase = void 0;
 exports.updateSection = updateSection;
-exports.updateSectionPart = updateSectionPart;
+exports.setSectionPart = setSectionPart;
 exports.saveGeneralInfo = saveGeneralInfo;
 exports.submitGeneral = submitGeneral;
 const mongoose_1 = __importDefault(require("mongoose"));
@@ -44,7 +44,7 @@ async function updateSection(sectionName, sectionData, postId) {
             throw new Error('Invalid ObjectId');
         }
         await (0, dbClient_1.connectToDatabase)();
-        const update = { $set: { [`${sectionName}`]: sectionData } };
+        const update = { $push: { [`${sectionName}`]: sectionData } };
         const result = await main_schema_1.Main.findByIdAndUpdate(postId, update, { new: true });
         if (!result) {
             throw new Error('Post not found');
@@ -64,7 +64,7 @@ async function updateSection(sectionName, sectionData, postId) {
         }
     }
 }
-async function updateSectionPart(partname, sectionData, postId) {
+async function setSectionPart(partname, sectionData, postId) {
     try {
         if (!mongoose_1.default.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');

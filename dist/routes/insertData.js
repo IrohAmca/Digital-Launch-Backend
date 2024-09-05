@@ -79,7 +79,7 @@ router.post('/insert-placement', async (req, res) => {
             return res.status(400).send('Bad Request: Body is required');
         }
         if (req.body.id) {
-            await (0, launchInsert_1.updateSection)("Placements.Placement", req.body.Placement, req.body.id);
+            await (0, launchInsert_1.updateSection)("Placements", req.body.Placement, req.body.id);
             res.status(200).send("Updated Placement");
         }
         else {

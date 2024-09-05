@@ -60,13 +60,11 @@ router.get('/get-launch', async (req, res) => {
         }
         const data = await (0, launchGet_1.readLaunch)(id);
         res.status(200).send(data);
+        console.log(`Sended Launch data with id: ${req.query.id}`);
     }
     catch (err) {
         console.log("Error in getData:", err);
         res.status(500).send(err.message || 'Internal Server Error');
-    }
-    finally {
-        console.log(`Sended Launch data with id: ${req.query.id}`);
     }
 });
 exports.default = router;

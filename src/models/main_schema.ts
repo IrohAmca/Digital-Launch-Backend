@@ -160,7 +160,7 @@ interface IMain extends Document {
             }
         ],
     },
-    Placement: [
+    Placements: [
         {
             index: string,
             name: string,
@@ -328,14 +328,14 @@ const MainSchema: Schema = new Schema({
                 }
             }
         ],
-        Placement: [
-            {
-                index: String,
-                name: String,
-                switchActive: Boolean,
-            }
-        ]
-    }
+    },
+    Placements: [
+        {
+            index: String,
+            name: String,
+            switchActive: Boolean,
+        }
+    ]
 });
 
 const Main = mongoose.model<IMain>('Main', MainSchema, "test");

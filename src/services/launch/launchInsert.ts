@@ -34,7 +34,7 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
             throw new Error('Invalid ObjectId');
         }
         await connectToDatabase();
-        const update = { $set: { [`${sectionName}`]: sectionData } };
+        const update = { $push: { [`${sectionName}`]: sectionData } };
         const result = await Main.findByIdAndUpdate(postId, update, { new: true });
         if (!result) {
             throw new Error('Post not found');
@@ -52,7 +52,7 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
     }
 }
 
-async function updateSectionPart(partname: string, sectionData: any, postId: any) {
+async function setSectionPart(partname: string, sectionData: any, postId: any) {
     try {
         if (!mongoose.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');
@@ -77,4 +77,4 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
         }
     }
 }
-export { updateSection, updateSectionPart, saveGeneralInfo, submitGeneral, connectToDatabase };
+export { updateSection, setSectionPart, saveGeneralInfo, submitGeneral, connectToDatabase };
