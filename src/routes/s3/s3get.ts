@@ -1,6 +1,5 @@
 import express from 'express';
-
-import { listObjects, getObject } from '../../services/s3Service';
+import { listObjects, getObject } from '../../services/s3/s3Get';
 import fs from 'fs';
 
 const router = express.Router();

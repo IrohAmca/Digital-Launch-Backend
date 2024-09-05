@@ -3,12 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteLansman = deleteLansman;
-exports.deleteAllLansman = deleteAllLansman;
+exports.deleteLaunch = deleteLaunch;
+exports.deleteAllLaunch = deleteAllLaunch;
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
-const main_schema_1 = require("../models/main_schema");
+const main_schema_1 = require("../../models/main_schema");
 const envPath = path_1.default.resolve(__dirname, '../../.env');
 dotenv_1.default.config({ path: envPath });
 const uri = process.env.MONGO_URI || '';
@@ -24,7 +24,7 @@ async function connectToDatabase() {
         }
     }
 }
-async function deleteLansman(id) {
+async function deleteLaunch(id) {
     try {
         await connectToDatabase();
         await main_schema_1.Main.findByIdAndDelete(id);
@@ -37,7 +37,7 @@ async function deleteLansman(id) {
         mongoose_1.default.connection.close();
     }
 }
-async function deleteAllLansman() {
+async function deleteAllLaunch() {
     try {
         await connectToDatabase();
         await main_schema_1.Main.deleteMany({});

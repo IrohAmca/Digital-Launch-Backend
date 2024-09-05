@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Gallery,IGallery  } from '../../models/gallery_schema';
-import {connectToDatabase} from '../insertData';
+import {connectToDatabase} from '../launch/launchInsert';
 
 interface IGalleryInfo {
     MediaName: string;

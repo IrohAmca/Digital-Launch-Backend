@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
-import { Main } from '../models/main_schema';
+import { Main } from '../../models/main_schema';
 
 const envPath = path.resolve(__dirname, '../../.env');
 dotenv.config({ path: envPath });
@@ -19,7 +19,7 @@ async function connectToDatabase() {
     }
 }
 
-async function deleteLansman(id: string) {
+async function deleteLaunch(id: string) {
     try {
         await connectToDatabase();
         await Main.findByIdAndDelete(id);
@@ -32,7 +32,7 @@ async function deleteLansman(id: string) {
     }
 }
 
-async function deleteAllLansman() {
+async function deleteAllLaunch() {
     try {
         await connectToDatabase();
         await Main.deleteMany({});
@@ -44,4 +44,4 @@ async function deleteAllLansman() {
         mongoose.connection.close();
     }
 }
-export { deleteLansman, deleteAllLansman };
+export { deleteLaunch, deleteAllLaunch };

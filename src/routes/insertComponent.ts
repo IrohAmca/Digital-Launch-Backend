@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import {updateSectionPart} from '../services/insertData';
+import {updateSectionPart} from '../services/launch/launchInsert';
 
 const router = Router();
 

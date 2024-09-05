@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { deleteLansman,deleteAllLansman } from '../services/deleteData';
+import { deleteLaunch,deleteAllLaunch } from '../services/launch/launchDelete';
 
 const router = Router();
 
@@ -38,7 +38,7 @@ router.delete('/delete-launch', async (req, res) => {
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        await deleteLansman(id);
+        await deleteLaunch(id);
     } catch (err) {
         console.log("Error in deleteData:", err);
         res.status(500).send('Internal Server Error');
@@ -49,7 +49,7 @@ router.delete('/delete-launch', async (req, res) => {
 
 router.delete('/delete-all-launch', async (req, res) => {
     try {
-        await deleteAllLansman();
+        await deleteAllLaunch();
     } catch (err) {
         console.log("Error in deleteData:", err);
         res.status(500).send('Internal Server Error');

@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
-const readData_1 = require("../services/readData");
+const launchGet_1 = require("../services/launch/launchGet");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 /**
@@ -22,7 +22,7 @@ router.use(body_parser_1.default.json());
  */
 router.get('/list-launch', async (req, res) => {
     try {
-        const data = await (0, readData_1.readListLansman)();
+        const data = await (0, launchGet_1.readListLansman)();
         res.status(200).send(data);
     }
     catch (err) {
@@ -58,7 +58,7 @@ router.get('/get-launch', async (req, res) => {
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        const data = await (0, readData_1.readLaunch)(id);
+        const data = await (0, launchGet_1.readLaunch)(id);
         res.status(200).send(data);
     }
     catch (err) {

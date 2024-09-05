@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { readListLansman, readLaunch } from '../services/readData';
+import { readListLansman, readLaunch } from '../services/launch/launchGet';
 
 const router = Router();
 

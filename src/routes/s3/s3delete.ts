@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {deleteObject,deleteAll } from '../../services/s3Service';
+import {deleteObject,deleteAll } from '../../services/s3/s3Delete';
 
 const router = Router();
 

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IMain, Main } from '../models/main_schema';
+import { IMain, Main } from '../../models/main_schema';
 import dotenv from 'dotenv';
 import path from 'path';
 

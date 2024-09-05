@@ -1,5 +1,5 @@
 import express from 'express';
-import { readGallery } from '../../services/gallery/listServices';
+import { readGallery } from '../../services/gallery/galleryList';
 const router = express.Router();
 
 router.get('/get-gallery', async (req, res) => {

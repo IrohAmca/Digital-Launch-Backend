@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.readGallery = readGallery;
 const mongoose_1 = __importDefault(require("mongoose"));
 const gallery_schema_1 = require("../../models/gallery_schema");
-const insertData_1 = require("../insertData");
+const launchInsert_1 = require("../launch/launchInsert");
 function transformResponse(data) {
     return data.flatMap(item => item.Gallery.Media.map((Media) => ({
         MediaName: Media.MediaName,
@@ -16,7 +16,7 @@ function transformResponse(data) {
 }
 async function readGallery() {
     try {
-        await (0, insertData_1.connectToDatabase)();
+        await (0, launchInsert_1.connectToDatabase)();
         const gallery = await gallery_schema_1.Gallery.find({}, 'Gallery.Media').lean();
         return transformResponse(gallery);
     }
