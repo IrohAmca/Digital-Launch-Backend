@@ -14,6 +14,7 @@ const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const s3Get_1 = __importDefault(require("./routes/s3/s3Get"));
 const s3Delete_1 = __importDefault(require("./routes/s3/s3Delete"));
 const s3Post_1 = __importDefault(require("./routes/s3/s3Post"));
+const loginAdmin_1 = __importDefault(require("./routes/loginAdmin"));
 const galleryGet_1 = __importDefault(require("./routes/gallery/galleryGet"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
@@ -53,6 +54,7 @@ app.use('/api', s3Get_1.default);
 app.use('/api', s3Delete_1.default);
 app.use('/api', s3Post_1.default);
 app.use('/api', galleryGet_1.default);
+app.use('/api', loginAdmin_1.default);
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.listen(port, host, () => {

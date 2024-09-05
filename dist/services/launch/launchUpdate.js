@@ -19,7 +19,7 @@ async function updateSectionPart(partname, sectionData, postId, sectionId) {
         }
         const updateResult = await main_schema_1.Main.updateOne({
             _id: postId,
-            [`Components.${partname}.section_id`]: sectionId
+            [`Components.${partname}._id`]: sectionId
         }, {
             $set: {
                 [`Components.${partname}.$`]: sectionData

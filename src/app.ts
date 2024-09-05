@@ -9,6 +9,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import s3get from './routes/s3/s3Get';
 import s3delete from './routes/s3/s3Delete';
 import s3post from './routes/s3/s3Post';
+import getUser from './routes/loginAdmin';
 import galleryGet from './routes/gallery/galleryGet';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -57,6 +58,7 @@ app.use('/api', s3get);
 app.use('/api', s3delete);
 app.use('/api', s3post);
 app.use('/api', galleryGet);
+app.use('/api', getUser);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

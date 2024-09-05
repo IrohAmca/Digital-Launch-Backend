@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
 import { readListLansman, readLaunch } from '../services/launch/launchGet';
+import {authMiddleware} from '../middleware/authMiddleware';
 
 const router = Router();
 
@@ -19,7 +20,7 @@ router.use(bodyParser.json());
  *         description: Internal Server Error
  */
 
-router.get('/list-launch', async (req, res) => {
+router.get('/list-launch', authMiddleware, async (req, res) => {
     try {
         const data = await readListLansman();
         res.status(200).send(data);

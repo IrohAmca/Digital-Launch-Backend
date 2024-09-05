@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchGet_1 = require("../services/launch/launchGet");
+const authMiddleware_1 = require("../middleware/authMiddleware");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 /**
@@ -20,7 +21,7 @@ router.use(body_parser_1.default.json());
  *       500:
  *         description: Internal Server Error
  */
-router.get('/list-launch', async (req, res) => {
+router.get('/list-launch', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         const data = await (0, launchGet_1.readListLansman)();
         res.status(200).send(data);

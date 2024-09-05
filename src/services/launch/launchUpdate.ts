@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { connectToDatabase, closeConnection } from './dbClient';
 import { Main } from '../../models/main_schema';
 
-async function updateSectionPart(partname: string, sectionData: any, postId: any, sectionId: number) {
+async function updateSectionPart(partname: string, sectionData: any, postId: any, sectionId: string): Promise<boolean> {
     try {
         if (!mongoose.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');
@@ -17,7 +17,7 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
         const updateResult = await Main.updateOne(
             {
                 _id: postId,
-                [`Components.${partname}.section_id`]: sectionId  
+                [`Components.${partname}._id`]: sectionId  
             },
             { 
                 $set: { 
