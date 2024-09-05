@@ -17,16 +17,19 @@ async function updateSectionPart(partname, sectionData, postId, sectionId) {
         if (!post) {
             throw new Error('Post not found');
         }
-        const result = main_schema_1.Main.updateOne({
+        const updateResult = await main_schema_1.Main.updateOne({
             _id: postId,
-            [`Components.${partname}`]: {
-                $elemMatch: { section_id: sectionId }
+            [`Components.${partname}.section_id`]: sectionId
+        }, {
+            $set: {
+                [`Components.${partname}.$`]: sectionData
             }
-        }, { $set: { [`${partname}.$`]: sectionData } });
-        if (!result) {
-            throw new Error('Post not found after update');
-        }
-        // console.log('Update successful:', result);
+        });
+        /*
+                if (updateResult.modifiedCount === 0) {
+                    throw new Error('No document modified');
+                } */
+        return true;
     }
     catch (err) {
         console.error("Error updating section part:", err);
@@ -35,7 +38,7 @@ async function updateSectionPart(partname, sectionData, postId, sectionId) {
     finally {
         const isClosed = await (0, dbClient_1.closeConnection)();
         if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
+            // Connection successfully closed
         }
         else {
             throw new Error(isClosed);
