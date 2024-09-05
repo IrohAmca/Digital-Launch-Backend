@@ -20,9 +20,7 @@ async function insertMedia(gallery) {
         if (!result) {
             throw new Error('Failed to update gallery');
         }
-        else {
-            console.log(`${gallery.MediaName} Media updated to Gallery successfully`);
-        }
+        console.log(`${gallery.MediaName} Media updated to Gallery successfully`);
         return true;
     }
     catch (error) {

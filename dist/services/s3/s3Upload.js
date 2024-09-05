@@ -3,29 +3,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.uploadFile = uploadFile;
 const galleryInsert_1 = require("../gallery/galleryInsert");
 const s3Client_1 = require("./s3Client");
-async function uploadFile(fileBuffer, name, fileType) {
+async function uploads3(fileBuffer, name, fileType) {
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME || '',
         Key: `${name}.${fileType}`,
         Body: fileBuffer,
     };
     try {
-        const data = await s3Client_1.s3.upload(params).promise();
-        console.log(`File uploaded successfully. Key: ${params.Key}`);
+        const result = await s3Client_1.s3.upload(params).promise();
+        return result;
+    }
+    catch (error) {
+        console.error("Error uploading file to S3:", error);
+        return `Error uploading file: ${error.message}`;
+    }
+}
+async function uploadFile(fileBuffer, name, fileType) {
+    try {
+        const result = await uploads3(fileBuffer, name, fileType);
+        if (typeof result === 'string') {
+            return result;
+        }
         const gallery = {
             MediaName: name,
-            MediaURL: data.Location,
-            MediaType: fileType.toUpperCase()
+            MediaURL: result.Location,
+            MediaType: fileType,
         };
-        const result = await (0, galleryInsert_1.insertMedia)(gallery);
-        if (typeof (result) === 'boolean' && result) {
-            return result;
+        const insertResult = await (0, galleryInsert_1.insertMedia)(gallery);
+        if (typeof insertResult === 'string') {
+            return insertResult;
         }
-        else {
-            return result;
-        }
+        return true;
     }
-    catch (err) {
-        console.error('Error', err);
+    catch (error) {
+        console.error("Error uploading file:", error);
+        return error;
     }
 }

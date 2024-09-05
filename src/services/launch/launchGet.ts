@@ -1,13 +1,6 @@
 import mongoose from 'mongoose';
 import { IMain, Main } from '../../models/main_schema';
-import dotenv from 'dotenv';
-import path from 'path';
-
-const envPath = path.resolve(__dirname, '../../.env');
-
-dotenv.config({ path: envPath });
-
-const uri = process.env.MONGO_URI || '';
+import { connectToDatabase, closeConnection } from './dbClient';
 
 interface ILaunchInfo {
     launchName: string;
@@ -17,18 +10,6 @@ interface ILaunchInfo {
     endDate: string;
     isActive: boolean;
     id: string;
-}
-
-async function connectToDatabase() {
-    if (mongoose.connection.readyState === 0) {
-        try {
-            await mongoose.connect(uri);
-            console.log("Connected to MongoDB");
-        } catch (err) {
-            console.error("MongoDB connection error:", err);
-            throw err;
-        }
-    }
 }
 
 function transformResponse(data: any[]): ILaunchInfo[] {
@@ -53,7 +34,12 @@ async function readListLansman(): Promise<ILaunchInfo[]> {
         console.error("Error reading posts:", err);
         throw err;
     } finally {
-        mongoose.connection.close();
+        const isClosed = await closeConnection();
+        if (typeof isClosed === 'boolean' && isClosed) {
+            // console.log("Connection closed");
+        } else {
+            throw new Error(isClosed as string);
+        }
     }
 }
 
@@ -69,7 +55,12 @@ async function readLaunch(id: string): Promise<IMain> {
         console.error("Error reading post:", err);
         throw err;
     } finally {
-        mongoose.connection.close();
+        const isClosed = await closeConnection();
+        if (typeof isClosed === 'boolean' && isClosed) {
+            // console.log("Connection closed");
+        } else {
+            throw new Error(isClosed as string);
+        }
     }
 }
 
@@ -82,7 +73,12 @@ async function readAllData(): Promise<IMain[]> {
         console.error("Error reading Mains:", err);
         throw err;
     } finally {
-        mongoose.connection.close();
+        const isClosed = await closeConnection();
+        if (typeof isClosed === 'boolean' && isClosed) {
+            // console.log("Connection closed");
+        } else {
+            throw new Error(isClosed as string);
+        }
     }
 }
 

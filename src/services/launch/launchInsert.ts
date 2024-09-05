@@ -1,13 +1,6 @@
 import mongoose from 'mongoose';
 import { IMain, Main } from '../../models/main_schema';
-import dotenv from 'dotenv';
-import path from 'path';
-
-const envPath = path.resolve(__dirname, '../../.env');
-
-dotenv.config({ path: envPath });
-
-const uri = process.env.MONGO_URI || '';
+import { connectToDatabase, closeConnection } from './dbClient';
 
 async function submitGeneral(data: any) {
     try {
@@ -17,20 +10,12 @@ async function submitGeneral(data: any) {
         console.log("Error in saveData:", err);
         throw err;
     }
-    finally{
-        mongoose.connection.close();
-    }
-}
-
-
-async function connectToDatabase() {
-    if (mongoose.connection.readyState === 0) {
-        try {
-            await mongoose.connect(uri);
-            console.log("Connected to MongoDB");
-        } catch (err) {
-            console.error("MongoDB connection error:", err);
-            throw err;
+    finally {
+        const isClosed = await closeConnection();
+        if (typeof isClosed === 'boolean' && isClosed) {
+            // console.log("Connection closed");
+        } else {
+            throw new Error(isClosed as string);
         }
     }
 }
@@ -58,12 +43,17 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
         console.error("Error updating section part:", err);
         throw err;
     } finally {
-        mongoose.connection.close();
+        const isClosed = await closeConnection();
+        if (typeof isClosed === 'boolean' && isClosed) {
+            // console.log("Connection closed");
+        } else {
+            throw new Error(isClosed as string);
+        }
     }
 }
 
 async function updateSectionPart(partname: string, sectionData: any, postId: any) {
-    
+
     try {
         if (!mongoose.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');
@@ -78,8 +68,13 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
         console.error("Error updating section part:", err);
         throw err;
     }
-    finally{
-        mongoose.connection.close();
+    finally {
+        const isClosed = await closeConnection();
+        if (typeof isClosed === 'boolean' && isClosed) {
+            // console.log("Connection closed");
+        } else {
+            throw new Error(isClosed as string);
+        }
     }
 }
-export { updateSection, updateSectionPart, saveGeneralInfo, submitGeneral,connectToDatabase };
+export { updateSection, updateSectionPart, saveGeneralInfo, submitGeneral, connectToDatabase };
