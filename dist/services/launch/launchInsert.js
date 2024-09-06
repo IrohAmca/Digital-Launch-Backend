@@ -8,6 +8,7 @@ exports.updateSection = updateSection;
 exports.setSectionPart = setSectionPart;
 exports.saveGeneralInfo = saveGeneralInfo;
 exports.submitGeneral = submitGeneral;
+exports.insertPlacementService = insertPlacementService;
 const mongoose_1 = __importDefault(require("mongoose"));
 const main_schema_1 = require("../../models/main_schema");
 const dbClient_1 = require("./dbClient");
@@ -88,5 +89,23 @@ async function setSectionPart(partname, sectionData, postId) {
         else {
             throw new Error(isClosed);
         }
+    }
+}
+async function insertPlacementService(data, postId) {
+    try {
+        if (!mongoose_1.default.Types.ObjectId.isValid(postId)) {
+            throw new Error('Invalid ObjectId');
+        }
+        await (0, dbClient_1.connectToDatabase)();
+        const post = await main_schema_1.Main.findById(postId);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        await main_schema_1.Main.updateOne({ _id: postId }, { $set: { Placements: data } });
+        return true;
+    }
+    catch (err) {
+        console.error("Error updating placement:", err);
+        throw err;
     }
 }
