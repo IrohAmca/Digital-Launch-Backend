@@ -14,21 +14,21 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
             throw new Error('Post not found');
         }
 
-        const updateResult = await Main.updateOne(
+        await Main.updateOne(
             {
                 _id: postId,
-                [`Components.${partname}._id`]: sectionId  
+                [`Components.${partname}._id`]: sectionId
             },
-            { 
-                $set: { 
-                    [`Components.${partname}.$`]: sectionData  
-                } 
+            {
+                $set: {
+                    [`Components.${partname}.$`]: sectionData
+                }
             }
         );
-/* 
-        if (updateResult.modifiedCount === 0) {
-            throw new Error('No document modified');
-        } */
+        /* 
+                if (updateResult.modifiedCount === 0) {
+                    throw new Error('No document modified');
+                } */
 
         return true;
     } catch (err) {
@@ -44,5 +44,26 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
     }
 }
 
+async function updatePlacementService(data: any, postId: string): Promise<any> {
+    try {
+        if (!mongoose.Types.ObjectId.isValid(postId)) {
+            throw new Error('Invalid ObjectId');
+        }
+        await connectToDatabase();
 
-export { updateSectionPart };
+        const post = await Main.findById(postId);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        await Main.updateOne(
+            {_id: postId},
+            {$set: {Placements: data}}
+        );
+            
+        return true;
+    } catch (err) {
+        console.error("Error updating placement:", err);
+        throw err;
+    }
+}
+export { updateSectionPart, updatePlacementService };

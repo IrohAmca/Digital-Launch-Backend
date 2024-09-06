@@ -21,10 +21,13 @@ async function uploadFile(fileBuffer: any, name: string, fileType: string) {
         if (typeof result === 'string') {
             return result;
         }
+        const currentDate = new Date();
+        currentDate.setHours(currentDate.getHours() + 3);
         const gallery = {
             MediaName: name,
             MediaURL: result.Location,
             MediaType: fileType,
+            MediaTime : currentDate,
         };
         const insertResult = await insertMedia(gallery);
         if (typeof insertResult === 'string') {

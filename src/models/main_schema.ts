@@ -35,14 +35,18 @@ interface IMain extends Document {
                 section_id: Number
             }
         ],
-        FullScreenCards: [
+        FullScreenCardsSlider: [
             {
-                MediaURL: string,
-                Title: string,
-                ButtonText: string,
-                ButtonUrl: string,
-                LogoMediaURL: string,
-                section_id: Number
+                FullScreenCards: [
+                    {
+                        MediaURL: string,
+                        Title: string,
+                        ButtonText: string,
+                        ButtonUrl: string,
+                        LogoMediaURL: string,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         FullText: [
@@ -58,12 +62,16 @@ interface IMain extends Document {
                 section_id: Number
             }
         ],
-        InfoCards: [
+        InfoCardsSlider: [
             {
-                Icon: string,
-                Title: string,
-                Subtitle: string,
-                section_id: Number
+                InfoCards: [
+                    {
+                        Icon: string,
+                        Title: string,
+                        Subtitle: string,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         LargeCard: [
@@ -94,6 +102,7 @@ interface IMain extends Document {
         ],
         LargeTopTitleHeroCard: [
             {
+                MediaURL: string,
                 Title: string,
                 SubTitle: string,
                 Button: string,
@@ -108,20 +117,28 @@ interface IMain extends Document {
                 section_id: Number
             }
         ],
-        MiniCards: [
+        MiniCardsSlider: [
             {
-                ButtonText: string,
-                Text: string,
-                LogoMediaURL: string,
-                section_id: Number
+                MiniCards: [
+                    {
+                        ButtonText: string,
+                        Text: string,
+                        LogoMediaURL: string,
+                        section_id: Number
+                    }
+                ]
             }
         ],
-        ReelsCards: [
+        ReelsCardsSlider: [
             {
-                MediaURL: string,
-                Title: string,
-                Subtitle: string,
-                section_id: Number
+                ReelsCards: [
+                    {
+                        MediaURL: string,
+                        Title: string,
+                        Subtitle: string,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         RightTextCard: [
@@ -176,7 +193,7 @@ interface IMain extends Document {
                     ButtonText: string,
                     ButtonUrl: string
                 },
-            section_id: Number
+                section_id: Number
             }
         ],
     },
@@ -225,14 +242,18 @@ const MainSchema: Schema = new Schema({
                 section_id: Number
             }
         ],
-        FullScreenCards: [
+        FullScreenCardsSlider: [
             {
-                MediaURL: String,
-                Title: String,
-                ButtonText: String,
-                ButtonUrl: String,
-                LogoMediaURL: String,
-                section_id: Number
+                FullScreenCards: [
+                    {
+                        MediaURL: String,
+                        Title: String,
+                        ButtonText: String,
+                        ButtonUrl: String,
+                        LogoMediaURL: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         FullText: [
@@ -248,12 +269,16 @@ const MainSchema: Schema = new Schema({
                 section_id: Number
             }
         ],
-        InfoCards: [
+        InfoCardsSlider: [
             {
-                Icon: String,
-                Title: String,
-                Subtitle: String,
-                section_id: Number
+                InfoCards: [
+                    {
+                        Icon: String,
+                        Title: String,
+                        Subtitle: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         LargeCard: [
@@ -284,6 +309,7 @@ const MainSchema: Schema = new Schema({
         ],
         LargeTopTitleHeroCard: [
             {
+                MediaURL: String,
                 Title: String,
                 SubTitle: String,
                 Button: String,
@@ -298,20 +324,28 @@ const MainSchema: Schema = new Schema({
                 section_id: Number
             }
         ],
-        MiniCards: [
+        MiniCardsSlider: [
             {
-                ButtonText: String,
-                Text: String,
-                LogoMediaURL: String,
-                section_id: Number
+                MiniCards: [
+                    {
+                        ButtonText: String,
+                        Text: String,
+                        LogoMediaURL: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
-        ReelsCards: [
+        ReelsCardsSlider: [
             {
-                MediaURL: String,
-                Title: String,
-                Subtitle: String,
-                section_id: Number
+                ReelsCards: [
+                    {
+                        MediaURL: String,
+                        Title: String,
+                        Subtitle: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         RightTextCard: [

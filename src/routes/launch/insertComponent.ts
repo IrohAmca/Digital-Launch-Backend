@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import {setSectionPart} from '../services/launch/launchInsert';
-import { insertID } from '../utils/generateID';
+import {setSectionPart} from '../../services/launch/launchInsert';
+import { insertID } from '../../utils/generateID';
 
 const router = Router();
 

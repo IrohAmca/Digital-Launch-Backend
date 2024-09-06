@@ -32,6 +32,7 @@ const GallerySchema = new mongoose_1.Schema({
                 MediaName: String,
                 MediaURL: String,
                 MediaType: String,
+                MediaTime: Date,
             }
         ]
     }

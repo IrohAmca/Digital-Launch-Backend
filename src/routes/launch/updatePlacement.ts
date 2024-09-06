@@ -1,10 +1,11 @@
 import {Router} from 'express';
+import { updatePlacement } from '../../controller/update/placementUpdate';
 import bodyParser from 'body-parser';
-import { login } from '../controller/authController';
 
 const router = Router();
+
 router.use(bodyParser.json());
 
-router.post('/login', login);
+router.put('/update-placement', updatePlacement);
 
 export default router;

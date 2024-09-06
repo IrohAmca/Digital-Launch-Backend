@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = login;
-const jwtUtil_1 = require("../utils/user/jwtUtil");
-const authServices_1 = require("../services/auth/authServices");
+const jwtUtil_1 = require("../../utils/user/jwtUtil");
+const authServices_1 = require("../../services/auth/authServices");
 async function login(req, res) {
     const { email, password } = req.body;
     const user = await (0, authServices_1.findUserByEmailAndPassword)(email, password);

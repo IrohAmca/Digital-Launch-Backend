@@ -24,10 +24,13 @@ async function uploadFile(fileBuffer, name, fileType) {
         if (typeof result === 'string') {
             return result;
         }
+        const currentDate = new Date();
+        currentDate.setHours(currentDate.getHours() + 3);
         const gallery = {
             MediaName: name,
             MediaURL: result.Location,
             MediaType: fileType,
+            MediaTime: currentDate,
         };
         const insertResult = await (0, galleryInsert_1.insertMedia)(gallery);
         if (typeof insertResult === 'string') {

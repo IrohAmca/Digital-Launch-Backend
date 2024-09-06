@@ -7,6 +7,7 @@ interface IGallery extends Document {
                 MediaNem: String,
                 MediaURL: String,
                 MediaType: String,
+                MediaTime : Date,
             }
         ]
     }
@@ -19,6 +20,7 @@ const GallerySchema = new Schema({
                 MediaName: String,
                 MediaURL: String,
                 MediaType: String,
+                MediaTime : Date,
             }
         ]
     }

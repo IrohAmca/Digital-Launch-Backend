@@ -53,7 +53,7 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
 }
 
 async function setSectionPart(partname: string, sectionData: any, postId: any) {
-    try {
+    try { 
         if (!mongoose.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');
         }

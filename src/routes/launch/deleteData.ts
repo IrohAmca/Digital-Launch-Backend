@@ -1,13 +1,11 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const body_parser_1 = __importDefault(require("body-parser"));
-const launchDelete_1 = require("../services/launch/launchDelete");
-const router = (0, express_1.Router)();
-router.use(body_parser_1.default.json());
+import { Router } from 'express';
+import bodyParser from 'body-parser';
+import { deleteLaunch,deleteAllLaunch } from '../../services/launch/launchDelete';
+
+const router = Router();
+
+router.use(bodyParser.json());
+
 /**
  * @swagger
  * /delete-lansman:
@@ -33,32 +31,31 @@ router.use(body_parser_1.default.json());
  *       500:
  *         description: Internal Server Error
  */
+
 router.delete('/delete-launch', async (req, res) => {
     try {
-        const id = req.query.id;
+        const id = req.query.id as string
         if (!id) {
             return res.status(400).send('Bad Request: ID is required');
         }
-        await (0, launchDelete_1.deleteLaunch)(id);
-    }
-    catch (err) {
+        await deleteLaunch(id);
+    } catch (err) {
         console.log("Error in deleteData:", err);
         res.status(500).send('Internal Server Error');
-    }
-    finally {
+    }finally{
         res.status(200).send("Deleted Lansman with ID: " + req.body.id);
     }
 });
+
 router.delete('/delete-all-launch', async (req, res) => {
     try {
-        await (0, launchDelete_1.deleteAllLaunch)();
-    }
-    catch (err) {
+        await deleteAllLaunch();
+    } catch (err) {
         console.log("Error in deleteData:", err);
         res.status(500).send('Internal Server Error');
-    }
-    finally {
+    }finally{
         res.status(200).send("Deleted all Lansman");
     }
 });
-exports.default = router;
+
+export default router;

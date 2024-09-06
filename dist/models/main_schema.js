@@ -60,14 +60,18 @@ const MainSchema = new mongoose_1.Schema({
                 section_id: Number
             }
         ],
-        FullScreenCards: [
+        FullScreenCardsSlider: [
             {
-                MediaURL: String,
-                Title: String,
-                ButtonText: String,
-                ButtonUrl: String,
-                LogoMediaURL: String,
-                section_id: Number
+                FullScreenCards: [
+                    {
+                        MediaURL: String,
+                        Title: String,
+                        ButtonText: String,
+                        ButtonUrl: String,
+                        LogoMediaURL: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         FullText: [
@@ -83,12 +87,16 @@ const MainSchema = new mongoose_1.Schema({
                 section_id: Number
             }
         ],
-        InfoCards: [
+        InfoCardsSlider: [
             {
-                Icon: String,
-                Title: String,
-                Subtitle: String,
-                section_id: Number
+                InfoCards: [
+                    {
+                        Icon: String,
+                        Title: String,
+                        Subtitle: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         LargeCard: [
@@ -119,6 +127,7 @@ const MainSchema = new mongoose_1.Schema({
         ],
         LargeTopTitleHeroCard: [
             {
+                MediaURL: String,
                 Title: String,
                 SubTitle: String,
                 Button: String,
@@ -133,20 +142,28 @@ const MainSchema = new mongoose_1.Schema({
                 section_id: Number
             }
         ],
-        MiniCards: [
+        MiniCardsSlider: [
             {
-                ButtonText: String,
-                Text: String,
-                LogoMediaURL: String,
-                section_id: Number
+                MiniCards: [
+                    {
+                        ButtonText: String,
+                        Text: String,
+                        LogoMediaURL: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
-        ReelsCards: [
+        ReelsCardsSlider: [
             {
-                MediaURL: String,
-                Title: String,
-                Subtitle: String,
-                section_id: Number
+                ReelsCards: [
+                    {
+                        MediaURL: String,
+                        Title: String,
+                        Subtitle: String,
+                        section_id: Number
+                    }
+                ]
             }
         ],
         RightTextCard: [
