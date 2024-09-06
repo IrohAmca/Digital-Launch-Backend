@@ -1,6 +1,6 @@
 
 import { Request, Response } from 'express';
-import { updatePlacementService } from '../../services/launch/launchUpdate';
+import { insertPlacementService } from '../../services/launch/launchInsert';
 
 async function updatePlacement(req: Request, res: Response) {
     try {
@@ -10,7 +10,7 @@ async function updatePlacement(req: Request, res: Response) {
             return res.status(400).send('Bad Request: Data and ID are required');
         }
 
-        const result = await updatePlacementService(data, id);
+        const result = await insertPlacementService(data, id);
 
         if (typeof result === 'boolean' && result) {
             return res.status(200).send('Updated Component');

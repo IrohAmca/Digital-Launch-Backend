@@ -44,26 +44,4 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
     }
 }
 
-async function updatePlacementService(data: any, postId: string): Promise<any> {
-    try {
-        if (!mongoose.Types.ObjectId.isValid(postId)) {
-            throw new Error('Invalid ObjectId');
-        }
-        await connectToDatabase();
-
-        const post = await Main.findById(postId);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        await Main.updateOne(
-            {_id: postId},
-            {$set: {Placements: data}}
-        );
-            
-        return true;
-    } catch (err) {
-        console.error("Error updating placement:", err);
-        throw err;
-    }
-}
-export { updateSectionPart, updatePlacementService };
+export { updateSectionPart };

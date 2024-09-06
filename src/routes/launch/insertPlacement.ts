@@ -6,6 +6,6 @@ const router = Router();
 
 router.use(bodyParser.json());
 
-router.put('/update-placement', updatePlacement);
+router.post('/update-placement', updatePlacement);
 
 export default router;
