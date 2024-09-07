@@ -34,11 +34,18 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
             throw new Error('Invalid ObjectId');
         }
         await connectToDatabase();
-        const update = { $push: { [`${sectionName}`]: sectionData } };
-        const result = await Main.findByIdAndUpdate(postId, update, { new: true });
-        if (!result) {
+        const post = await Main.findById(postId);
+        if (!post) {
             throw new Error('Post not found');
         }
+        const result = await Main.updateOne(
+            { _id: postId },
+            { $set: { [sectionName]: sectionData } }
+        );
+        if (result.modifiedCount === 0) {
+            throw new Error('No document modified');
+        }
+        return true;
     } catch (err) {
         console.error("Error updating section part:", err);
         throw err;
