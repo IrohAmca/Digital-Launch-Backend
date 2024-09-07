@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { deleteLaunch,deleteAllLaunch } from '../../services/launch/launchDelete';
+import { deleteLaunch,deleteAllLaunch, deleteComponent } from '../../services/launch/launchDelete';
 
 const router = Router();
 
@@ -57,5 +57,20 @@ router.delete('/delete-all-launch', async (req, res) => {
         res.status(200).send("Deleted all Lansman");
     }
 });
+
+router.delete('/delete-component', async (req, res) => {
+        try {
+            const { id, name,section_id } = req.body;
+            if (!id || !name || !section_id) {
+                return res.status(400).send('Bad Request: ID and Name are required');
+            }
+            await deleteComponent(id, name, section_id);
+        } catch (err) {
+            console.log("Error in deleteData:", err);
+            res.status(500).send('Internal Server Error');
+        }finally{
+            res.status(200).send("Deleted Component with ID: " + req.body.id);
+        }
+    });
 
 export default router;

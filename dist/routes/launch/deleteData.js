@@ -61,4 +61,20 @@ router.delete('/delete-all-launch', async (req, res) => {
         res.status(200).send("Deleted all Lansman");
     }
 });
+router.delete('/delete-component', async (req, res) => {
+    try {
+        const { id, name, section_id } = req.body;
+        if (!id || !name || !section_id) {
+            return res.status(400).send('Bad Request: ID and Name are required');
+        }
+        await (0, launchDelete_1.deleteComponent)(id, name, section_id);
+    }
+    catch (err) {
+        console.log("Error in deleteData:", err);
+        res.status(500).send('Internal Server Error');
+    }
+    finally {
+        res.status(200).send("Deleted Component with ID: " + req.body.id);
+    }
+});
 exports.default = router;

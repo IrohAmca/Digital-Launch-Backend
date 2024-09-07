@@ -8,5 +8,5 @@ const placementUpdate_1 = require("../../controller/update/placementUpdate");
 const body_parser_1 = __importDefault(require("body-parser"));
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
-router.post('/update-placement', placementUpdate_1.updatePlacement);
+router.post('/insert-placement', placementUpdate_1.updatePlacement);
 exports.default = router;
