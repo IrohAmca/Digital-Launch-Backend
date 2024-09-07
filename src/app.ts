@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-
+import { connectToDatabase } from './services/launch/dbClient';
 import swaggerUi from 'swagger-ui-express';
 
 import dotenv from 'dotenv';
@@ -30,3 +30,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(port as number, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });
+
+connectToDatabase();

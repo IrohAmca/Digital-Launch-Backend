@@ -26,15 +26,6 @@ async function readListLansman() {
         console.error("Error reading posts:", err);
         throw err;
     }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        }
-        else {
-            throw new Error(isClosed);
-        }
-    }
 }
 async function readLaunch(id) {
     try {
@@ -49,15 +40,6 @@ async function readLaunch(id) {
         console.error("Error reading post:", err);
         throw err;
     }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        }
-        else {
-            throw new Error(isClosed);
-        }
-    }
 }
 async function readAllData() {
     try {
@@ -68,14 +50,5 @@ async function readAllData() {
     catch (err) {
         console.error("Error reading Mains:", err);
         throw err;
-    }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        }
-        else {
-            throw new Error(isClosed);
-        }
     }
 }

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { connectToDatabase, closeConnection } from './dbClient';
+import { connectToDatabase} from './dbClient';
 import { Main } from '../../models/main_schema';
 
 async function deleteLaunch(id: string) {
@@ -10,14 +10,6 @@ async function deleteLaunch(id: string) {
         console.error("Error deleting post:", err);
         throw err;
     }
-    finally {
-        const isClosed = await closeConnection();
-        if(typeof isClosed === 'boolean' && isClosed){
-            // console.log("Connection closed");
-        }else{
-            throw new Error(isClosed as string);
-        }
-    }
 }
 
 async function deleteAllLaunch() {
@@ -27,14 +19,6 @@ async function deleteAllLaunch() {
     } catch (err) {
         console.error("Error deleting all posts:", err);
         throw err;
-    }
-    finally {
-        const isClosed = await closeConnection();
-        if(typeof isClosed === 'boolean' && isClosed){
-            // console.log("Connection closed");
-        }else{
-            throw new Error(isClosed as string);
-        }
     }
 }
 
@@ -71,16 +55,6 @@ async function deleteComponent(postId: string, partname: string, sectionId: stri
     } catch (err) {
         console.error("Error deleting component:", err);
         throw err;
-    } finally {
-        try {
-            const isClosed = await closeConnection();
-            if (typeof isClosed !== 'boolean' || !isClosed) {
-                throw new Error(isClosed as string);  
-            }
-        } catch (closeErr) {
-            console.error("Error closing connection:", closeErr);
-            throw closeErr; 
-        }
     }
 }
 

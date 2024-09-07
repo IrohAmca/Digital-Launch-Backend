@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { connectToDatabase, closeConnection } from './dbClient';
+import { connectToDatabase} from './dbClient';
 import { Main } from '../../models/main_schema';
 
 async function updateSectionPart(partname: string, sectionData: any, postId: any, sectionId: string): Promise<boolean> {
@@ -34,13 +34,6 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
     } catch (err) {
         console.error("Error updating section part:", err);
         throw err;
-    } finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // Connection successfully closed
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 

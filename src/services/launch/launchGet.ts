@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { IMain, Main } from '../../models/main_schema';
-import { connectToDatabase, closeConnection } from './dbClient';
+import { connectToDatabase } from './dbClient';
 
 interface ILaunchInfo {
     launchName: string;
@@ -33,13 +33,6 @@ async function readListLansman(): Promise<ILaunchInfo[]> {
     } catch (err) {
         console.error("Error reading posts:", err);
         throw err;
-    } finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 
@@ -54,13 +47,6 @@ async function readLaunch(id: string): Promise<IMain> {
     } catch (err) {
         console.error("Error reading post:", err);
         throw err;
-    } finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 
@@ -72,13 +58,6 @@ async function readAllData(): Promise<IMain[]> {
     } catch (err) {
         console.error("Error reading Mains:", err);
         throw err;
-    } finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
+const dbClient_1 = require("./services/launch/dbClient");
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
@@ -24,3 +25,4 @@ app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });
+(0, dbClient_1.connectToDatabase)();

@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.connectToDatabase = connectToDatabase;
-exports.closeConnection = closeConnection;
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
@@ -21,15 +20,5 @@ async function connectToDatabase() {
             console.error("MongoDB connection error:", err);
             throw err;
         }
-    }
-}
-async function closeConnection() {
-    try {
-        await mongoose_1.default.connection.close();
-        return true;
-    }
-    catch (err) {
-        console.error("Error closing connection:", err);
-        return err;
     }
 }

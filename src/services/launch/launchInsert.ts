@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { IMain, Main } from '../../models/main_schema';
-import { connectToDatabase, closeConnection } from './dbClient';
+import { connectToDatabase} from './dbClient';
 
 async function submitGeneral(data: any) {
     try {
@@ -9,14 +9,6 @@ async function submitGeneral(data: any) {
     } catch (err) {
         console.log("Error in saveData:", err);
         throw err;
-    }
-    finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 
@@ -49,13 +41,6 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
     } catch (err) {
         console.error("Error updating section part:", err);
         throw err;
-    } finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 
@@ -75,13 +60,6 @@ async function setSectionPart(partname: string, sectionData: any, postId: any) {
     } catch (err) {
         console.error("Error updating section part:", err);
         throw err;
-    } finally {
-        const isClosed = await closeConnection();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        } else {
-            throw new Error(isClosed as string);
-        }
     }
 }
 

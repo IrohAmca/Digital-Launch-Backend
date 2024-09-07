@@ -20,7 +20,7 @@ async function connectToDatabase() {
     }
 }
 
-async function closeConnection() {
+/* async function closeConnection() {
     try {
         await mongoose.connection.close();
         return true
@@ -29,5 +29,5 @@ async function closeConnection() {
         console.error("Error closing connection:", err);
         return err;
     }
-}
-export { connectToDatabase, closeConnection };
+} */
+export { connectToDatabase };

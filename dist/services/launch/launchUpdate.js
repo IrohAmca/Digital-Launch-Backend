@@ -35,13 +35,4 @@ async function updateSectionPart(partname, sectionData, postId, sectionId) {
         console.error("Error updating section part:", err);
         throw err;
     }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // Connection successfully closed
-        }
-        else {
-            throw new Error(isClosed);
-        }
-    }
 }

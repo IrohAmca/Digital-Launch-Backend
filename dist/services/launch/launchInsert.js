@@ -22,15 +22,6 @@ async function submitGeneral(data) {
         console.log("Error in saveData:", err);
         throw err;
     }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        }
-        else {
-            throw new Error(isClosed);
-        }
-    }
 }
 async function saveGeneralInfo(generalInfo) {
     await (0, dbClient_1.connectToDatabase)();
@@ -59,15 +50,6 @@ async function updateSection(sectionName, sectionData, postId) {
         console.error("Error updating section part:", err);
         throw err;
     }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        }
-        else {
-            throw new Error(isClosed);
-        }
-    }
 }
 async function setSectionPart(partname, sectionData, postId) {
     try {
@@ -84,15 +66,6 @@ async function setSectionPart(partname, sectionData, postId) {
     catch (err) {
         console.error("Error updating section part:", err);
         throw err;
-    }
-    finally {
-        const isClosed = await (0, dbClient_1.closeConnection)();
-        if (typeof isClosed === 'boolean' && isClosed) {
-            // console.log("Connection closed");
-        }
-        else {
-            throw new Error(isClosed);
-        }
     }
 }
 async function insertPlacementService(data, postId) {
