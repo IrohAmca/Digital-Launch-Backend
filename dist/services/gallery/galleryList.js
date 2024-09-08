@@ -4,27 +4,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.readGallery = readGallery;
-const mongoose_1 = __importDefault(require("mongoose"));
-const gallery_schema_1 = require("../../models/gallery_schema");
-const launchInsert_1 = require("../launch/launchInsert");
+const s3Get_1 = require("../../services/s3/s3Get");
+const path = require("path");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config({ path: path.resolve(__dirname, '../../../.env') });
+function generateURL(key) {
+    return `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+}
+function updateTime(time) {
+    const date = new Date(time);
+    date.setHours(date.getHours() + 3);
+    return date;
+}
 function transformResponse(data) {
-    return data.flatMap(item => item.Gallery.Media.map((Media) => ({
-        MediaName: Media.MediaName,
-        MediaURL: Media.MediaURL,
-        MediaType: Media.MediaType,
-    })));
+    const galleryList = [];
+    data.forEach((element) => {
+        const gallery = {
+            MediaName: element.Key,
+            MediaURL: generateURL(element.Key),
+            MediaType: element.Key.split('.').pop().toUpperCase(),
+            MediaTime: updateTime(element.LastModified),
+        };
+        galleryList.push(gallery);
+    });
+    return galleryList;
 }
 async function readGallery() {
     try {
-        await (0, launchInsert_1.connectToDatabase)();
-        const gallery = await gallery_schema_1.Gallery.find({}, 'Gallery.Media').lean();
-        return transformResponse(gallery);
+        const result = await (0, s3Get_1.listObjects)();
+        return transformResponse(result);
     }
     catch (err) {
-        console.error("Error reading gallery:", err);
-        throw err;
-    }
-    finally {
-        mongoose_1.default.connection.close();
+        console.log("Error in galleryGet:", err);
+        return 'Internal Server Error';
     }
 }

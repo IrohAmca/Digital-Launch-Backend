@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.uploadFile = uploadFile;
-const galleryInsert_1 = require("../gallery/galleryInsert");
 const s3Client_1 = require("./s3Client");
 async function uploads3(fileBuffer, name, fileType) {
     const params = {
@@ -23,18 +22,6 @@ async function uploadFile(fileBuffer, name, fileType) {
         const result = await uploads3(fileBuffer, name, fileType);
         if (typeof result === 'string') {
             return result;
-        }
-        const currentDate = new Date();
-        currentDate.setHours(currentDate.getHours() + 3);
-        const gallery = {
-            MediaName: name,
-            MediaURL: result.Location,
-            MediaType: fileType,
-            MediaTime: currentDate,
-        };
-        const insertResult = await (0, galleryInsert_1.insertMedia)(gallery);
-        if (typeof insertResult === 'string') {
-            return insertResult;
         }
         return true;
     }

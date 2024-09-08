@@ -24,7 +24,7 @@ interface IMain extends Document {
                         Subtitle: string
                     }
                 ],
-                section_id: Number
+
             }
         ],
         CTACard: [
@@ -32,7 +32,7 @@ interface IMain extends Document {
                 Title: string,
                 ButtonText: string,
                 ButtonUrl: string,
-                section_id: Number
+
             }
         ],
         FullScreenCardsSlider: [
@@ -44,7 +44,7 @@ interface IMain extends Document {
                         ButtonText: string,
                         ButtonUrl: string,
                         LogoMediaURL: string,
-                        section_id: Number
+
                     }
                 ]
             }
@@ -52,14 +52,14 @@ interface IMain extends Document {
         FullText: [
             {
                 Text: string,
-                section_id: Number
+
             }
         ],
         HeaderState: [
             {
                 TitleHeader: string,
                 LogoMediaURL: string,
-                section_id: Number
+
             }
         ],
         InfoCardsSlider: [
@@ -69,7 +69,7 @@ interface IMain extends Document {
                         Icon: string,
                         Title: string,
                         Subtitle: string,
-                        section_id: Number
+
                     }
                 ]
             }
@@ -78,26 +78,26 @@ interface IMain extends Document {
             {
                 MediaURL: string,
                 Url: string,
-                section_id: Number
+
             }
         ],
         LargeFlipCard: [
             {
                 FrontMedia: string,
                 BackMedia: string,
-                section_id: Number
+
             }
         ],
         LargePopUpCard: [
             {
                 MediaURL: string,
-                section_id: Number
+
             }
         ],
         LargeScalableCard: [
             {
                 MediaURL: string,
-                section_id: Number
+
             }
         ],
         LargeTopTitleHeroCard: [
@@ -107,24 +107,26 @@ interface IMain extends Document {
                 SubTitle: string,
                 Button: string,
                 ButtonURL: string,
-                section_id: Number
+
             }
         ],
         LeftTextCard: [
             {
                 Text: string,
                 Media: string,
-                section_id: Number
+
             }
         ],
         MiniCardsSlider: [
             {
                 MiniCards: [
                     {
-                        ButtonText: string,
-                        Text: string,
-                        LogoMediaURL: string,
-                        section_id: Number
+                        ButtonText: String,
+                        Text: String,
+                        LogoMediaURL: String,
+                        MediaURL: String,
+                        ButtonURL: String,
+
                     }
                 ]
             }
@@ -136,7 +138,7 @@ interface IMain extends Document {
                         MediaURL: string,
                         Title: string,
                         Subtitle: string,
-                        section_id: Number
+
                     }
                 ]
             }
@@ -145,27 +147,27 @@ interface IMain extends Document {
             {
                 Text: string,
                 MediaURL: string,
-                section_id: Number
+
             }
         ],
         Title: [
             {
                 Title: string,
-                section_id: Number
+
             }
         ],
         TopTextCard: [
             {
                 Text: string,
                 MediaURL: string,
-                section_id: Number
+
             }
         ],
         TwinCard: [
             {
                 RightMediaURL: string,
                 LeftMediaURL: string,
-                section_id: Number
+
             }
         ],
         TwinFlipCard: [
@@ -174,7 +176,7 @@ interface IMain extends Document {
                 RightBackMediaURL: string,
                 LeftFrontMediaURL: string,
                 LeftBackMediaURL: string,
-                section_id: Number
+
             }
         ],
         TwinTopTitleHeroCard: [
@@ -193,16 +195,16 @@ interface IMain extends Document {
                     ButtonText: string,
                     ButtonUrl: string
                 },
-                section_id: Number
+
             }
         ],
     },
     Placements: [
         {
-            index: string,
+            index: Number,
             name: string,
             switchActive: boolean,
-            section_id: Number
+
         }
     ]
 }
@@ -231,7 +233,7 @@ const MainSchema: Schema = new Schema({
                         Subtitle: String
                     }
                 ],
-                section_id: Number
+
             }
         ],
         CTACard: [
@@ -239,7 +241,7 @@ const MainSchema: Schema = new Schema({
                 Title: String,
                 ButtonText: String,
                 ButtonUrl: String,
-                section_id: Number
+
             }
         ],
         FullScreenCardsSlider: [
@@ -251,7 +253,7 @@ const MainSchema: Schema = new Schema({
                         ButtonText: String,
                         ButtonUrl: String,
                         LogoMediaURL: String,
-                        section_id: Number
+
                     }
                 ]
             }
@@ -259,14 +261,14 @@ const MainSchema: Schema = new Schema({
         FullText: [
             {
                 Text: String,
-                section_id: Number
+
             }
         ],
         HeaderState: [
             {
                 TitleHeader: String,
                 LogoMediaURL: String,
-                section_id: Number
+
             }
         ],
         InfoCardsSlider: [
@@ -276,7 +278,7 @@ const MainSchema: Schema = new Schema({
                         Icon: String,
                         Title: String,
                         Subtitle: String,
-                        section_id: Number
+
                     }
                 ]
             }
@@ -285,26 +287,26 @@ const MainSchema: Schema = new Schema({
             {
                 MediaURL: String,
                 Url: String,
-                section_id: Number
+
             }
         ],
         LargeFlipCard: [
             {
                 FrontMedia: String,
                 BackMedia: String,
-                section_id: Number
+
             }
         ],
         LargePopUpCard: [
             {
                 MediaURL: String,
-                section_id: Number
+
             }
         ],
         LargeScalableCard: [
             {
                 MediaURL: String,
-                section_id: Number
+
             }
         ],
         LargeTopTitleHeroCard: [
@@ -314,14 +316,14 @@ const MainSchema: Schema = new Schema({
                 SubTitle: String,
                 Button: String,
                 ButtonURL: String,
-                section_id: Number
+
             }
         ],
         LeftTextCard: [
             {
                 Text: String,
                 Media: String,
-                section_id: Number
+
             }
         ],
         MiniCardsSlider: [
@@ -331,7 +333,9 @@ const MainSchema: Schema = new Schema({
                         ButtonText: String,
                         Text: String,
                         LogoMediaURL: String,
-                        section_id: Number
+                        MediaURL: String,
+                        ButtonURL: String,
+
                     }
                 ]
             }
@@ -343,7 +347,7 @@ const MainSchema: Schema = new Schema({
                         MediaURL: String,
                         Title: String,
                         Subtitle: String,
-                        section_id: Number
+
                     }
                 ]
             }
@@ -352,27 +356,27 @@ const MainSchema: Schema = new Schema({
             {
                 Text: String,
                 MediaURL: String,
-                section_id: Number
+
             }
         ],
         Title: [
             {
                 Title: String,
-                section_id: Number
+
             }
         ],
         TopTextCard: [
             {
                 Text: String,
                 MediaURL: String,
-                section_id: Number
+
             }
         ],
         TwinCard: [
             {
                 RightMediaURL: String,
                 LeftMediaURL: String,
-                section_id: Number
+
             }
         ],
         TwinFlipCard: [
@@ -381,7 +385,7 @@ const MainSchema: Schema = new Schema({
                 RightBackMediaURL: String,
                 LeftFrontMediaURL: String,
                 LeftBackMediaURL: String,
-                section_id: Number
+
             }
         ],
         TwinTopTitleHeroCard: [
@@ -392,7 +396,7 @@ const MainSchema: Schema = new Schema({
                     Subtitle: String,
                     ButtonText: String,
                     ButtonUrl: String,
-                    section_id: Number
+
                 },
                 LeftCard: {
                     MediaURL: String,
@@ -400,17 +404,17 @@ const MainSchema: Schema = new Schema({
                     Subtitle: String,
                     ButtonText: String,
                     ButtonUrl: String,
-                    section_id: Number
+
                 }
             }
         ],
     },
     Placements: [
         {
-            index: String,
+            index: Number,
             name: String,
             switchActive: Boolean,
-            section_id: Number
+
         }
     ]
 });

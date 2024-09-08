@@ -1,4 +1,3 @@
-import { insertMedia } from '../gallery/galleryInsert';
 import { s3 } from './s3Client';
 
 async function uploads3(fileBuffer: any, name: string, fileType: string) {
@@ -20,18 +19,6 @@ async function uploadFile(fileBuffer: any, name: string, fileType: string) {
         const result = await uploads3(fileBuffer, name, fileType);
         if (typeof result === 'string') {
             return result;
-        }
-        const currentDate = new Date();
-        currentDate.setHours(currentDate.getHours() + 3);
-        const gallery = {
-            MediaName: name,
-            MediaURL: result.Location,
-            MediaType: fileType,
-            MediaTime : currentDate,
-        };
-        const insertResult = await insertMedia(gallery);
-        if (typeof insertResult === 'string') {
-            return insertResult;
         }
         return true;
     } catch (error) {

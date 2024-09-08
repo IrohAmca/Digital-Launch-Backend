@@ -49,7 +49,6 @@ const MainSchema = new mongoose_1.Schema({
                         Subtitle: String
                     }
                 ],
-                section_id: Number
             }
         ],
         CTACard: [
@@ -57,7 +56,6 @@ const MainSchema = new mongoose_1.Schema({
                 Title: String,
                 ButtonText: String,
                 ButtonUrl: String,
-                section_id: Number
             }
         ],
         FullScreenCardsSlider: [
@@ -69,7 +67,6 @@ const MainSchema = new mongoose_1.Schema({
                         ButtonText: String,
                         ButtonUrl: String,
                         LogoMediaURL: String,
-                        section_id: Number
                     }
                 ]
             }
@@ -77,14 +74,12 @@ const MainSchema = new mongoose_1.Schema({
         FullText: [
             {
                 Text: String,
-                section_id: Number
             }
         ],
         HeaderState: [
             {
                 TitleHeader: String,
                 LogoMediaURL: String,
-                section_id: Number
             }
         ],
         InfoCardsSlider: [
@@ -94,7 +89,6 @@ const MainSchema = new mongoose_1.Schema({
                         Icon: String,
                         Title: String,
                         Subtitle: String,
-                        section_id: Number
                     }
                 ]
             }
@@ -103,26 +97,22 @@ const MainSchema = new mongoose_1.Schema({
             {
                 MediaURL: String,
                 Url: String,
-                section_id: Number
             }
         ],
         LargeFlipCard: [
             {
                 FrontMedia: String,
                 BackMedia: String,
-                section_id: Number
             }
         ],
         LargePopUpCard: [
             {
                 MediaURL: String,
-                section_id: Number
             }
         ],
         LargeScalableCard: [
             {
                 MediaURL: String,
-                section_id: Number
             }
         ],
         LargeTopTitleHeroCard: [
@@ -132,14 +122,12 @@ const MainSchema = new mongoose_1.Schema({
                 SubTitle: String,
                 Button: String,
                 ButtonURL: String,
-                section_id: Number
             }
         ],
         LeftTextCard: [
             {
                 Text: String,
                 Media: String,
-                section_id: Number
             }
         ],
         MiniCardsSlider: [
@@ -149,7 +137,8 @@ const MainSchema = new mongoose_1.Schema({
                         ButtonText: String,
                         Text: String,
                         LogoMediaURL: String,
-                        section_id: Number
+                        MediaURL: String,
+                        ButtonURL: String,
                     }
                 ]
             }
@@ -161,7 +150,6 @@ const MainSchema = new mongoose_1.Schema({
                         MediaURL: String,
                         Title: String,
                         Subtitle: String,
-                        section_id: Number
                     }
                 ]
             }
@@ -170,27 +158,23 @@ const MainSchema = new mongoose_1.Schema({
             {
                 Text: String,
                 MediaURL: String,
-                section_id: Number
             }
         ],
         Title: [
             {
                 Title: String,
-                section_id: Number
             }
         ],
         TopTextCard: [
             {
                 Text: String,
                 MediaURL: String,
-                section_id: Number
             }
         ],
         TwinCard: [
             {
                 RightMediaURL: String,
                 LeftMediaURL: String,
-                section_id: Number
             }
         ],
         TwinFlipCard: [
@@ -199,7 +183,6 @@ const MainSchema = new mongoose_1.Schema({
                 RightBackMediaURL: String,
                 LeftFrontMediaURL: String,
                 LeftBackMediaURL: String,
-                section_id: Number
             }
         ],
         TwinTopTitleHeroCard: [
@@ -210,7 +193,6 @@ const MainSchema = new mongoose_1.Schema({
                     Subtitle: String,
                     ButtonText: String,
                     ButtonUrl: String,
-                    section_id: Number
                 },
                 LeftCard: {
                     MediaURL: String,
@@ -218,17 +200,15 @@ const MainSchema = new mongoose_1.Schema({
                     Subtitle: String,
                     ButtonText: String,
                     ButtonUrl: String,
-                    section_id: Number
                 }
             }
         ],
     },
     Placements: [
         {
-            index: String,
+            index: Number,
             name: String,
             switchActive: Boolean,
-            section_id: Number
         }
     ]
 });
