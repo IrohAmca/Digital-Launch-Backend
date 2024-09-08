@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchGet_1 = require("../../services/launch/launchGet");
+const logger_1 = require("../../utils/logger/logger");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 /**
@@ -23,10 +24,11 @@ router.use(body_parser_1.default.json());
 router.get('/list-launch', async (req, res) => {
     try {
         const data = await (0, launchGet_1.readListLansman)();
+        (0, logger_1.info)("Sended all Launch data", req);
         res.status(200).send(data);
     }
     catch (err) {
-        console.log("Error in getData:", err);
+        (0, logger_1.error)("Error in getData:" + err, req);
         res.status(500).send('Internal Server Error');
     }
 });
@@ -56,14 +58,15 @@ router.get('/get-launch', async (req, res) => {
     try {
         const id = req.query.id;
         if (!id) {
+            (0, logger_1.warn)('Bad Request: ID is required', req);
             return res.status(400).send('Bad Request: ID is required');
         }
         const data = await (0, launchGet_1.readLaunch)(id);
         res.status(200).send(data);
-        console.log(`Sended Launch data with id: ${req.query.id}`);
+        (0, logger_1.info)("Sended Launch data with ID: " + id, req);
     }
     catch (err) {
-        console.log("Error in getData:", err);
+        (0, logger_1.error)("Error in getData:" + err, req);
         res.status(500).send(err.message || 'Internal Server Error');
     }
 });

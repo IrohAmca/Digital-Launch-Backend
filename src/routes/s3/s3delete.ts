@@ -1,20 +1,18 @@
 import { Router } from 'express';
 import {deleteObject,deleteAll } from '../../services/s3/s3Delete';
+import { info, warn, error } from '../../utils/logger/logger';
 
 const router = Router();
 
-router.delete('/s3-deleteOne', async (req, res) => {
+router.delete('/delete-media', async (req, res) => {
     try {
         await deleteObject(req.body.key as string);
-        res.send('Mission completed');
+        res.send('Deleted Object'+ req.body.key);
+        info('Deleted Object'+ req.body.key, req);
     } catch (err) {
-        console.error('Error', err);
+        error('Error in deleteObject:'+ err, req);
+        res.status(500).send((err as Error).message || 'Internal Server Error');
     }
-});
-
-router.delete('/s3-deleteAll', async (req, res) => {
-    await deleteAll();
-    res.send('Mission completed');
 });
 
 export default router;

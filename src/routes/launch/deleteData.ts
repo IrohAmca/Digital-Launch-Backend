@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import { deleteLaunch,deleteAllLaunch, deleteComponent } from '../../services/launch/launchDelete';
-
+import { deleteLaunch, deleteAllLaunch, deleteComponent } from '../../services/launch/launchDelete';
+import { info, warn, error } from '../../utils/logger/logger';
 const router = Router();
 
 router.use(bodyParser.json());
@@ -36,41 +36,42 @@ router.delete('/delete-launch', async (req, res) => {
     try {
         const id = req.query.id as string
         if (!id) {
+            warn('Bad Request: ID is required', req);
             return res.status(400).send('Bad Request: ID is required');
         }
+        info("Deleted Lansman with ID: " + id, req);
         await deleteLaunch(id);
     } catch (err) {
-        console.log("Error in deleteData:", err);
+        error("Error in deleteData:" + err, req);
         res.status(500).send('Internal Server Error');
-    }finally{
-        res.status(200).send("Deleted Lansman with ID: " + req.body.id);
     }
 });
 
 router.delete('/delete-all-launch', async (req, res) => {
     try {
         await deleteAllLaunch();
+        info("Deleted all Lansman", req);
+        res.status(200).send('Deleted all Lansman');
     } catch (err) {
-        console.log("Error in deleteData:", err);
+        error("Error in deleteData:" + err, req);
         res.status(500).send('Internal Server Error');
-    }finally{
-        res.status(200).send("Deleted all Lansman");
     }
 });
 
 router.delete('/delete-component', async (req, res) => {
-        try {
-            const { id, name,section_id } = req.body;
-            if (!id || !name || !section_id) {
-                return res.status(400).send('Bad Request: ID and Name are required');
-            }
-            await deleteComponent(id, name, section_id);
-        } catch (err) {
-            console.log("Error in deleteData:", err);
-            res.status(500).send('Internal Server Error');
-        }finally{
-            res.status(200).send("Deleted Component with ID: " + req.body.id);
+    try {
+        const { id, name, section_id } = req.body;
+        if (!id || !name || !section_id) {
+            warn('Bad Request: ID and Name are required', req);
+            return res.status(400).send('Bad Request: ID and Name are required');
         }
-    });
+        await deleteComponent(id, name, section_id);
+        res.status(200).send('Deleted Component');
+        info("Deleted Component with ID: " + id, req);
+    } catch (err) {
+        error("Error in deleteData:" + err, req);
+        res.status(500).send('Internal Server Error');
+    } 
+});
 
 export default router;

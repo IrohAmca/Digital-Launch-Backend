@@ -1,6 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import { uploadFile } from '../../services/s3/s3Upload';
+import { info, warn, error } from '../../utils/logger/logger';
 
 const router = express.Router();
 
@@ -10,6 +11,7 @@ const upload = multer({ storage: storage });
 router.post('/s3-upload', upload.single('file'), async (req, res) => { 
     try {
         if (!req.file) {
+            warn('Bad Request: File is required', req);
             return res.status(400).send('Bad Request: File is required');
         }
 
@@ -19,12 +21,14 @@ router.post('/s3-upload', upload.single('file'), async (req, res) => {
         
         const result = await uploadFile(fileBuffer, fileName, fileExtension);
         if (typeof(result) === 'boolean' && result) {
+            info('Inserted Media', req);
             res.status(200).send("Inserted Media");
         } else {
+            error('Media insertion failed: ' + result, req);
             res.status(500).send(`Media insertion failed: ${result}`);
         }
     } catch (err) {
-        console.log("Error in s3post:", err);
+        error('Error in s3post: ' + err, req);
         res.status(500).send('Internal Server Error');
     }
 });

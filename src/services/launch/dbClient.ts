@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
+import {info, error} from '../../utils/logger/logger';
 
 const envPath = path.resolve(__dirname, '../../../.env');
 
@@ -12,9 +13,9 @@ async function connectToDatabase() {
     if (mongoose.connection.readyState === 0) {
         try {
             await mongoose.connect(uri);
-            console.log("Connected to MongoDB");
+            info('MongoDB connection successful');
         } catch (err) {
-            console.error("MongoDB connection error:", err);
+            error('Error connecting to MongoDB:'+ err);
             throw err;
         }
     }
