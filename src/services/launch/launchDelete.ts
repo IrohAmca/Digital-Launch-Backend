@@ -26,35 +26,24 @@ async function deleteComponent(postId: string, partname: string, sectionId: stri
     try {
         await connectToDatabase();
 
-        const unsetResult = await Main.updateOne(
+        const updateResult = await Main.updateOne(
             {
                 _id: postId,
                 [`Components.${partname}._id`]: sectionId
             },
             {
-                $unset: {
-                    [`Components.${partname}.$`]: ""
+                $pull: {
+                    [`Components.${partname}`]: { _id: sectionId }
                 }
             }
         );
 
-        if (unsetResult.modifiedCount === 0) {
-            throw new Error("Component not found or already deleted.");
+        if (updateResult.modifiedCount === 0) {
+            throw new Error('Component not found');
         }
-        const pullResult = await Main.updateOne(
-            {
-                _id: postId
-            },
-            {
-                $pull: {
-                    [`Components.${partname}`]: null
-                }
-            }
-        );
 
     } catch (err) {
-        console.error("Error deleting component:", err);
-        throw err;
+        throw `Error deleting component: ${err}`;
     }
 }
 

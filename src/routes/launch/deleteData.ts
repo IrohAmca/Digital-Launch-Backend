@@ -67,11 +67,11 @@ router.delete('/delete-component', async (req, res) => {
         }
         await deleteComponent(id, name, section_id);
         res.status(200).send('Deleted Component');
-        info("Deleted Component with ID: " + id, req);
+        info(`Deleted ${name} Component with ID: ${id}`, req);
     } catch (err) {
         error("Error in deleteData:" + err, req);
         res.status(500).send('Internal Server Error');
-    } 
+    }
 });
 
 export default router;

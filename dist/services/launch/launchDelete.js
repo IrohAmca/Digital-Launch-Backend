@@ -28,27 +28,19 @@ async function deleteAllLaunch() {
 async function deleteComponent(postId, partname, sectionId) {
     try {
         await (0, dbClient_1.connectToDatabase)();
-        const unsetResult = await main_schema_1.Main.updateOne({
+        const updateResult = await main_schema_1.Main.updateOne({
             _id: postId,
             [`Components.${partname}._id`]: sectionId
         }, {
-            $unset: {
-                [`Components.${partname}.$`]: ""
-            }
-        });
-        if (unsetResult.modifiedCount === 0) {
-            throw new Error("Component not found or already deleted.");
-        }
-        const pullResult = await main_schema_1.Main.updateOne({
-            _id: postId
-        }, {
             $pull: {
-                [`Components.${partname}`]: null
+                [`Components.${partname}`]: { _id: sectionId }
             }
         });
+        if (updateResult.modifiedCount === 0) {
+            throw new Error('Component not found');
+        }
     }
     catch (err) {
-        console.error("Error deleting component:", err);
-        throw err;
+        throw `Error deleting component: ${err}`;
     }
 }

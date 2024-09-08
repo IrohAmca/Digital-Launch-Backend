@@ -69,7 +69,7 @@ router.delete('/delete-component', async (req, res) => {
         }
         await (0, launchDelete_1.deleteComponent)(id, name, section_id);
         res.status(200).send('Deleted Component');
-        (0, logger_1.info)("Deleted Component with ID: " + id, req);
+        (0, logger_1.info)(`Deleted ${name} Component with ID: ${id}`, req);
     }
     catch (err) {
         (0, logger_1.error)("Error in deleteData:" + err, req);
