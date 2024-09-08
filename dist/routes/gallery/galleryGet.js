@@ -5,14 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const galleryList_1 = require("../../services/gallery/galleryList");
+const logger_1 = require("../../utils/logger/logger");
 const router = express_1.default.Router();
 router.get('/get-gallery', async (req, res) => {
     try {
         const result = await (0, galleryList_1.readGallery)();
         res.send(result);
+        (0, logger_1.info)("Gallery Retrieved", req);
     }
     catch (err) {
-        console.log("Error in galleryGet:", err);
+        (0, logger_1.error)("Error in galleryGet:" + err);
         res.status(500).send('Internal Server Error');
     }
 });

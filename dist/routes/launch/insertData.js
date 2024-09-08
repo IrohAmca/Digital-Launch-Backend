@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchInsert_1 = require("../../services/launch/launchInsert");
+const logger_1 = require("../../utils/logger/logger");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 /**
@@ -57,37 +58,44 @@ router.use(body_parser_1.default.json());
 router.post('/update-and-create-general', async (req, res) => {
     try {
         if (!req.body) {
+            (0, logger_1.warn)('Bad Request: Body is required', req);
             return res.status(400).send('Bad Request: Body is required');
         }
         if (req.body.id) {
+            (0, logger_1.warn)('Bad Request: ID is required', req);
             await (0, launchInsert_1.updateSection)("LaunchFormData", req.body.LaunchFormData, req.body.id);
             res.status(200).send("Updated General Info");
+            (0, logger_1.info)(`Updated ID:${req.body.id} Launch General Info`, req);
         }
         else {
             const objID = await (0, launchInsert_1.submitGeneral)(req.body);
             res.status(200).send(objID);
+            (0, logger_1.info)(`Created New Launch ID:${objID}`, req);
         }
     }
     catch (err) {
-        console.log("Error in saveData:", err);
+        (0, logger_1.warn)("Error in saveData:" + err, req);
         res.status(500).send('Internal Server Error');
     }
 });
 router.post('/insert-placement', async (req, res) => {
     try {
         if (!req.body) {
+            (0, logger_1.warn)('Bad Request: Body is required', req);
             return res.status(400).send('Bad Request: Body is required');
         }
         if (req.body.id) {
             await (0, launchInsert_1.updateSection)("Placements", req.body.Placement, req.body.id);
             res.status(200).send("Updated Placement");
+            (0, logger_1.warn)('Bad Request: ID is required', req);
         }
         else {
+            (0, logger_1.warn)('Bad Request: ID is required', req);
             return res.status(400).send('Bad Request: ID is required');
         }
     }
     catch (err) {
-        console.log("Error in saveData:", err);
+        (0, logger_1.error)("Error in insertPlacement:" + err, req);
         res.status(500).send('Internal Server Error');
     }
 });

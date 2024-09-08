@@ -19,5 +19,4 @@ function verifyToken(token: string): any {
         throw new Error('Invalid token');
     }
 }
-
 export { generateToken, verifyToken };

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
 import { updateSection, submitGeneral } from '../../services/launch/launchInsert';
+import { info, warn, error } from '../../utils/logger/logger';
 
 const router = Router();
 
@@ -55,17 +56,21 @@ router.use(bodyParser.json());
 router.post('/update-and-create-general', async (req, res) => {
     try {
         if (!req.body) {
+            warn('Bad Request: Body is required', req);
             return res.status(400).send('Bad Request: Body is required');
         }
         if (req.body.id) {
+            warn('Bad Request: ID is required', req);
             await updateSection("LaunchFormData", req.body.LaunchFormData, req.body.id);
             res.status(200).send("Updated General Info");
+            info(`Updated ID:${req.body.id} Launch General Info`, req);
         } else {
             const objID = await submitGeneral(req.body);
             res.status(200).send(objID);
+            info(`Created New Launch ID:${objID}`, req);
         }
     } catch (err) {
-        console.log("Error in saveData:", err);
+        warn("Error in saveData:" + err, req);
         res.status(500).send('Internal Server Error');
     }
 });
@@ -73,16 +78,19 @@ router.post('/update-and-create-general', async (req, res) => {
 router.post('/insert-placement', async (req, res) => {
     try {
         if (!req.body) {
+            warn('Bad Request: Body is required', req);
             return res.status(400).send('Bad Request: Body is required');
         }
         if (req.body.id) {
             await updateSection("Placements", req.body.Placement, req.body.id);
             res.status(200).send("Updated Placement");
+            warn('Bad Request: ID is required', req);
         } else {
+            warn('Bad Request: ID is required', req);
             return res.status(400).send('Bad Request: ID is required');
         }
     } catch (err) {
-        console.log("Error in saveData:", err);
+        error("Error in insertPlacement:" + err, req);
         res.status(500).send('Internal Server Error');
     }
 });
