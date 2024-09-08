@@ -6,8 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const galleryList_1 = require("../../services/gallery/galleryList");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const router = express_1.default.Router();
-router.get('/get-gallery', async (req, res) => {
+router.get('/get-gallery', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         const result = await (0, galleryList_1.readGallery)();
         res.send(result);

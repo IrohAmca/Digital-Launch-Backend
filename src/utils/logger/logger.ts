@@ -29,7 +29,7 @@ const logger = createLogger({
 export function log(level: string, message: string, req?: Request) {
     if (req?.body.user)
     {
-        message = `${message} - User: ${req?.body.user.name}`;
+        message = `${message} - UserID: ${req?.body.user.id}`;
     }
     logger.log({ level, message });
 }

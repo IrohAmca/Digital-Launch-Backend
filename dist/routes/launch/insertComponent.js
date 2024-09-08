@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchInsert_1 = require("../../services/launch/launchInsert");
-const generateID_1 = require("../../utils/generateID");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
-router.post('/insert-component', async (req, res) => {
+router.post('/insert-component', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             (0, logger_1.warn)('Bad Request: Body is required', req);
@@ -20,7 +20,6 @@ router.post('/insert-component', async (req, res) => {
             (0, logger_1.warn)('Bad Request: ID is required', req);
             return res.status(400).send('Bad Request: ID is required');
         }
-        req.body.data = (0, generateID_1.insertID)(req.body.data);
         await (0, launchInsert_1.setSectionPart)(req.body.name, req.body.data, req.body.id);
         res.status(200).send('Inserted Component');
         (0, logger_1.info)("Inserted Component", req);

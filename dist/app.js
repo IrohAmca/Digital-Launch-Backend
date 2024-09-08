@@ -12,6 +12,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 const routes_1 = __importDefault(require("./routes"));
 const swagger_1 = __importDefault(require("./swagger"));
+const logger_1 = require("./utils/logger/logger");
 const envPath = path_1.default.resolve(__dirname, '../.env');
 dotenv_1.default.config({ path: envPath });
 const host = process.env.HOST || '0.0.0.0';
@@ -26,3 +27,4 @@ app.listen(port, host, () => {
     console.log(`Server is running at http://${host}:${port}`);
 });
 (0, dbClient_1.connectToDatabase)();
+(0, logger_1.info)('Server started');

@@ -27,7 +27,7 @@ const logger = (0, winston_1.createLogger)({
 });
 function log(level, message, req) {
     if (req?.body.user) {
-        message = `${message} - User: ${req?.body.user.name}`;
+        message = `${message} - UserID: ${req?.body.user.id}`;
     }
     logger.log({ level, message });
 }

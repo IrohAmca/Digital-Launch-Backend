@@ -2,13 +2,14 @@ import { Router } from 'express';
 import bodyParser from 'body-parser';
 import {updateSectionPart} from '../../services/launch/launchUpdate';
 import { info, warn, error } from '../../utils/logger/logger';
+import { authMiddleware } from '../../middleware/authMiddleware';
 
 const router = Router();
 
 router.use(bodyParser.json());
 
 
-router.post('/update-component', async (req, res) => {
+router.post('/update-component',authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             warn('Bad Request: Body is required', req);

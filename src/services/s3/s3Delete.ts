@@ -1,5 +1,5 @@
-import {s3} from './s3Client';
-
+import { s3 } from './s3Client';
+import { info, warn } from '../../utils/logger/logger';
 
 async function deleteObject(key: string) {
     const params = {
@@ -8,9 +8,9 @@ async function deleteObject(key: string) {
     };
     try {
         await s3.deleteObject(params).promise();
-        console.log(`File deleted successfully. Key: ${params.Key}`);
+        info(`Deleted object: ${key}`);
     } catch (err) {
-        console.error('Error', err);
+        throw `Error in deleteObject: ${err}`;
     }
 }
 async function deleteAll() {
@@ -21,7 +21,7 @@ async function deleteAll() {
         const data = await s3.listObjectsV2(params).promise();
         if (data.Contents !== undefined) {
             if (data.Contents.length === 0) {
-                console.log(`No files found in bucket: ${params.Bucket}`);
+                warn(`No files found in bucket: ${params.Bucket}`);
             } else {
                 data.Contents.forEach((item) => {
                     deleteObject(item.Key as string);
@@ -29,8 +29,8 @@ async function deleteAll() {
             }
         }
     } catch (err) {
-        console.error('Error', err);
+        throw `Error in deleteAll: ${err}`;
     }
 }
 
-export {deleteObject,deleteAll};
+export { deleteObject, deleteAll };

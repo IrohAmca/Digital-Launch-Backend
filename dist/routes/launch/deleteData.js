@@ -7,6 +7,7 @@ const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchDelete_1 = require("../../services/launch/launchDelete");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 /**
@@ -34,7 +35,7 @@ router.use(body_parser_1.default.json());
  *       500:
  *         description: Internal Server Error
  */
-router.delete('/delete-launch', async (req, res) => {
+router.delete('/delete-launch', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         const id = req.query.id;
         if (!id) {
@@ -49,7 +50,7 @@ router.delete('/delete-launch', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-router.delete('/delete-all-launch', async (req, res) => {
+router.delete('/delete-all-launch', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         await (0, launchDelete_1.deleteAllLaunch)();
         (0, logger_1.info)("Deleted all Lansman", req);
@@ -60,7 +61,7 @@ router.delete('/delete-all-launch', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-router.delete('/delete-component', async (req, res) => {
+router.delete('/delete-component', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         const { id, name, section_id } = req.body;
         if (!id || !name || !section_id) {

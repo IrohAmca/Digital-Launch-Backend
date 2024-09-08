@@ -2,6 +2,8 @@ import { Router } from 'express';
 import bodyParser from 'body-parser';
 import { deleteLaunch, deleteAllLaunch, deleteComponent } from '../../services/launch/launchDelete';
 import { info, warn, error } from '../../utils/logger/logger';
+import { authMiddleware } from '../../middleware/authMiddleware';
+
 const router = Router();
 
 router.use(bodyParser.json());
@@ -32,7 +34,7 @@ router.use(bodyParser.json());
  *         description: Internal Server Error
  */
 
-router.delete('/delete-launch', async (req, res) => {
+router.delete('/delete-launch', authMiddleware, async (req, res) => {
     try {
         const id = req.query.id as string
         if (!id) {
@@ -47,7 +49,7 @@ router.delete('/delete-launch', async (req, res) => {
     }
 });
 
-router.delete('/delete-all-launch', async (req, res) => {
+router.delete('/delete-all-launch', authMiddleware, async (req, res) => {
     try {
         await deleteAllLaunch();
         info("Deleted all Lansman", req);
@@ -58,7 +60,7 @@ router.delete('/delete-all-launch', async (req, res) => {
     }
 });
 
-router.delete('/delete-component', async (req, res) => {
+router.delete('/delete-component', authMiddleware, async (req, res) => {
     try {
         const { id, name, section_id } = req.body;
         if (!id || !name || !section_id) {
@@ -71,7 +73,7 @@ router.delete('/delete-component', async (req, res) => {
     } catch (err) {
         error("Error in deleteData:" + err, req);
         res.status(500).send('Internal Server Error');
-    } 
+    }
 });
 
 export default router;

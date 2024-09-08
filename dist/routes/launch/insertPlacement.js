@@ -6,10 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const launchInsert_1 = require("../../services/launch/launchInsert");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const body_parser_1 = __importDefault(require("body-parser"));
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
-router.post('/insert-placement', async (req, res) => {
+router.post('/insert-placement', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         const { data, id } = req.body;
         if (!data || !id) {

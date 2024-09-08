@@ -12,17 +12,17 @@ router.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await findUserByEmailAndPassword(email, password);
         if (!user) {
-            warn('--Login: Invalid email or password.', req);
+            warn('Invalid email or password.', req);
             return res.status(400).send('Invalid email or password.');
         }
 
         if (user.role !== 'company-admin') {
-            warn('--Login: Access denied. Not a company admin.', req);
+            warn('Access denied. Not a company admin.', req);
             return res.status(403).send('Access denied. Not a company admin.');
         }
 
-        const token = generateToken({ id: user.id, role: user.role });
-        info('--Login: User logged in successfully.', req);
+        const token = generateToken({ id: user._id, role: user.role });
+        info(`User logged in successfully. - UserID: ${user._id}`, req);
         res.status(200).send({ token });
     }
     catch (err) {

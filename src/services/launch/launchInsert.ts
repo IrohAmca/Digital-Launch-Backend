@@ -39,8 +39,7 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
         }
         return true;
     } catch (err) {
-        console.error("Error updating section part:", err);
-        throw err;
+        throw `Error updating section: ${err}`;
     }
 }
 
@@ -58,8 +57,7 @@ async function setSectionPart(partname: string, sectionData: any, postId: any) {
             throw new Error('Post not found');
         }
     } catch (err) {
-        console.error("Error updating section part:", err);
-        throw err;
+        throw `Error setting section part: ${err}`;
     }
 }
 
@@ -81,8 +79,7 @@ async function insertPlacementService(data: any, postId: string): Promise<any> {
 
         return true;
     } catch (err) {
-        console.error("Error updating placement:", err);
-        throw err;
+        throw `Error inserting placement service: ${err}`;
     }
 }
 

@@ -9,9 +9,8 @@ async function uploads3(fileBuffer: any, name: string, fileType: string) {
         try {
             const result = await s3.upload(params).promise();
             return result;
-        } catch (error : Error | any) {
-            console.error("Error uploading file to S3:", error);
-            return `Error uploading file: ${error.message}`; 
+        } catch (error) {
+            throw `Error uploading file: ${error}`;
         }
 }
 async function uploadFile(fileBuffer: any, name: string, fileType: string) {
@@ -22,8 +21,7 @@ async function uploadFile(fileBuffer: any, name: string, fileType: string) {
         }
         return true;
     } catch (error) {
-        console.error("Error uploading file:", error);
-        return error;
+        throw `Error in uploadFile: ${error}`;
     }
 }
 

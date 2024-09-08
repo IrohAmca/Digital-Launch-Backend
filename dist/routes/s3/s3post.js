@@ -7,10 +7,11 @@ const express_1 = __importDefault(require("express"));
 const multer_1 = __importDefault(require("multer"));
 const s3Upload_1 = require("../../services/s3/s3Upload");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const router = express_1.default.Router();
 const storage = multer_1.default.memoryStorage();
 const upload = (0, multer_1.default)({ storage: storage });
-router.post('/s3-upload', upload.single('file'), async (req, res) => {
+router.post('/s3-upload', upload.single('file'), authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         if (!req.file) {
             (0, logger_1.warn)('Bad Request: File is required', req);

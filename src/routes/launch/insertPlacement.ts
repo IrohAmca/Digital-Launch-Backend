@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import { insertPlacementService } from '../../services/launch/launchInsert';
 import { info, warn, error } from '../../utils/logger/logger';
-
+import { authMiddleware } from '../../middleware/authMiddleware';
 import bodyParser from 'body-parser';
 
 const router = Router();
 
 router.use(bodyParser.json());
 
-router.post('/insert-placement', async (req, res) => {
+router.post('/insert-placement', authMiddleware, async (req, res) => {
     try {
         const { data, id } = req.body;
 

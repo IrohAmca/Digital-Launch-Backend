@@ -12,11 +12,10 @@ function authMiddleware(req: Request, res: Response, next: NextFunction) {
     try {
         const decoded = verifyToken(token);
         req.body.user = decoded;
-        info('User authenticated.', req);
         next();
     } catch (err) {
-        error('Internal Server Error', req);
-        res.status(400).send('Internal Server Error');
+        error('Internal Server Error' + err, req);
+        res.status(400).send('Internal Server Error' + err);
     }
 }
 

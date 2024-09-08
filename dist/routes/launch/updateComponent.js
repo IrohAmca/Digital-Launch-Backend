@@ -7,9 +7,10 @@ const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchUpdate_1 = require("../../services/launch/launchUpdate");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
-router.post('/update-component', async (req, res) => {
+router.post('/update-component', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             (0, logger_1.warn)('Bad Request: Body is required', req);

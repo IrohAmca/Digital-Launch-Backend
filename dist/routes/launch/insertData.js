@@ -7,6 +7,7 @@ const express_1 = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const launchInsert_1 = require("../../services/launch/launchInsert");
 const logger_1 = require("../../utils/logger/logger");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
 const router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 /**
@@ -55,7 +56,7 @@ router.use(body_parser_1.default.json());
  *       500:
  *         description: Internal Server Error
  */
-router.post('/update-and-create-general', async (req, res) => {
+router.post('/update-and-create-general', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             (0, logger_1.warn)('Bad Request: Body is required', req);
@@ -78,7 +79,7 @@ router.post('/update-and-create-general', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-router.post('/insert-placement', async (req, res) => {
+router.post('/insert-placement', authMiddleware_1.authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             (0, logger_1.warn)('Bad Request: Body is required', req);

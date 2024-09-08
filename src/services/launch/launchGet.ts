@@ -31,8 +31,7 @@ async function readListLansman(): Promise<ILaunchInfo[]> {
         const posts = await Main.find({}, 'LaunchFormData.launchName LaunchFormData.companyName LaunchFormData.language LaunchFormData.startDate LaunchFormData.endDate LaunchFormData.isActive');
         return transformResponse(posts);
     } catch (err) {
-        console.error("Error reading posts:", err);
-        throw err;
+        throw `Error reading posts: ${err}`;
     }
 }
 
@@ -45,8 +44,7 @@ async function readLaunch(id: string): Promise<IMain> {
         }
         return post;
     } catch (err) {
-        console.error("Error reading post:", err);
-        throw err;
+        throw `Error reading post: ${err}`;
     }
 }
 
@@ -56,8 +54,7 @@ async function readAllData(): Promise<IMain[]> {
         const mains = await Main.find({});
         return mains;
     } catch (err) {
-        console.error("Error reading Mains:", err);
-        throw err;
+        throw `Error reading posts: ${err}`;
     }
 }
 

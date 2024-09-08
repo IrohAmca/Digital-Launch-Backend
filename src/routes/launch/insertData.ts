@@ -2,6 +2,7 @@ import { Router } from 'express';
 import bodyParser from 'body-parser';
 import { updateSection, submitGeneral } from '../../services/launch/launchInsert';
 import { info, warn, error } from '../../utils/logger/logger';
+import { authMiddleware } from '../../middleware/authMiddleware';
 
 const router = Router();
 
@@ -53,7 +54,7 @@ router.use(bodyParser.json());
  *       500:
  *         description: Internal Server Error
  */
-router.post('/update-and-create-general', async (req, res) => {
+router.post('/update-and-create-general', authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             warn('Bad Request: Body is required', req);
@@ -75,7 +76,7 @@ router.post('/update-and-create-general', async (req, res) => {
     }
 });
 
-router.post('/insert-placement', async (req, res) => {
+router.post('/insert-placement',authMiddleware, async (req, res) => {
     try {
         if (!req.body) {
             warn('Bad Request: Body is required', req);

@@ -10,6 +10,8 @@ import path from 'path';
 import routes  from './routes';
 import swaggerSpec  from './swagger';
 
+import {info} from './utils/logger/logger';
+
 const envPath = path.resolve(__dirname, '../.env');
 dotenv.config({ path: envPath });
 
@@ -32,3 +34,5 @@ app.listen(port as number, host, () => {
 });
 
 connectToDatabase();
+
+info('Server started');
