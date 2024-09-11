@@ -32,7 +32,6 @@ async function updateSectionPart(partname, sectionData, postId, sectionId) {
         return true;
     }
     catch (err) {
-        console.error("Error updating section part:", err);
-        throw err;
+        throw `Error updating section part: ${err}`;
     }
 }

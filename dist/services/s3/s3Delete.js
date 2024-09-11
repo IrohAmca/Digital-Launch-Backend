@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteObject = deleteObject;
 exports.deleteAll = deleteAll;
 const s3Client_1 = require("./s3Client");
+const logger_1 = require("../../utils/logger/logger");
 async function deleteObject(key) {
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME || '',
@@ -10,10 +11,10 @@ async function deleteObject(key) {
     };
     try {
         await s3Client_1.s3.deleteObject(params).promise();
-        console.log(`File deleted successfully. Key: ${params.Key}`);
+        (0, logger_1.info)(`Deleted object: ${key}`);
     }
     catch (err) {
-        console.error('Error', err);
+        throw `Error in deleteObject: ${err}`;
     }
 }
 async function deleteAll() {
@@ -24,7 +25,7 @@ async function deleteAll() {
         const data = await s3Client_1.s3.listObjectsV2(params).promise();
         if (data.Contents !== undefined) {
             if (data.Contents.length === 0) {
-                console.log(`No files found in bucket: ${params.Bucket}`);
+                (0, logger_1.warn)(`No files found in bucket: ${params.Bucket}`);
             }
             else {
                 data.Contents.forEach((item) => {
@@ -34,6 +35,6 @@ async function deleteAll() {
         }
     }
     catch (err) {
-        console.error('Error', err);
+        throw `Error in deleteAll: ${err}`;
     }
 }

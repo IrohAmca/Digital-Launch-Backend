@@ -18,8 +18,7 @@ async function connectToDatabase() {
             (0, logger_1.info)('MongoDB connection successful');
         }
         catch (err) {
-            (0, logger_1.error)('Error connecting to MongoDB:' + err);
-            throw err;
+            throw `Error connecting to MongoDB: ${err}`;
         }
     }
 }

@@ -20,8 +20,8 @@ router.post('/insert-component', authMiddleware_1.authMiddleware, async (req, re
             (0, logger_1.warn)('Bad Request: ID is required', req);
             return res.status(400).send('Bad Request: ID is required');
         }
-        await (0, launchInsert_1.setSectionPart)(req.body.name, req.body.data, req.body.id);
-        res.status(200).send('Inserted Component');
+        const id = await (0, launchInsert_1.setSectionPart)(req.body.name, req.body.data, req.body.id);
+        res.status(200).send(id);
         (0, logger_1.info)("Inserted Component", req);
     }
     catch (err) {

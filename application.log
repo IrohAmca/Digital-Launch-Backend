@@ -124,3 +124,13 @@
 2024-09-09 00:16:09 [[32minfo[39m]: User logged in successfully. - UserID: 66a0e4f6e9d9b40fb53d40a5
 2024-09-09 00:16:21 [[32minfo[39m]: Deleted Component with ID: 66dc13216850ae1a5bbe481d - UserID: 66a0e4f6e9d9b40fb53d40a5
 2024-09-09 00:16:57 [[32minfo[39m]: Deleted Component with ID: 66dc13216850ae1a5bbe481d - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:03:29 [[32minfo[39m]: Server started
+2024-09-11 23:03:32 [[32minfo[39m]: MongoDB connection successful
+2024-09-11 23:04:33 [[32minfo[39m]: User logged in successfully. - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:04:49 [[33mwarn[39m]: Bad Request: ID is required - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:04:49 [[33mwarn[39m]: Error in saveData:Error updating section: Error: Invalid ObjectId - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:05:08 [[32minfo[39m]: Created New Launch ID:66e1f7f3f618b6e5fdf3ec41 - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:05:24 [[33mwarn[39m]: Bad Request: ID is required - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:05:26 [[32minfo[39m]: MongoDB connection successful
+2024-09-11 23:05:27 [[32minfo[39m]: Updated ID:66e1f7f3f618b6e5fdf3ec41 Launch General Info - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-11 23:06:04 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5

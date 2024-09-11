@@ -204,7 +204,7 @@ interface IMain extends Document {
             index: Number,
             name: string,
             switchActive: boolean,
-
+            id : string,
         }
     ]
 }
@@ -414,7 +414,7 @@ const MainSchema: Schema = new Schema({
             index: Number,
             name: String,
             switchActive: Boolean,
-
+            id : String,
         }
     ]
 });

@@ -56,6 +56,7 @@ async function setSectionPart(partname: string, sectionData: any, postId: any) {
         if (!result) {
             throw new Error('Post not found');
         }
+        return (result.Components as any)[partname].slice(-1)[0]._id;
     } catch (err) {
         throw `Error setting section part: ${err}`;
     }

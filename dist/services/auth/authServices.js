@@ -22,7 +22,6 @@ async function findUserByEmailAndPassword(email, password) {
         return response.data;
     }
     catch (error) {
-        console.error('Error logging in:', error);
-        throw error;
+        throw `Error logging in:, ${error}`;
     }
 }

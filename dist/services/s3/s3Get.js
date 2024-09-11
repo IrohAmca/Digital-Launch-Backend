@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getObject = getObject;
 exports.listObjects = listObjects;
 const s3Client_1 = require("./s3Client");
+const logger_1 = require("../../utils/logger/logger");
 async function getObject(key) {
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME || '',
@@ -15,7 +16,7 @@ async function getObject(key) {
         }
     }
     catch (err) {
-        console.error('Error', err);
+        throw `Error in getObject: ${err}`;
     }
 }
 async function listObjects() {
@@ -26,7 +27,8 @@ async function listObjects() {
         const data = await s3Client_1.s3.listObjectsV2(params).promise();
         if (data.Contents !== undefined) {
             if (data.Contents.length === 0) {
-                console.log(`No files found in bucket: ${params.Bucket}`);
+                (0, logger_1.warn)(`No files found in bucket: ${params.Bucket}`);
+                return [];
             }
             else {
                 return data.Contents;
@@ -34,6 +36,6 @@ async function listObjects() {
         }
     }
     catch (err) {
-        console.error('Error', err);
+        throw `Error in listObjects: ${err}`;
     }
 }

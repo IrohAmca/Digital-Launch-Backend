@@ -17,6 +17,9 @@ function updateTime(time) {
     return date;
 }
 function transformResponse(data) {
+    if (data.length === 0) {
+        return ["No files found in bucket"];
+    }
     const galleryList = [];
     data.forEach((element) => {
         const gallery = {
@@ -35,7 +38,6 @@ async function readGallery() {
         return transformResponse(result);
     }
     catch (err) {
-        console.log("Error in galleryGet:", err);
-        return 'Internal Server Error';
+        throw `Error in galleryGet: ${err}`;
     }
 }

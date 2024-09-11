@@ -47,8 +47,7 @@ async function updateSection(sectionName, sectionData, postId) {
         return true;
     }
     catch (err) {
-        console.error("Error updating section part:", err);
-        throw err;
+        throw `Error updating section: ${err}`;
     }
 }
 async function setSectionPart(partname, sectionData, postId) {
@@ -62,10 +61,10 @@ async function setSectionPart(partname, sectionData, postId) {
         if (!result) {
             throw new Error('Post not found');
         }
+        return result.Components[partname].slice(-1)[0]._id;
     }
     catch (err) {
-        console.error("Error updating section part:", err);
-        throw err;
+        throw `Error setting section part: ${err}`;
     }
 }
 async function insertPlacementService(data, postId) {
@@ -82,7 +81,6 @@ async function insertPlacementService(data, postId) {
         return true;
     }
     catch (err) {
-        console.error("Error updating placement:", err);
-        throw err;
+        throw `Error inserting placement service: ${err}`;
     }
 }

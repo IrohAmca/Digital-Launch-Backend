@@ -23,8 +23,7 @@ async function readListLansman() {
         return transformResponse(posts);
     }
     catch (err) {
-        console.error("Error reading posts:", err);
-        throw err;
+        throw `Error reading posts: ${err}`;
     }
 }
 async function readLaunch(id) {
@@ -37,8 +36,7 @@ async function readLaunch(id) {
         return post;
     }
     catch (err) {
-        console.error("Error reading post:", err);
-        throw err;
+        throw `Error reading post: ${err}`;
     }
 }
 async function readAllData() {
@@ -48,7 +46,6 @@ async function readAllData() {
         return mains;
     }
     catch (err) {
-        console.error("Error reading Mains:", err);
-        throw err;
+        throw `Error reading posts: ${err}`;
     }
 }

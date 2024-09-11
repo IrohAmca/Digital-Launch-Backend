@@ -11,7 +11,6 @@ async function deleteLaunch(id) {
         await main_schema_1.Main.findByIdAndDelete(id);
     }
     catch (err) {
-        console.error("Error deleting post:", err);
         throw err;
     }
 }
@@ -21,29 +20,25 @@ async function deleteAllLaunch() {
         await main_schema_1.Main.deleteMany({});
     }
     catch (err) {
-        console.error("Error deleting all posts:", err);
         throw err;
     }
 }
 async function deleteComponent(postId, partname, sectionId) {
     try {
         await (0, dbClient_1.connectToDatabase)();
-        // Belirtilen partname dizisi altında sectionId'ye göre elemanı sil
         const updateResult = await main_schema_1.Main.updateOne({
             _id: postId,
-            [`Components.${partname}._id`]: sectionId // Dizinin içinde sectionId'yi bul
+            [`Components.${partname}._id`]: sectionId
         }, {
             $pull: {
-                [`Components.${partname}`]: { _id: sectionId } // Diziden sectionId'yi sil
+                [`Components.${partname}`]: { _id: sectionId }
             }
         });
         if (updateResult.modifiedCount === 0) {
-            throw new Error("Component not found or already deleted.");
+            throw new Error('Component not found');
         }
-        console.log("Component deleted successfully.");
     }
     catch (err) {
-        console.error("Error deleting component:", err);
-        throw err;
+        throw `Error deleting component: ${err}`;
     }
 }

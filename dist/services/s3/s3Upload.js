@@ -13,8 +13,7 @@ async function uploads3(fileBuffer, name, fileType) {
         return result;
     }
     catch (error) {
-        console.error("Error uploading file to S3:", error);
-        return `Error uploading file: ${error.message}`;
+        throw `Error uploading file: ${error}`;
     }
 }
 async function uploadFile(fileBuffer, name, fileType) {
@@ -26,7 +25,6 @@ async function uploadFile(fileBuffer, name, fileType) {
         return true;
     }
     catch (error) {
-        console.error("Error uploading file:", error);
-        return error;
+        throw `Error in uploadFile: ${error}`;
     }
 }
