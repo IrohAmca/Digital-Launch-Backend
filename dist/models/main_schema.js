@@ -209,6 +209,7 @@ const MainSchema = new mongoose_1.Schema({
             index: Number,
             name: String,
             switchActive: Boolean,
+            id: String,
         }
     ]
 });

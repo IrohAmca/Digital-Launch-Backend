@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { IMain, Main } from '../../models/main_schema';
-import { connectToDatabase} from './dbClient';
+import { connectToDatabase } from './dbClient';
 
 async function submitGeneral(data: any) {
     try {
@@ -45,7 +45,7 @@ async function updateSection(sectionName: string, sectionData: any, postId: any)
 }
 
 async function setSectionPart(partname: string, sectionData: any, postId: any) {
-    try { 
+    try {
         if (!mongoose.Types.ObjectId.isValid(postId)) {
             throw new Error('Invalid ObjectId');
         }
@@ -57,33 +57,34 @@ async function setSectionPart(partname: string, sectionData: any, postId: any) {
         if (!result) {
             throw new Error('Post not found');
         }
-    } catch (err) {
-        console.error("Error updating section part:", err);
-        throw err;
+        return (result.Components as any)[partname].slice(-1)[0]._id;
+        
+        } catch (err) {
+            throw err;
+        }
     }
-}
 
 async function insertPlacementService(data: any, postId: string): Promise<any> {
-    try {
-        if (!mongoose.Types.ObjectId.isValid(postId)) {
-            throw new Error('Invalid ObjectId');
-        }
-        await connectToDatabase();
+        try {
+            if (!mongoose.Types.ObjectId.isValid(postId)) {
+                throw new Error('Invalid ObjectId');
+            }
+            await connectToDatabase();
 
-        const post = await Main.findById(postId);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        await Main.updateOne(
-            {_id: postId},
-            {$set: {Placements: data}}
-        );
+            const post = await Main.findById(postId);
+            if (!post) {
+                throw new Error('Post not found');
+            }
+            await Main.updateOne(
+                { _id: postId },
+                { $set: { Placements: data } }
+            );
 
-        return true;
-    } catch (err) {
-        console.error("Error updating placement:", err);
-        throw err;
+            return true;
+        } catch (err) {
+            console.error("Error updating placement:", err);
+            throw err;
+        }
     }
-}
 
-export { updateSection, setSectionPart, saveGeneralInfo, submitGeneral, connectToDatabase, insertPlacementService };
+    export { updateSection, setSectionPart, saveGeneralInfo, submitGeneral, connectToDatabase, insertPlacementService };
