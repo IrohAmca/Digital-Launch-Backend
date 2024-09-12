@@ -77,7 +77,11 @@ async function insertPlacementService(data, postId) {
         if (!post) {
             throw new Error('Post not found');
         }
-        await main_schema_1.Main.updateOne({ _id: postId }, { $set: { Placements: data } });
+        const update = { $push: { Placements: data } };
+        const result = await main_schema_1.Main.findByIdAndUpdate(postId, update, { new: true });
+        if (!result) {
+            throw new Error('Post not found');
+        }
         return true;
     }
     catch (err) {

@@ -61,7 +61,6 @@ router.post('/update-and-create-general', authMiddleware, async (req, res) => {
             return res.status(400).send('Bad Request: Body is required');
         }
         if (req.body.id) {
-            warn('Bad Request: ID is required', req);
             await updateSection("LaunchFormData", req.body.LaunchFormData, req.body.id);
             res.status(200).send("Updated General Info");
             info(`Updated ID:${req.body.id} Launch General Info`, req);
@@ -76,24 +75,5 @@ router.post('/update-and-create-general', authMiddleware, async (req, res) => {
     }
 });
 
-router.post('/insert-placement',authMiddleware, async (req, res) => {
-    try {
-        if (!req.body) {
-            warn('Bad Request: Body is required', req);
-            return res.status(400).send('Bad Request: Body is required');
-        }
-        if (req.body.id) {
-            await updateSection("Placements", req.body.Placement, req.body.id);
-            res.status(200).send("Updated Placement");
-            warn('Bad Request: ID is required', req);
-        } else {
-            warn('Bad Request: ID is required', req);
-            return res.status(400).send('Bad Request: ID is required');
-        }
-    } catch (err) {
-        error("Error in insertPlacement:" + err, req);
-        res.status(500).send('Internal Server Error');
-    }
-});
 
 export default router;

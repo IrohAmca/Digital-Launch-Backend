@@ -20,7 +20,7 @@ router.post('/insert-placement', authMiddleware_1.authMiddleware, async (req, re
         const result = await (0, launchInsert_1.insertPlacementService)(data, id);
         if (typeof result === 'boolean' && result) {
             (0, logger_1.info)('Inserted Component', req);
-            return res.status(200).send('Updated Component');
+            return res.status(200).send('Insert Component');
         }
         else {
             (0, logger_1.error)('Failed to update component: ' + result);

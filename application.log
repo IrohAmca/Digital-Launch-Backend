@@ -134,3 +134,105 @@
 2024-09-11 23:05:26 [[32minfo[39m]: MongoDB connection successful
 2024-09-11 23:05:27 [[32minfo[39m]: Updated ID:66e1f7f3f618b6e5fdf3ec41 Launch General Info - UserID: 66a0e4f6e9d9b40fb53d40a5
 2024-09-11 23:06:04 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:23:51 [[32minfo[39m]: Server started
+2024-09-12 22:23:53 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 22:24:19 [[31merror[39m]: Internal Server ErrorError: Invalid token
+2024-09-12 22:24:33 [[32minfo[39m]: User logged in successfully. - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:25:56 [[33mwarn[39m]: Bad Request: ID is required - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:26:28 [[33mwarn[39m]: Bad Request: ID is required - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:35:07 [[32minfo[39m]: Server started
+2024-09-12 22:35:09 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 22:44:18 [[32minfo[39m]: Server started
+2024-09-12 22:44:20 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 22:49:03 [[32minfo[39m]: Server started
+2024-09-12 22:49:05 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 22:50:51 [[31merror[39m]: Internal Server ErrorError: Invalid token
+2024-09-12 22:51:01 [[33mwarn[39m]: Error in saveData:Error updating section: Error: No document modified - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:51:33 [[32minfo[39m]: User logged in successfully. - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:51:44 [[33mwarn[39m]: Error in saveData:Error updating section: Error: No document modified - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:52:22 [[32minfo[39m]: Created New Launch ID:66e34676efd63aeea65360ef - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 22:52:46 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 22:54:29 [[32minfo[39m]: Server started
+2024-09-12 22:54:31 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 22:56:52 [[32minfo[39m]: Server started
+2024-09-12 22:56:54 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 23:02:23 [[32minfo[39m]: Server started
+2024-09-12 23:02:25 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 23:15:19 [[32minfo[39m]: Server started
+2024-09-12 23:15:21 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 23:19:31 [[32minfo[39m]: Server started
+2024-09-12 23:19:33 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 23:20:36 [[33mwarn[39m]: Bad Request: Placement is required - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 23:22:39 [[32minfo[39m]: Server started
+2024-09-12 23:22:41 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 23:23:45 [[31merror[39m]: Failed to update component: {
+  LaunchFormData: {
+    launchName: 'Test dawad',
+    language: 'en',
+    groupNumber: '123',
+    companyName: 'Test Company',
+    companyLogo: 'test_logo.png',
+    startDate: '2024-09-01',
+    endDate: '2024-12-01',
+    orderNumber: '1',
+    isActive: true,
+    showOnHomepage: false
+  },
+  Components: {
+    AccordionRightCard: [],
+    CTACard: [],
+    FullScreenCardsSlider: [],
+    FullText: [],
+    HeaderState: [],
+    InfoCardsSlider: [],
+    LargeCard: [],
+    LargeFlipCard: [],
+    LargePopUpCard: [],
+    LargeScalableCard: [],
+    LargeTopTitleHeroCard: [],
+    LeftTextCard: [],
+    MiniCardsSlider: [],
+    ReelsCardsSlider: [],
+    RightTextCard: [],
+    Title: [],
+    TopTextCard: [],
+    TwinCard: [],
+    TwinFlipCard: [],
+    TwinTopTitleHeroCard: []
+  },
+  _id: new ObjectId('66e34676efd63aeea65360ef'),
+  Placements: [
+    {
+      index: 0,
+      name: 'Full Text',
+      switchActive: false,
+      _id: new ObjectId('66e34bf893bc18d616992de9')
+    },
+    {
+      index: 1,
+      name: 'Accordion Right Card',
+      switchActive: false,
+      _id: new ObjectId('66e34bf893bc18d616992dea')
+    },
+    {
+      index: 0,
+      name: 'Full Text',
+      switchActive: false,
+      _id: new ObjectId('66e34dd147d09eeefc39adc6')
+    },
+    {
+      index: 1,
+      name: 'Accordion Right Card',
+      switchActive: false,
+      _id: new ObjectId('66e34dd147d09eeefc39adc7')
+    }
+  ],
+  __v: 0
+}
+2024-09-12 23:25:57 [[32minfo[39m]: Server started
+2024-09-12 23:25:58 [[32minfo[39m]: MongoDB connection successful
+2024-09-12 23:26:10 [[31merror[39m]: Internal Server ErrorError: Invalid token
+2024-09-12 23:26:20 [[32minfo[39m]: User logged in successfully. - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 23:26:37 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 23:26:56 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-12 23:27:06 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
