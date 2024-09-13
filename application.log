@@ -236,3 +236,25 @@
 2024-09-12 23:26:37 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
 2024-09-12 23:26:56 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
 2024-09-12 23:27:06 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 20:58:51 [[32minfo[39m]: Server started
+2024-09-13 20:58:52 [[32minfo[39m]: MongoDB connection successful
+2024-09-13 20:59:53 [[32minfo[39m]: User logged in successfully. - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:03:00 [[32minfo[39m]: Server started
+2024-09-13 21:03:02 [[32minfo[39m]: MongoDB connection successful
+2024-09-13 21:03:09 [[32minfo[39m]: Inserted Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:10:37 [[32minfo[39m]: Server started
+2024-09-13 21:10:38 [[32minfo[39m]: MongoDB connection successful
+2024-09-13 21:11:24 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:12:04 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:12:58 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:19:52 [[32minfo[39m]: Server started
+2024-09-13 21:19:54 [[32minfo[39m]: MongoDB connection successful
+2024-09-13 21:20:36 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:20:57 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:23:21 [[32minfo[39m]: Server started
+2024-09-13 21:23:23 [[32minfo[39m]: MongoDB connection successful
+2024-09-13 21:23:27 [[31merror[39m]: Error in updatePlacement: Error in updatePlacementService: MongoServerError: No array filter found for identifier 'elem' in path 'Placements.$[elem]' - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:25:41 [[32minfo[39m]: Server started
+2024-09-13 21:25:43 [[32minfo[39m]: MongoDB connection successful
+2024-09-13 21:25:47 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5
+2024-09-13 21:26:23 [[32minfo[39m]: Updated Component - UserID: 66a0e4f6e9d9b40fb53d40a5

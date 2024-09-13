@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateSectionPart = updateSectionPart;
+exports.updatePlacementService = updatePlacementService;
 const mongoose_1 = __importDefault(require("mongoose"));
 const dbClient_1 = require("./dbClient");
 const main_schema_1 = require("../../models/main_schema");
@@ -33,5 +34,26 @@ async function updateSectionPart(partname, sectionData, postId, sectionId) {
     }
     catch (err) {
         throw `Error updating section part: ${err}`;
+    }
+}
+async function updatePlacementService(data, name, id) {
+    try {
+        if (!data || !id || !name) {
+            throw new Error('Data, Name, and ID are required');
+        }
+        const result = await main_schema_1.Main.updateOne({
+            _id: id,
+            'Placements.name': name
+        }, {
+            $set: {
+                'Placements.$[elem]': data
+            }
+        }, {
+            arrayFilters: [{ 'elem.name': name }]
+        });
+        return true;
+    }
+    catch (err) {
+        throw new Error(`Error in updatePlacementService: ${err}`);
     }
 }

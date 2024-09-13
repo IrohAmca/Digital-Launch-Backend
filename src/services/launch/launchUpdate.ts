@@ -36,4 +36,31 @@ async function updateSectionPart(partname: string, sectionData: any, postId: any
     }
 }
 
-export { updateSectionPart };
+async function updatePlacementService(data: any, name: any, id: any): Promise<boolean> {
+    try {
+        if (!data || !id || !name) {
+            throw new Error('Data, Name, and ID are required');
+        }
+
+        const result = await Main.updateOne(
+            {
+                _id: id,
+                'Placements.name': name
+            },
+            {
+                $set: {
+                    'Placements.$[elem]': data
+                }
+            },
+            {
+                arrayFilters: [{ 'elem.name': name }]
+            }
+        );
+
+        return true;
+    } catch (err) {
+        throw new Error(`Error in updatePlacementService: ${err}`);
+    }
+}
+
+export { updateSectionPart , updatePlacementService };
