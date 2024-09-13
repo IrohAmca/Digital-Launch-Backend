@@ -9,6 +9,7 @@ import galleryGet from './gallery/galleryGet';
 import insertPlacement from './launch/insertPlacement';
 import insertComponent from './launch/insertComponent';
 import updateComponent from './launch/updateComponent';
+import updatePlacement from './launch/updatePlacement';
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use('/api', s3post);
 router.use('/api', getUser);
 router.use('/api', galleryGet);
 router.use('/api', insertPlacement);
+router.use('/api', updatePlacement);
 
 export default router;
